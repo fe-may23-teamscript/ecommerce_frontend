@@ -25,9 +25,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettier-check": "prettier --check . --ignore-path .gitignore",
+    "lint-css": "stylelint \"**/*.{scss,css}\"",
     "lint": "eslint . --ignore-path .gitignore",
     "format": "prettier --write . --ignore-path .gitignore",
-    "fix-style": "npm run format && npm run lint -- --fix",
+    "fix-style": "npm run format && npm run lint -- --fix && npm run lint-css -- --fix",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -56,13 +57,17 @@
     "gh-pages": "^6.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "3.0.2"
+    "prettier": "3.0.2",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^10.0.0"
   },
   "volta": {
     "node": "18.17.1"
   },
   "lint-staged": {
-    "{js, jsx, ts, tsx}": "npm run lint",
+    "*.{js, jsx, ts, tsx}": "npm run lint",
+    "*.{css, scss}": "npm run lint-css",
     "**/*": "npm run prettier-check"
   }
 }
