@@ -24,9 +24,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write . --ignore-path .gitignore",
+    "prettier-check": "prettier --check . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
-    "fix-style": "npm run format && npm run lint -- --fix"
+    "format": "prettier --write . --ignore-path .gitignore",
+    "fix-style": "npm run format && npm run lint -- --fix",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -52,9 +54,15 @@
     "eslint": "^8.48.0",
     "eslint-plugin-react": "^7.33.2",
     "gh-pages": "^6.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "3.0.2"
   },
   "volta": {
     "node": "18.17.1"
+  },
+  "lint-staged": {
+    "{js, jsx, ts, tsx}": "npm run lint",
+    "**/*": "npm run prettier-check"
   }
 }
