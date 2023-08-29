@@ -1,0 +1,11 @@
+@import '../app/styles/reset';
+@import '../app/styles/index';
+@import '../app/styles/fonts';
+
+body {
+  min-width: 320px;
+  font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--main-text-color);
+}

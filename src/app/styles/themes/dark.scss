@@ -1,1 +1,6 @@
-// dark palette here
+@import '../variables/global';
+
+.dark {
+  --bg-color: #{$color-black};
+  --main-text-color: #{$color-white};
+}

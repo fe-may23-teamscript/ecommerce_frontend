@@ -1,4 +1,4 @@
-@import 'reset';
-@import 'variables/global';
-@import 'themes/dark';
-@import 'themes/light';
+@import './variables/global';
+@import './mixins';
+@import './themes/dark';
+@import './themes/light';

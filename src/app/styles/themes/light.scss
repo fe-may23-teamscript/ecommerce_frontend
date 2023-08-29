@@ -1,1 +1,6 @@
-// light palette here
+@import '../variables/global';
+
+.light {
+  --bg-color: #{$color-white};
+  --main-text-color: #{$color-black};
+}
