@@ -1,6 +1,6 @@
 import React from 'react';
 import './CardsSlider.scss';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from 'components/ProductCard/ProductCard';
 
 type Props = {
   title: string;

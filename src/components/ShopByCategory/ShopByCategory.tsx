@@ -1,9 +1,9 @@
 import React from 'react';
 //import { useNavigate } from "react-router-dom";
 import './ShopByCategory.scss';
-import phones from '../../assets/images/shop-by-category/mobile_phones.jpg';
-import tablets from '../../assets/images/shop-by-category/tablets.jpg';
-import accessories from '../../assets/images/shop-by-category/accessories.jpg';
+import phones from 'assets/images/shop-by-category/mobile_phones.jpg';
+import tablets from 'assets/images/shop-by-category/tablets.jpg';
+import accessories from 'assets/images/shop-by-category/accessories.jpg';
 
 export const ShopByCategory: React.FC = () => {
   //const navigate = useNavigate();

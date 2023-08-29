@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './WelcomeSlider.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import banner1 from '../../assets/images/welcome-banner/banner.png';
-import bannerMob1 from '../../assets/images/welcome-banner/banner-mobile.png';
-import banner2 from '../../assets/images/welcome-banner/banner-2.png';
-import bannerMob2 from '../../assets/images/welcome-banner/banner-mobile-2.png';
-import banner3 from '../../assets/images/welcome-banner/banner-3.png';
-import bannerMob3 from '../../assets/images/welcome-banner/banner-mobile-3.png';
+import banner1 from 'assets/images/welcome-banner/banner.png';
+import bannerMob1 from 'assets/images/welcome-banner/banner-mobile.png';
+import banner2 from 'assets/images/welcome-banner/banner-2.png';
+import bannerMob2 from 'assets/images/welcome-banner/banner-mobile-2.png';
+import banner3 from 'assets/images/welcome-banner/banner-3.png';
+import bannerMob3 from 'assets/images/welcome-banner/banner-mobile-3.png';
 
 export const WelcomeSlider: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
