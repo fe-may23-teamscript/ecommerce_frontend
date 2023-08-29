@@ -1,8 +1,8 @@
-@import '../app/styles/reset';
-@import '../app/styles/index';
-@import '../app/styles/fonts';
+@import 'app/styles/reset';
+@import 'app/styles/index';
+@import 'app/styles/fonts';
 
-body {
+.app {
   min-width: 320px;
   font-family: Mont, sans-serif;
   scroll-behavior: smooth;

@@ -1,5 +1,5 @@
 import './ProductCard.scss';
-import imgSrc from '../../assets/images/product-card/product-1.png';
+import imgSrc from 'assets/images/product-card/product-1.png';
 
 export const ProductCard = () => {
   return (

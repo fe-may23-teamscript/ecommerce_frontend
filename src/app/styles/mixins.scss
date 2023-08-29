@@ -1,5 +1,5 @@
 /* stylelint-disable */
-@import './variables/global';
+@import 'app/styles/variables/global';
 
 @mixin onTablet {
   @media (min-width: $desktop-min-width) {
