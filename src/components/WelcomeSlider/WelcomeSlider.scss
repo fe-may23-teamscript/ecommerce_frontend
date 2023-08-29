@@ -1,0 +1,24 @@
+@import '../../app/styles/index';
+
+.welcome {
+  &__title {
+    font-size: 32px;
+    padding-block: 24px;
+
+    @include onTablet {
+      font-size: 38px;
+      padding-block: 32px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      padding-block: 56px;
+    }
+  }
+
+  .carousel .control-dots .dot {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+  }
+}
