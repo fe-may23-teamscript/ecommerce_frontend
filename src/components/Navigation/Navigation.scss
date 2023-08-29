@@ -1,0 +1,55 @@
+@import 'app/styles/variables/global';
+@import 'app/styles/mixins';
+
+.navigation {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  &__logo {
+    margin: 0 16px;
+    box-sizing: border-box;
+  }
+
+  &__item {
+    display: none;
+    margin: 0 16px;
+    color: $color-elements;
+    color: $color-white;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-sizing: border-box;
+
+    &--active {
+      border-bottom: 3px solid $color-white;
+      color: $color-white;
+    }
+
+    @include onTablet {
+      display: block;
+      padding: 16px 0;
+    }
+
+    @include onDesktop {
+      padding: 24px 0;
+      margin: 0 32px;
+    }
+  }
+}
+
+.logo-size {
+  width: 64px;
+  height: 22px;
+
+  @include onDesktop {
+    width: 80px;
+    height: 28px;
+  }
+}

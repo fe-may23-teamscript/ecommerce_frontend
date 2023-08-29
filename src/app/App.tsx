@@ -6,7 +6,7 @@ import { Layout } from '../components/Layout';
 
 function App() {
   return (
-    <div className="App dark">
+    <div className="app dark">
       <Layout>
         <Router />
       </Layout>

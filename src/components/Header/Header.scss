@@ -1,0 +1,51 @@
+@import 'app/styles/variables/global';
+@import 'app/styles/mixins';
+
+.header {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: $color-black;
+  border-bottom: 1px solid $color-elements;
+  z-index: 1;
+
+  @include onDesktop {
+    height: 64px;
+  }
+}
+
+.menu-items {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  &__button-right {
+    padding: 13px 16px;
+    background-color: $color-black;
+    border: none;
+    border-left: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:not(:first-child) {
+      display: none;
+    }
+
+    @include onTablet {
+      &:not(:first-child) {
+        display: block;
+      }
+
+      &:first-child {
+        display: none;
+      }
+    }
+
+    @include onDesktop {
+      padding: 21px 24px;
+    }
+  }
+}

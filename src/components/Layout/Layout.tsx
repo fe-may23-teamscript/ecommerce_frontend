@@ -1,11 +1,13 @@
+import Footer from 'components/Footer/Footer';
+import Header from 'components/Header/Header';
 import React from 'react';
 
 export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <div>
-      <div>put header here</div>
+      <Header />
       {children}
-      <div>put footer here</div>
+      <Footer />
     </div>
   );
 };
