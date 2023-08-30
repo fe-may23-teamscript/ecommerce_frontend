@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react';
 import cn from 'classnames';
 import './Dropdown.scss';
-import { useOutsideClick } from '../../hooks/useOutsideClick';
+import { useOutsideClick } from 'shared/hooks/useOutsideClick';
+import { ReactComponent as ArrowUp } from 'shared/assets/ArrowUp-Icon.svg';
+import { ReactComponent as ArrowDown } from 'shared/assets/ArrowDown-Icon.svg';
 
 export interface IDropdown<T> {
   options: T[];
@@ -32,7 +34,7 @@ export function Dropdown<T>(props: IDropdown<T>) {
         onClick={() => setIsActive(!isActive)}
       >
         {`${selectedValue}`}
-        {isActive ? <div>down</div> : <div>up</div>}
+        {isActive ? <ArrowDown /> : <ArrowUp />}
       </div>
 
       {isActive && (
