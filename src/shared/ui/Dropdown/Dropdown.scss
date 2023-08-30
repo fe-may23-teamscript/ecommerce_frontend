@@ -1,0 +1,32 @@
+.dropdown {
+  position: relative;
+  border: 1px solid transparent;
+  background: #323542;
+
+  &-active {
+    border: 1px solid #905bff;
+  }
+
+  &-selector {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-content {
+    position: absolute;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #3b3e4a;
+    color: #75767f;
+  }
+
+  &-option {
+    padding: 10px 15px;
+
+    &:hover {
+      background: #323542;
+    }
+  }
+}
