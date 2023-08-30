@@ -1,7 +1,7 @@
 .button {
   height: 40px;
   border: none;
-  background: #905BFF;
+  background: #905bff;
   cursor: pointer;
 
   &-square {
@@ -9,12 +9,12 @@
   }
 
   &:hover {
-    background: #A378FF;
+    background: #a378ff;
   }
 
   &:disabled {
     background: transparent;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
   }
 }
 
@@ -38,12 +38,12 @@
 .round {
   background: none;
   border-radius: 50%;
-  border: 2px solid #3B3E4A;
+  border: 2px solid #3b3e4a;
   padding: 2px;
 
   &:hover {
     background: none;
-    border-color: #75767F;
+    border-color: #75767f;
   }
 }
 
@@ -51,7 +51,7 @@
   background: none;
 
   &:hover {
-    color: #905BFF;
+    color: #905bff;
     background: none;
   }
 }
