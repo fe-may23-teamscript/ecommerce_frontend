@@ -1,0 +1,104 @@
+@import 'app/styles/index';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: $color-surface1;
+  padding: 16px;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+
+  @include onTablet {
+    flex-direction: row;
+    padding: 31px 24px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+  }
+
+  &__price-block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__icons-block {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: center;
+    width: 32px;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    min-width: 80px;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.icon {
+  &__cart-item {
+    height: 32px;
+    width: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--plus {
+      background-image: url('../../assets/icons/plus.svg');
+      background-color: $color-surface2;
+      border: 1px solid $color-surface2;
+
+      @include hover(background-color, $color-icons);
+    }
+
+    &--minus {
+      background-image: url('../../assets/icons/minus.svg');
+      background-color: $color-surface1;
+      border: 1px solid $color-surface2;
+    }
+
+    &--close {
+      background-image: url('../../assets/icons/close.svg');
+      background-color: $color-surface1;
+
+      @include hover(
+        background-image,
+        url('../../assets/icons/close-hover.svg')
+      );
+    }
+  }
+}

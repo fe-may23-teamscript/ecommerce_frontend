@@ -1,0 +1,121 @@
+@import 'app/styles/mixins';
+@import 'app/styles/container';
+
+.cart {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include onTablet {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 16px;
+    }
+  }
+
+  &__link {
+    align-items: center;
+    height: min-content;
+    font-weight: 700;
+    line-height: 15px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 10px;
+      background: url('../../assets/icons/arrow-back.svg') center;
+      margin-right: 8px;
+    }
+  }
+
+  &__content {
+    @include gridContainer;
+  }
+
+  &__list {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      grid-column: span 12;
+    }
+
+    @include onDesktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__checkout {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 206px;
+    text-align: center;
+    border: 1px solid $color-elements;
+    padding: 24px;
+    margin: 32px 0 56px;
+
+    @include onTablet {
+      grid-column: span 12;
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+      margin: 0;
+    }
+  }
+
+  &__sum {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-white;
+  }
+
+  &__total-items {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 16px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    background: $color-accent;
+    color: $color-white;
+
+    @include hover(background-color, $color-accent-hover);
+  }
+}

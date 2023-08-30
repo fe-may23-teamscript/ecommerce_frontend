@@ -46,18 +46,6 @@ const Footer = () => {
             </Link>
           ))}
         </div>
-        {/* {toggleBackToTopButton() && (
-          <div className="footer__back-to-top-container">
-            <a className="footer__back-to-top-link" href="#header-top">
-              Back to top
-            </a>
-            <button className="footer__back-to-top-button">
-              <a href="#header-top">
-                <img src={slider} alt="back to top button corner top" />
-              </a>
-            </button>
-          </div>
-        )} */}
         <div
           className={cn('footer__back-to-top-container', {
             hidden: isVisibleBackToTop,
