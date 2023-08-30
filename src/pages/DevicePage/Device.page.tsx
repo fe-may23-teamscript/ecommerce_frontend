@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DevicePage = () => {
+const DevicePage: React.FC = () => {
   return <div>Device page</div>;
 };
 

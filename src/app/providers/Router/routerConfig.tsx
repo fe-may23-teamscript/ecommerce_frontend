@@ -4,14 +4,14 @@ import { CatalogPage } from 'pages/CatalogPage';
 import { DevicePage } from 'pages/DevicePage';
 import { FavouritesPage } from 'pages/FavouritesPage';
 import { CartPage } from 'pages/CartPage';
+import { NotFoundPage } from 'pages/NotFoundPage';
 import {
   getCartPath,
-  getCatalogPath,
+  getCatalog,
   getDevicePath,
   getFavouritesPath,
   getHomePath,
 } from 'shared/utils/getRoutes';
-import NotFoundPage from 'pages/NotFoundPage/NotFound.page';
 
 export const routerConfig: RouteObject[] = [
   {
@@ -19,11 +19,19 @@ export const routerConfig: RouteObject[] = [
     element: <HomePage />,
   },
   {
-    path: getCatalogPath(),
+    path: getCatalog('phones'),
     element: <CatalogPage />,
   },
   {
-    path: getDevicePath('deviceId'),
+    path: getCatalog('tablets'),
+    element: <CatalogPage />,
+  },
+  {
+    path: getCatalog('accessories'),
+    element: <CatalogPage />,
+  },
+  {
+    path: getDevicePath('phones', 'deviceId'),
     element: <DevicePage />,
   },
   {

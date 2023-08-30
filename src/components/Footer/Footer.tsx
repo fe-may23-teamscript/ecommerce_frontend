@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import './Footer.scss';
 import logo from 'shared/assets/Logo.svg';
 import slider from 'shared/assets/SliderButton-Icon.svg';
@@ -6,6 +8,27 @@ import slider from 'shared/assets/SliderButton-Icon.svg';
 const footerNavItems = ['github', 'contacts', 'rights'];
 
 const Footer = () => {
+  const [isVisibleBackToTop, setIsVisibleBackToTop] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      setIsVisibleBackToTop(true);
+    } else {
+      setIsVisibleBackToTop(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -23,14 +46,28 @@ const Footer = () => {
             </Link>
           ))}
         </div>
-        <div className="footer__back-to-top-container">
-          <a className="footer__back-to-top-link" href="#header-top">
-            Back to top
-          </a>
-          <button className="footer__back-to-top-button">
-            <a href="#header-top">
-              <img src={slider} alt="back to top button corner top" />
+        {/* {toggleBackToTopButton() && (
+          <div className="footer__back-to-top-container">
+            <a className="footer__back-to-top-link" href="#header-top">
+              Back to top
             </a>
+            <button className="footer__back-to-top-button">
+              <a href="#header-top">
+                <img src={slider} alt="back to top button corner top" />
+              </a>
+            </button>
+          </div>
+        )} */}
+        <div
+          className={cn('footer__back-to-top-container', {
+            hidden: isVisibleBackToTop,
+          })}
+        >
+          <button className="footer__back-to-top-link" onClick={scrollToTop}>
+            Back to top
+          </button>
+          <button className="footer__back-to-top-button" onClick={scrollToTop}>
+            <img src={slider} alt="back to top button corner top" />
           </button>
         </div>
       </div>

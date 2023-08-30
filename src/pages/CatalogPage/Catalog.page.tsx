@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CatalogPage = () => {
+const CatalogPage: React.FC = () => {
   return <div>Catalog page</div>;
 };
 
