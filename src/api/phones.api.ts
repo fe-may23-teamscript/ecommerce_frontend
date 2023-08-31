@@ -25,11 +25,8 @@ export const phonesAPI = createApi({
         url: 'phones/ten-with-disc',
         method: 'GET',
       }),
-    })
+    }),
   }),
 });
 
-export const {
-  useGetPhonesQuery,
-  useGetHotPricePhonesQuery
-} = phonesAPI;
+export const { useGetPhonesQuery, useGetHotPricePhonesQuery } = phonesAPI;
