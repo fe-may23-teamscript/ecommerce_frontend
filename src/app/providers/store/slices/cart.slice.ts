@@ -4,13 +4,13 @@ import { IPhone } from 'models/IPhone';
 import { RootState } from '../store';
 
 export interface ICartState {
-  cartItems: IPhone[]
+  cartItems: IPhone[];
 }
 
 const cartStore = localStorage.getItem(LOCAL_STORAGE_CART);
 
 const initialState: ICartState = {
-  cartItems: [JSON.parse(cartStore as string)]
+  cartItems: [JSON.parse(cartStore as string)],
 };
 
 const cartSlice = createSlice({
@@ -27,14 +27,11 @@ const cartSlice = createSlice({
       );
 
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state));
-      },
+    },
   },
 });
 
-export const {
-  addToCart,
-  deleteFromCart
-} = cartSlice.actions;
+export const { addToCart, deleteFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
 

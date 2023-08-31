@@ -4,13 +4,13 @@ import { IPhone } from 'models/IPhone';
 import { RootState } from '../store';
 
 export interface IFavouriteState {
-  favouritesItems: IPhone[]
+  favouritesItems: IPhone[];
 }
 
 const favouriteStore = localStorage.getItem(LOCAL_STORAGE_FAVOURITES);
 
 const initialState: IFavouriteState = {
-  favouritesItems: [JSON.parse(favouriteStore as string)]
+  favouritesItems: [JSON.parse(favouriteStore as string)],
 };
 
 const cartSlice = createSlice({
@@ -31,11 +31,9 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  addToFavourites,
-  deleteFromFavourites,
-} = cartSlice.actions;
+export const { addToFavourites, deleteFromFavourites } = cartSlice.actions;
 
 export default cartSlice.reducer;
 
-export const getFavourites = (state: RootState) => state.favourites.favouritesItems;
+export const getFavourites = (state: RootState) =>
+  state.favourites.favouritesItems;

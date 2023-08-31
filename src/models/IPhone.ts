@@ -1,4 +1,4 @@
 export interface IPhone {
-  id: string,
-  namespaceId: string,
+  id: string;
+  namespaceId: string;
 }

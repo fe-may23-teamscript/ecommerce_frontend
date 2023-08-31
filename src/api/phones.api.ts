@@ -5,24 +5,22 @@ import { IPhone } from '../models/IPhone';
 export const phonesAPI = createApi({
   reducerPath: 'phonesAPI',
   baseQuery: fetchBaseQuery({
-    baseUrl: BASE_URL
+    baseUrl: BASE_URL,
   }),
   tagTypes: ['Phone'],
   endpoints: (build) => ({
-    getPhones: build.query<IPhone[], Record<string, number | string >>({
-      query: ({sortType, page, limit}) => ({
-        url: `/`,
+    getPhones: build.query<IPhone[], Record<string, number | string>>({
+      query: ({ sortType, page, limit }) => ({
+        url: '/',
         method: 'GET',
         params: {
           sortType,
           page,
-          limit
-        }
+          limit,
+        },
       }),
     }),
-  })
-})
+  }),
+});
 
-export const {
-  useGetPhonesQuery
-} = phonesAPI;
+export const { useGetPhonesQuery } = phonesAPI;
