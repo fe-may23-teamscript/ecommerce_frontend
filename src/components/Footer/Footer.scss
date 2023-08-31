@@ -83,6 +83,7 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
+    visibility: hidden;
   }
 
   &__back-to-top-link {
@@ -90,6 +91,7 @@
     color: $color-secondary;
     font-size: 12px;
     font-weight: 700;
+    background: none;
   }
 
   &__back-to-top-button {
@@ -98,4 +100,8 @@
     padding: 0;
     border: none;
   }
+}
+
+.hidden {
+  visibility: visible;
 }

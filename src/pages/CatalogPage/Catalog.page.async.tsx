@@ -1,3 +1,5 @@
 import { lazy } from 'react';
 
-export const CatalogPageAsync = lazy(() => import('./Catalog.page'));
+export const CatalogPageAsync = lazy(
+  async () => await import('./Catalog.page'),
+);
