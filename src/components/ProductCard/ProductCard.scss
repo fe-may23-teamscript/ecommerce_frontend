@@ -7,6 +7,7 @@
   height: 440px;
   padding: 32px;
   background: $color-surface1;
+  grid-column: span 3;
 
   &:hover {
     @include hover(transform, scale(1.05));
@@ -15,11 +16,13 @@
   @include onTablet {
     width: 236px;
     height: 512px;
+    grid-column: span 5;
   }
 
   @include onDesktop {
     width: 272px;
     height: 506px;
+    grid-column: span 6;
   }
 
   &__img-container {

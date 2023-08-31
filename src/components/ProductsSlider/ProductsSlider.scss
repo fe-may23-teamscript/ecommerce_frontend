@@ -1,7 +1,60 @@
 @import 'app/styles/index';
 
-.cards-slider {
+.products-slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__content {
     @include gridContainer;
+
+    grid-template-rows: 1;
+    overflow: hidden;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+
+    &--left {
+      background-image: url('../../assets/icons/arrow-left.svg');
+      background-color: $color-surface2;
+      border: 1px solid $color-surface2;
+
+      @include hover(background-color, $color-icons);
+    }
+
+    &--left--disabled {
+      background-image: url('../../assets/icons/arrow-left-dasabled.svg');
+      background-color: $color-surface1;
+      border: 1px solid $color-surface2;
+
+      @include hover(background-color, $color-surface1);
+    }
+
+    &--right {
+      background-image: url('../../assets/icons/arrow-right.svg');
+      background-color: $color-surface2;
+      border: 1px solid $color-surface2;
+
+      @include hover(background-color, $color-icons);
+    }
+
+    &--right--disabled {
+      background-image: url('../../assets/icons/arrow-right-disabled.svg');
+      background-color: $color-surface1;
+      border: 1px solid $color-surface2;
+
+      @include hover(background-color, $color-surface1);
+    }
   }
 }

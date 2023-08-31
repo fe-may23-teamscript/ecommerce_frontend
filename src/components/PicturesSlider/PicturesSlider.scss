@@ -1,6 +1,6 @@
 @import 'app/styles/index';
 
-.welcome {
+.pictures-slider {
   &__title {
     font-size: 32px;
     padding-block: 24px;
@@ -20,5 +20,6 @@
     width: 14px;
     height: 4px;
     border-radius: 0;
+    margin: 4px;
   }
 }

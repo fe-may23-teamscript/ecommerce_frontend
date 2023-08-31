@@ -1,7 +1,15 @@
+import React from 'react';
 import './ProductCard.scss';
 import imgSrc from 'assets/images/product-card/product-1.png';
+import { Phone } from 'app/types/Phone';
 
-export const ProductCard = () => {
+type Props = {
+  phoneCard: Phone;
+};
+
+export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
+  const { name, fullPrice, price, screen, capacity, ram } = phoneCard;
+
   return (
     <div className="card">
       <div className="card__img-container">
@@ -14,31 +22,31 @@ export const ProductCard = () => {
         />
       </div>
 
-      <h2 className="card__title">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</h2>
+      <h2 className="card__title">{name}</h2>
 
       <p className="card__price">
-        <span className="card__price-current">$799</span>
+        <span className="card__price-current">${price}</span>
 
-        <span className="card__price-full">$899</span>
+        <span className="card__price-full">${fullPrice}</span>
       </p>
 
       <div className="card__features">
         <p className="card__feature">
           <span className="card__feature-name">Screen</span>
 
-          <span className="card__feature-value">5.8” OLED</span>
+          <span className="card__feature-value">{screen}</span>
         </p>
 
         <p className="card__feature">
           <span className="card__feature-name">Capacity</span>
 
-          <span className="card__feature-value">64 GB</span>
+          <span className="card__feature-value">{capacity}</span>
         </p>
 
         <p className="card__feature">
           <span className="card__feature-name">RAM</span>
 
-          <span className="card__feature-value">4 GB</span>
+          <span className="card__feature-value">{ram}</span>
         </p>
       </div>
 
