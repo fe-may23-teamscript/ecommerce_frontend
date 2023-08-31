@@ -10,17 +10,26 @@ export const phonesAPI = createApi({
   tagTypes: ['Phone'],
   endpoints: (build) => ({
     getPhones: build.query<IPhone[], Record<string, number | string>>({
-      query: ({ sortType, page, limit }) => ({
-        url: '/',
+      query: ({ sortType = 'ASC', offset = 0, limit = 12 }) => ({
+        url: 'phones',
         method: 'GET',
         params: {
           sortType,
-          page,
+          offset,
           limit,
         },
       }),
     }),
+    getHotPricePhones: build.query<IPhone[], void>({
+      query: () => ({
+        url: 'phones/ten-with-disc',
+        method: 'GET',
+      }),
+    })
   }),
 });
 
-export const { useGetPhonesQuery } = phonesAPI;
+export const {
+  useGetPhonesQuery,
+  useGetHotPricePhonesQuery
+} = phonesAPI;
