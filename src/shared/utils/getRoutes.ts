@@ -2,10 +2,13 @@
 
 export const getHomePath = () => '/';
 
-export const getCatalogPath = () => 'catalog';
+export const getCatalog = (category?: string) => `catalog/${category}`;
 
-export const getDevicePath = (deviceId: string) => `catalog/:${deviceId}`;
+export const getDevicePath = (deviceId: string, category: string) =>
+  `catalog/${category}/:${deviceId}`;
 
 export const getFavouritesPath = () => 'favourites';
 
 export const getCartPath = () => 'cart';
+
+export const getBurgerMenuPath = () => 'menu';

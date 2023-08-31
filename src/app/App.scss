@@ -9,7 +9,10 @@ body {
 }
 
 .app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--bg-color);
   color: var(--main-text-color);
-  min-height: 100vh;
 }
