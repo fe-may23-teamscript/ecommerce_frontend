@@ -1,6 +1,6 @@
 @import 'app/styles/index';
 
-.welcome {
+.pictures-slider {
   &__title {
     font-size: 32px;
     padding-block: 24px;
@@ -16,9 +16,23 @@
     }
   }
 
+  &__slider-img {
+    object-fit: cover;
+    aspect-ratio: 1.5;
+
+    @include onTablet {
+      aspect-ratio: 2;
+    }
+
+    @include onDesktop {
+      aspect-ratio: 2.75;
+    }
+  }
+
   .carousel .control-dots .dot {
     width: 14px;
     height: 4px;
     border-radius: 0;
+    margin: 4px;
   }
 }
