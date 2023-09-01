@@ -1,10 +1,10 @@
 import React from 'react';
 import './ProductCard.scss';
 import imgSrc from 'assets/images/product-card/product-1.png';
-import { Phone } from 'app/types/Phone';
+import { IPhone } from 'models/IPhone';
 
 type Props = {
-  phoneCard: Phone;
+  phoneCard: IPhone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
