@@ -1,0 +1,21 @@
+@import 'app/style/mixins';
+@import 'app/styles/container';
+
+.page {
+  &__grid {
+    @include gridContainer;
+
+    gap: 16px 40px;
+    justify-content: center;
+    justify-items: left;
+  }
+
+  &__card {
+    margin: 0;
+    grid-column: span 4;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+}
