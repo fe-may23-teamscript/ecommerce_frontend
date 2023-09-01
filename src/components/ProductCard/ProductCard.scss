@@ -6,6 +6,7 @@
   padding: 32px;
   background: $color-surface1;
   grid-column: span 3;
+  cursor: pointer;
 
   &:hover {
     @include hover(transform, scale(1.05));

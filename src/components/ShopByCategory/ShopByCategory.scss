@@ -9,6 +9,7 @@
 
   &__category {
     grid-column: span 4;
+    cursor: pointer;
 
     @include hover(transform, scale(1.05));
 
