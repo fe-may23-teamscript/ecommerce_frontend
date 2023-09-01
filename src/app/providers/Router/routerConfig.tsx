@@ -17,6 +17,7 @@ export const routerConfig: RouteObject[] = [
   {
     path: getHomePath(),
     element: <HomePage />,
+    index: true,
   },
   {
     path: getCatalog('phones'),
