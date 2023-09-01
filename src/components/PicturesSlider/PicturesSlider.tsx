@@ -13,7 +13,7 @@ export const PicturesSlider: React.FC = () => {
       <h1 className="page__section-title pictures-slider__title">
         Welcome to Nice Gadgets store!
       </h1>
-      <div className="pictures-slider">
+      <div className="pictures-slider__slider">
         <Carousel
           showStatus={false}
           showThumbs={false}
@@ -22,17 +22,33 @@ export const PicturesSlider: React.FC = () => {
           interval={5000}
           infiniteLoop={true}
         >
-          <div>
-            <img src={banner1} alt="banner" />
+          <div className="pictures-slider__slider-item">
+            <img
+              className="pictures-slider__slider-img"
+              src={banner1}
+              alt="banner"
+            />
           </div>
-          <div>
-            <img src={banner2} alt="banner" />
+          <div className="pictures-slider__slider-item">
+            <img
+              className="pictures-slider__slider-img"
+              src={banner2}
+              alt="banner"
+            />
           </div>
-          <div>
-            <img src={banner3} alt="banner" />
+          <div className="pictures-slider__slider-item">
+            <img
+              className="pictures-slider__slider-img"
+              src={banner3}
+              alt="banner"
+            />
           </div>
-          <div>
-            <img src={banner4} alt="banner" />
+          <div className="pictures-slider__slider-item">
+            <img
+              className="pictures-slider__slider-img"
+              src={banner4}
+              alt="banner"
+            />
           </div>
         </Carousel>
       </div>

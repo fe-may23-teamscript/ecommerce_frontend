@@ -9,7 +9,8 @@
   &__content {
     @include gridContainer;
 
-    grid-template-rows: 1;
+    grid-template-rows: 1fr;
+    row-gap: 16px;
     overflow: hidden;
   }
 
@@ -37,6 +38,7 @@
       background-image: url('../../assets/icons/arrow-left-dasabled.svg');
       background-color: $color-surface1;
       border: 1px solid $color-surface2;
+      cursor: default;
 
       @include hover(background-color, $color-surface1);
     }
@@ -53,6 +55,7 @@
       background-image: url('../../assets/icons/arrow-right-disabled.svg');
       background-color: $color-surface1;
       border: 1px solid $color-surface2;
+      cursor: default;
 
       @include hover(background-color, $color-surface1);
     }

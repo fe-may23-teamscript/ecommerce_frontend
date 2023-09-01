@@ -9,8 +9,8 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title }) => {
-  const visibleCount = 4;
   const [start, setStart] = useState(0);
+  const visibleCount = 4;
   const end = start + visibleCount;
 
   return (
@@ -32,11 +32,11 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
               'products-slider__button products-slider__button--right',
               {
                 'products-slider__button--right--disabled':
-                  end > phones.length - 1,
+                  end > phones.length - 1 - visibleCount,
               },
             )}
             onClick={() => setStart((prev) => prev + 1)}
-            disabled={end === 0}
+            disabled={end === phones.length - 1}
           ></button>
         </div>
       </div>

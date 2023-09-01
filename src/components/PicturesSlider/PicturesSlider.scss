@@ -16,6 +16,19 @@
     }
   }
 
+  &__slider-img {
+    object-fit: cover;
+    aspect-ratio: 1.5;
+
+    @include onTablet {
+      aspect-ratio: 2;
+    }
+
+    @include onDesktop {
+      aspect-ratio: 2.75;
+    }
+  }
+
   .carousel .control-dots .dot {
     width: 14px;
     height: 4px;

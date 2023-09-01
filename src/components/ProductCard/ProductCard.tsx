@@ -34,19 +34,25 @@ export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
         <p className="card__feature">
           <span className="card__feature-name">Screen</span>
 
-          <span className="card__feature-value">{screen}</span>
+          <span className="card__feature-value">
+            {/* eslint-disable */}
+            {screen.split("'").join('” ')}
+            {/* eslint-enable */}
+          </span>
         </p>
 
         <p className="card__feature">
           <span className="card__feature-name">Capacity</span>
 
-          <span className="card__feature-value">{capacity}</span>
+          <span className="card__feature-value">{`${parseInt(
+            capacity,
+          )} GB`}</span>
         </p>
 
         <p className="card__feature">
           <span className="card__feature-name">RAM</span>
 
-          <span className="card__feature-value">{ram}</span>
+          <span className="card__feature-value">{`${parseInt(ram)} GB`}</span>
         </p>
       </div>
 
