@@ -10,7 +10,7 @@ export interface IFavouriteState {
 const favouriteStore = localStorage.getItem(LOCAL_STORAGE_FAVOURITES);
 
 const initialState: IFavouriteState = {
-  favouritesItems: [JSON.parse(favouriteStore as string)],
+  favouritesItems: JSON.parse(favouriteStore ? favouriteStore : '[]'),
 };
 
 const cartSlice = createSlice({

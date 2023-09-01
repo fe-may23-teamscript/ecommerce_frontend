@@ -26,7 +26,17 @@ export const phonesAPI = createApi({
         method: 'GET',
       }),
     }),
+    getBrandNewPhones: build.query<IPhone[], void>({
+      query: () => ({
+        url: 'phones/last-year-phones',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetPhonesQuery, useGetHotPricePhonesQuery } = phonesAPI;
+export const {
+  useGetPhonesQuery,
+  useGetHotPricePhonesQuery,
+  useGetBrandNewPhonesQuery,
+} = phonesAPI;

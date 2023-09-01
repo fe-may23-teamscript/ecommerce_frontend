@@ -10,7 +10,7 @@ export interface ICartState {
 const cartStore = localStorage.getItem(LOCAL_STORAGE_CART);
 
 const initialState: ICartState = {
-  cartItems: [JSON.parse(cartStore as string)],
+  cartItems: JSON.parse(cartStore ? cartStore : '[]'),
 };
 
 const cartSlice = createSlice({
