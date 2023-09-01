@@ -46,5 +46,5 @@ export const {
   useGetPhonesQuery,
   useGetHotPricePhonesQuery,
   useGetBrandNewPhonesQuery,
-  useGetPhoneByIdQuery
+  useGetPhoneByIdQuery,
 } = phonesAPI;
