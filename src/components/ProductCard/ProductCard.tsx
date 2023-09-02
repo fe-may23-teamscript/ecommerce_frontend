@@ -1,25 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import imgSrc from 'assets/images/product-card/product-1.png';
 import { IPhone } from 'models/IPhone';
+import { getDevicePath } from 'shared/utils/getRoutes';
 
 type Props = {
   phoneCard: IPhone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
-  const { name, fullPrice, price, screen, capacity, ram } = phoneCard;
+  const { name, fullPrice, price, screen, capacity, ram, itemId, category } =
+    phoneCard;
 
   return (
     <div className="card">
       <div className="card__img-container">
-        <img
-          className="card__img"
-          src={imgSrc}
-          alt="iPhone"
-          width="208px"
-          height="196px"
-        />
+        <Link to={getDevicePath(itemId, category)}>
+          <img
+            className="card__img"
+            src={imgSrc}
+            alt="iPhone"
+            width="208px"
+            height="196px"
+          />
+        </Link>
       </div>
 
       <h2 className="card__title">{name}</h2>

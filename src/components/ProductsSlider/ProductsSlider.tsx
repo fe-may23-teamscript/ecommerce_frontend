@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import './ProductsSlider.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
-import phones from 'api/phones.json';
+import { IPhone } from 'models/IPhone';
 
 type Props = {
   title: string;
+  phones: IPhone[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   const [start, setStart] = useState(0);
   const visibleCount = 4;
   const end = start + visibleCount;

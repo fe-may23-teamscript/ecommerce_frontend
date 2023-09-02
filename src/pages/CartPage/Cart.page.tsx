@@ -15,7 +15,7 @@ const Cart: React.FC = () => {
           Back
         </Link>
 
-        <h1 className="cart__title">Cart</h1>
+        <h2 className="cart__title">Cart</h2>
 
         <div className="cart__content">
           {modal ? (

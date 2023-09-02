@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 import { HomePage } from 'pages/HomePage';
 import { CatalogPage } from 'pages/CatalogPage';
-import { DevicePage } from 'pages/DevicePage';
+import { ProductDetailsPage } from 'pages/ProductDetailsPage';
 import { FavouritesPage } from 'pages/FavouritesPage';
 import { CartPage } from 'pages/CartPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
@@ -32,8 +32,8 @@ export const routerConfig: RouteObject[] = [
     element: <CatalogPage />,
   },
   {
-    path: getDevicePath('phones', 'deviceId'),
-    element: <DevicePage />,
+    path: getDevicePath('deviceId', 'phones'),
+    element: <ProductDetailsPage />,
   },
   {
     path: getFavouritesPath(),

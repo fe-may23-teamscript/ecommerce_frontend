@@ -1,0 +1,45 @@
+@import 'app/styles/mixins';
+@import 'app/styles/container';
+
+.product-details {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
+  &__link {
+    align-items: center;
+    height: min-content;
+    font-weight: 700;
+    line-height: 15px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 10px;
+      background: url('../../assets/icons/arrow-left.svg') center;
+      margin-right: 8px;
+    }
+  }
+
+  &__info {
+    @include gridContainer;
+
+    margin-block: 56px;
+
+    @include onTablet {
+      margin-block: 64px;
+    }
+
+    @include onDesktop {
+      margin-block: 80px;
+    }
+  }
+}
