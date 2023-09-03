@@ -10,7 +10,7 @@ import { DeviceBlock } from 'components/DeviceBlock';
 import { PhoneImageSlider } from 'components/PhoneImageSlider';
 import { Loader } from 'components/Loader';
 import { useGetPhoneBySlugQuery } from 'api/phones.api';
-import { IProductModel } from 'models/IPhoneModel';
+import { IProductModel } from 'models/IProductModel';
 
 const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<IProductModel | null>(null);

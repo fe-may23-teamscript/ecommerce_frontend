@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../shared/utils/constants';
 import { IPhone } from '../models/IPhone';
-import { IProductModel } from '../models/IPhoneModel';
+import { IProductModel } from '../models/IProductModel';
 
 export const phonesAPI = createApi({
   reducerPath: 'phonesAPI',

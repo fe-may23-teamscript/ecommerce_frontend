@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.scss';
-import { Description } from 'models/IPhoneModel';
+import { Description } from 'models/IProductModel';
 
 type Prop = {
   productDescription: Description[];

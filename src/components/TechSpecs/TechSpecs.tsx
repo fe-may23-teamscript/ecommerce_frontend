@@ -1,6 +1,6 @@
 import React from 'react';
 import './TechSpecs.scss';
-import { IProductModel } from 'models/IPhoneModel';
+import { IProductModel } from 'models/IProductModel';
 
 type Props = {
   productInfo: IProductModel;

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { IProductModel } from 'models/IPhoneModel';
+import { IProductModel } from 'models/IProductModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
 import './DeviceBlock.scss';
 
