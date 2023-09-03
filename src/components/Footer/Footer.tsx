@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import './Footer.scss';
 import logo from 'shared/assets/Logo.svg';
@@ -9,6 +9,7 @@ const footerNavItems = ['github', 'contacts', 'rights'];
 
 const Footer = () => {
   const [isVisibleBackToTop, setIsVisibleBackToTop] = useState(false);
+  const { pathname } = useLocation();
 
   const toggleVisibility = () => {
     if (window.scrollY > 300) {
@@ -30,7 +31,12 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="footer">
+    <footer
+      className="footer"
+      style={
+        pathname.includes('menu') ? { display: 'none' } : { display: 'flex' }
+      }
+    >
       <div className="footer__container">
         <Link to="/" className="footer__logo">
           <img src={logo} alt="Nice Gadgets Logo" />

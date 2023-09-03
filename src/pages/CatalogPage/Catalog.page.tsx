@@ -19,7 +19,7 @@ const CatalogPage: React.FC = () => {
   });
 
   useEffect(() => {
-    console.log(locationPath);
+    console.log(data?.rows);
     refetch();
   }, [locationPath, searchParams]);
 

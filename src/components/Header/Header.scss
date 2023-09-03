@@ -24,6 +24,11 @@
   &__button-right {
     position: relative;
     padding: 13px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
     background-color: $color-black;
     border: none;
     border-left: 1px solid $color-elements;
@@ -49,7 +54,7 @@
 
     @include onTablet {
       &:not(:first-child) {
-        display: block;
+        display: flex;
       }
 
       &:first-child {
@@ -58,7 +63,14 @@
     }
 
     @include onDesktop {
-      padding: 21px 24px;
+      width: 64px;
+      height: 64px;
+    }
+
+    &--icon {
+      display: block;
+      height: 16px;
+      width: 16px;
     }
   }
 }

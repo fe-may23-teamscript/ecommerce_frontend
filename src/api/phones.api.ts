@@ -1,11 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../shared/utils/constants';
-import { IPhone } from '../models/IPhone';
-import { IPhoneModel } from '../models/IPhoneModel';
+import { IProductModel } from 'models/IProductModel';
 
 interface IGetPhones {
   count: number;
-  rows: IPhone[];
+  rows: IProductModel[];
 }
 
 export const phonesAPI = createApi({
@@ -26,19 +25,19 @@ export const phonesAPI = createApi({
         },
       }),
     }),
-    getHotPricePhones: build.query<IPhone[], void>({
+    getHotPricePhones: build.query<IProductModel[], void>({
       query: () => ({
         url: 'phones/ten-with-disc',
         method: 'GET',
       }),
     }),
-    getBrandNewPhones: build.query<IPhone[], void>({
+    getBrandNewPhones: build.query<IProductModel[], void>({
       query: () => ({
         url: 'phones/last-year-phones',
         method: 'GET',
       }),
     }),
-    getPhoneById: build.query<IPhoneModel, string>({
+    getPhoneById: build.query<IProductModel, string>({
       query: (id) => ({
         url: `phones/${id}`,
         method: 'GET',

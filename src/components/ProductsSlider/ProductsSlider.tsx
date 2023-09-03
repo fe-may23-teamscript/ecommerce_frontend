@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './ProductsSlider.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
-import phones from 'api/phones.json';
+import { IProductModel } from 'models/IProductModel';
 
 type Props = {
   title: string;
+  products: IProductModel[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [start, setStart] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleCount, setVisibleCount] = useState(1);
@@ -57,18 +58,18 @@ export const ProductsSlider: React.FC<Props> = ({ title }) => {
               'products-slider__button products-slider__button--right',
               {
                 'products-slider__button--right--disabled':
-                  end > phones.length - 1 - visibleCount,
+                  end > products.length - 1 - visibleCount,
               },
             )}
             onClick={() => setStart((prev) => prev + 1)}
-            disabled={end === phones.length - 1}
+            disabled={end === products.length - 1}
           ></button>
         </div>
       </div>
 
       <div className="products-slider__content">
-        {phones.slice(start, end).map((phone) => (
-          <ProductCard phoneCard={phone} key={phone.id} />
+        {products.slice(start, end).map((item) => (
+          <ProductCard productCard={item} key={item.id} />
         ))}
       </div>
     </section>

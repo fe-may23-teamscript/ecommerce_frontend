@@ -3,8 +3,10 @@ import { HomePage } from 'pages/HomePage';
 import { CatalogPage } from 'pages/CatalogPage';
 import { FavouritesPage } from 'pages/FavouritesPage';
 import { CartPage } from 'pages/CartPage';
+import { BurgerMenu } from 'components/BurgerMenu';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import {
+  getBurgerMenuPath,
   getCartPath,
   getCatalog,
   getDevicePath,
@@ -41,6 +43,30 @@ export const routerConfig: RouteObject[] = [
   {
     path: getCartPath(),
     element: <CartPage />,
+  },
+  {
+    path: getBurgerMenuPath('/'),
+    element: <BurgerMenu />,
+  },
+  {
+    path: getBurgerMenuPath('catalog/phones'),
+    element: <BurgerMenu />,
+  },
+  {
+    path: getBurgerMenuPath('catalog/tablets'),
+    element: <BurgerMenu />,
+  },
+  {
+    path: getBurgerMenuPath('catalog/accessories'),
+    element: <BurgerMenu />,
+  },
+  {
+    path: getBurgerMenuPath('favourites'),
+    element: <BurgerMenu />,
+  },
+  {
+    path: getBurgerMenuPath('cart'),
+    element: <BurgerMenu />,
   },
   {
     path: '*',

@@ -11,9 +11,6 @@ const CatalogControllers: React.FC = () => {
   const dropDowmSortOptions = Object.values(sortOptions);
   const dropDowmPaginationOptions = Object.values(paginationCount);
 
-  console.log(dropDowmSortOptions);
-  console.log(dropDowmPaginationOptions);
-
   useEffect(() => {
     switch (title) {
       case '/' + getCatalog('phones'):
