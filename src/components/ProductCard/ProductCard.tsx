@@ -2,13 +2,20 @@ import React from 'react';
 import './ProductCard.scss';
 import imgSrc from 'assets/images/product-card/product-1.png';
 import { IPhone } from 'models/IPhone';
+import { useAppDispatch, useAppSelector } from 'app/providers/store/lib/redux-hooks';
+import { addToCart, getCart } from 'app/providers/store/slices/cart.slice';
 
 type Props = {
   phoneCard: IPhone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
-  const { name, fullPrice, price, screen, capacity, ram } = phoneCard;
+  const { id, name, priceRegular, priceDiscount, screen, capacity, ram } = phoneCard;
+
+  const dispatch = useAppDispatch();
+  const { cartItems } = useAppSelector(getCart);
+
+  const isInCart = Boolean(cartItems.find(({ phone }) => phone.id === id));
 
   return (
     <div className="card">
@@ -25,9 +32,9 @@ export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
       <h2 className="card__title">{name}</h2>
 
       <p className="card__price">
-        <span className="card__price-current">${price}</span>
+        <span className="card__price-current">${priceDiscount}</span>
 
-        <span className="card__price-full">${fullPrice}</span>
+        <span className="card__price-full">${priceRegular}</span>
       </p>
 
       <div className="card__features">
@@ -57,7 +64,11 @@ export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
       </div>
 
       <div className="card__buy">
-        <button className="card__add-to-cart">Add to cart</button>
+        <button
+          disabled={isInCart}
+          className="card__add-to-cart" // use classnames for changing styles
+          onClick={() => dispatch(addToCart(phoneCard))}
+        >Add to cart</button>
 
         <button className="card__favorites-icon"></button>
       </div>
