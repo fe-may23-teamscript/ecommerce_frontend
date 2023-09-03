@@ -1,13 +1,9 @@
 import React from 'react';
 import './About.scss';
-
-interface Article {
-  title: string;
-  text: string[];
-}
+import { Description } from 'models/IPhoneModel';
 
 type Prop = {
-  productDescription: Article[];
+  productDescription: Description[];
 };
 
 export const About: React.FC<Prop> = ({ productDescription }) => {

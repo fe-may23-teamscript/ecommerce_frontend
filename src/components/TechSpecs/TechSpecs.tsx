@@ -1,9 +1,9 @@
 import React from 'react';
 import './TechSpecs.scss';
-import { IPhoneModel } from 'models/IPhoneModel';
+import { IProductModel } from 'models/IPhoneModel';
 
 type Props = {
-  productInfo: IPhoneModel;
+  productInfo: IProductModel;
 };
 
 export const TechSpecs: React.FC<Props> = ({ productInfo }) => {

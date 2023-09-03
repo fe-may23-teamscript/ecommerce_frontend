@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { IPhoneModel } from 'models/IPhoneModel';
+import { IProductModel } from 'models/IPhoneModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
 import './DeviceBlock.scss';
 
 type Props = {
-  product: IPhoneModel;
+  product: IProductModel;
   pathname: string;
 };
 
@@ -44,7 +44,7 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
                 'device-block__color-button--active': currentColor === color,
               },
             )}
-            key={color}
+            key={currentColor}
           ></Link>
         ))}
       </div>
@@ -64,7 +64,7 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
               'device-block__capacity-button--active':
                 currentCapacity === capacity,
             })}
-            key={capacity}
+            key={currentCapacity}
           >
             {currentCapacity}
           </Link>

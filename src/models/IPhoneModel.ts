@@ -1,7 +1,11 @@
-export interface IPhoneModel {
+export interface Description {
+  title: string;
+  text: string[];
+}
+
+export interface IProductModel {
   id: number;
   slug: string;
-  namespaceId: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;
@@ -10,6 +14,7 @@ export interface IPhoneModel {
   colorsAvailable: string[];
   color: string;
   images: string[];
+  description: Description[];
   screen: string;
   resolution: string;
   processor: string;

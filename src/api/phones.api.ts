@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../shared/utils/constants';
 import { IPhone } from '../models/IPhone';
-import { IPhoneModel } from '../models/IPhoneModel';
+import { IProductModel } from '../models/IPhoneModel';
 
 export const phonesAPI = createApi({
   reducerPath: 'phonesAPI',
@@ -33,9 +33,15 @@ export const phonesAPI = createApi({
         method: 'GET',
       }),
     }),
-    getPhoneById: build.query<IPhoneModel, string>({
+    getPhoneById: build.query<IProductModel, string>({
       query: (id) => ({
         url: `phones/${id}`,
+        method: 'GET',
+      }),
+    }),
+    getPhoneBySlug: build.query<IProductModel, string>({
+      query: (slug) => ({
+        url: `phones/${slug}`,
         method: 'GET',
       }),
     }),
@@ -47,4 +53,5 @@ export const {
   useGetHotPricePhonesQuery,
   useGetBrandNewPhonesQuery,
   useGetPhoneByIdQuery,
+  useGetPhoneBySlugQuery,
 } = phonesAPI;
