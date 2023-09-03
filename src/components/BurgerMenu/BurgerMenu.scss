@@ -1,0 +1,74 @@
+@import 'app/styles/variables/global';
+@import 'app/styles/mixins';
+
+.menu {
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  background-color: $color-black;
+
+  &__nav {
+    margin: 24px 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+  }
+
+  &__link {
+    display: block;
+    height: 64px;
+    width: 50%;
+    border-top: 1px solid $color-surface2;
+
+    &:first-of-type {
+      border-right: 1px solid $color-surface2;
+      z-index: 1;
+    }
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--favourite {
+      background-image: url('../../shared/assets/Favourites-Icon.svg');
+    }
+
+    &--shopping-bag {
+      background-image: url('../../shared/assets/ShoppingBag-Icon.svg');
+    }
+
+    &--active {
+      border-bottom: 3px solid $color-white;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    height: 27px;
+    margin-top: 16px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  &__link {
+    color: $color-secondary;
+    padding-block: 8px;
+
+    &--active {
+      border-bottom: 3px solid $color-white;
+      color: $color-white;
+    }
+  }
+}

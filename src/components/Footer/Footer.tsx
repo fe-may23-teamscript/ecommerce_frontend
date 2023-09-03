@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import './Footer.scss';
 import logo from 'shared/assets/Logo.svg';
@@ -28,6 +28,12 @@ const Footer = () => {
       window.removeEventListener('scroll', toggleVisibility);
     };
   }, []);
+
+  const { pathname } = useLocation();
+
+  if (pathname.includes('menu')) {
+    return <></>;
+  }
 
   return (
     <footer className="footer">

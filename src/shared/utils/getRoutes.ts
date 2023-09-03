@@ -11,4 +11,5 @@ export const getFavouritesPath = () => 'favourites';
 
 export const getCartPath = () => 'cart';
 
-export const getBurgerMenuPath = () => 'menu';
+export const getBurgerMenuPath = (pathname?: string) =>
+  pathname !== '/' ? `${pathname}/menu` : 'menu';
