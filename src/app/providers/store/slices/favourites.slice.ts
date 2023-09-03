@@ -19,14 +19,20 @@ const cartSlice = createSlice({
   reducers: {
     addToFavourites: (state, action: PayloadAction<IPhone>) => {
       state.favouritesItems.push(action.payload);
-      localStorage.setItem(LOCAL_STORAGE_FAVOURITES, JSON.stringify(state.favouritesItems));
+      localStorage.setItem(
+        LOCAL_STORAGE_FAVOURITES,
+        JSON.stringify(state.favouritesItems),
+      );
     },
     deleteFromFavourites: (state, action: PayloadAction<number>) => {
       state.favouritesItems = state.favouritesItems.filter(
         ({ id }) => id !== action.payload,
       );
 
-      localStorage.setItem(LOCAL_STORAGE_FAVOURITES, JSON.stringify(state.favouritesItems));
+      localStorage.setItem(
+        LOCAL_STORAGE_FAVOURITES,
+        JSON.stringify(state.favouritesItems),
+      );
     },
   },
 });

@@ -5,7 +5,10 @@ import { CartItem } from 'components/CartItem/CartItem';
 import { CheckoutModal } from 'components/CheckoutModal/CheckoutModal';
 import { getHomePath } from 'shared/utils/getRoutes';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
-import { getCart, getTotalPrice } from '../../app/providers/store/slices/cart.slice';
+import {
+  getCart,
+  getTotalPrice,
+} from '../../app/providers/store/slices/cart.slice';
 
 const Cart: React.FC = () => {
   const [modal, setModal] = useState(false);
@@ -31,12 +34,7 @@ const Cart: React.FC = () => {
             <>
               <div className="cart__list">
                 {cartItems.map((phone) => {
-                  return (
-                    <CartItem
-                      key={phone.phone.id}
-                      phone={phone}
-                    />
-                  );
+                  return <CartItem key={phone.phone.id} phone={phone} />;
                 })}
               </div>
 

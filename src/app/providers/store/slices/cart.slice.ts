@@ -4,8 +4,8 @@ import { IPhone } from 'models/IPhone';
 import { RootState } from '../store';
 
 export interface IPhoneWithCount {
-  count: number,
-  phone: IPhone,
+  count: number;
+  phone: IPhone;
 }
 
 export interface ICartState {
@@ -53,7 +53,7 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.map((phone) => {
         if (phone.phone.id === action.payload) {
           return {
-            count: phone.count === 1 ? 1 :phone.count - 1,
+            count: phone.count === 1 ? 1 : phone.count - 1,
             phone: phone.phone,
           };
         }
@@ -62,16 +62,18 @@ const cartSlice = createSlice({
       });
 
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
-    }
+    },
   },
 });
 
-export const { addToCart, deleteFromCart, increaseCount, decreaseCount } = cartSlice.actions;
+export const { addToCart, deleteFromCart, increaseCount, decreaseCount } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
 
 export const getCart = (state: RootState) => state.cart;
 
-export const getTotalPrice = (state: RootState) => state.cart.cartItems.reduce((previous, current) => {
-  return previous + (current.phone.priceDiscount * current.count);
-}, 0);
+export const getTotalPrice = (state: RootState) =>
+  state.cart.cartItems.reduce((previous, current) => {
+    return previous + current.phone.priceDiscount * current.count;
+  }, 0);

@@ -21,5 +21,4 @@ export interface IPhone {
   category: string;
   year: number;
   mainImage: string;
-
 }

@@ -15,7 +15,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   const end = start + visibleCount;
 
   if (!phones) {
-    return (<h1>loading</h1>);
+    return <h1>loading</h1>;
   }
 
   return (

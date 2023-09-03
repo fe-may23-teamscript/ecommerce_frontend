@@ -78,6 +78,7 @@
     background-repeat: no-repeat;
     background-color: $color-surface2;
     border: 1px solid $color-surface2;
+
     @include hover(background-color, $color-icons);
 
     &--plus {
@@ -88,6 +89,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       &:disabled {
         background-color: $color-surface1;
 
@@ -98,7 +100,7 @@
 
       &_icon {
         &_disabled {
-          fill: #4A4D58;
+          fill: #4a4d58;
         }
 
         fill: #fff;
