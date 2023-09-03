@@ -2,21 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import imgSrc from 'assets/images/product-card/product-1.png';
-import { IPhone } from 'models/IPhone';
+import { IProductModel } from 'models/IProductModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
 
 type Props = {
-  phoneCard: IPhone;
+  productCard: IProductModel;
 };
 
-export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
-  const { name, fullPrice, price, screen, capacity, ram, itemId, category } =
-    phoneCard;
+export const ProductCard: React.FC<Props> = ({ productCard }) => {
+  const {
+    name,
+    slug,
+    category,
+    priceRegular,
+    priceDiscount,
+    screen,
+    capacity,
+    ram,
+  } = productCard;
 
   return (
     <div className="card">
       <div className="card__img-container">
-        <Link to={`/${getDevicePath(itemId, category)}`}>
+        <Link to={`/${getDevicePath(category, slug)}`}>
           <img
             className="card__img"
             src={imgSrc}
@@ -30,9 +38,9 @@ export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
       <h2 className="card__title">{name}</h2>
 
       <p className="card__price">
-        <span className="card__price-current">${price}</span>
+        <span className="card__price-current">${priceDiscount}</span>
 
-        <span className="card__price-full">${fullPrice}</span>
+        <span className="card__price-full">${priceRegular}</span>
       </p>
 
       <div className="card__features">

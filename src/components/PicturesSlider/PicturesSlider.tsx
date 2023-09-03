@@ -37,7 +37,7 @@ export const PicturesSlider: React.FC = () => {
   }, [activeIndex]);
 
   return (
-    <div className="page section carousel">
+    <div className="carousel">
       <h1 className="page__section-title carousel__title">
         Welcome to Nice Gadgets store!
       </h1>

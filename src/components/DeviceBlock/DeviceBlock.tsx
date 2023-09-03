@@ -34,8 +34,8 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
         {colorsAvailable.map((currentColor) => (
           <Link
             to={`/${getDevicePath(
-              slug.replace(color, currentColor),
               category,
+              slug.replace(color, currentColor),
             )}`}
             className={classNames(
               'device-block__color-button',
@@ -54,11 +54,11 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
         {capacityAvailable.map((currentCapacity) => (
           <Link
             to={`/${getDevicePath(
+              category,
               slug.replace(
                 capacity.toLowerCase(),
                 currentCapacity.toLocaleLowerCase(),
               ),
-              category,
             )}`}
             className={classNames('device-block__capacity-button', {
               'device-block__capacity-button--active':

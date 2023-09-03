@@ -2,6 +2,7 @@
 @import 'app/styles/mixins';
 
 .header {
+  width: 100%;
   height: 48px;
   display: flex;
   justify-content: space-between;
@@ -9,7 +10,6 @@
   box-sizing: border-box;
   background-color: $color-black;
   border-bottom: 1px solid $color-elements;
-  z-index: 1;
 
   @include onDesktop {
     height: 64px;
@@ -22,7 +22,13 @@
   align-items: center;
 
   &__button-right {
+    position: relative;
     padding: 13px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
     background-color: $color-black;
     border: none;
     border-left: 1px solid $color-elements;
@@ -34,9 +40,21 @@
       display: none;
     }
 
+    &--active {
+      &::after {
+        content: attr(div);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-white;
+      }
+    }
+
     @include onTablet {
       &:not(:first-child) {
-        display: block;
+        display: flex;
       }
 
       &:first-child {
@@ -45,7 +63,14 @@
     }
 
     @include onDesktop {
-      padding: 21px 24px;
+      width: 64px;
+      height: 64px;
+    }
+
+    &--icon {
+      display: block;
+      height: 16px;
+      width: 16px;
     }
   }
 }

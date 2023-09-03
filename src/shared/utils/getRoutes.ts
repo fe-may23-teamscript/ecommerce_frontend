@@ -4,11 +4,12 @@ export const getHomePath = () => '/';
 
 export const getCatalog = (category?: string) => `catalog/${category}`;
 
-export const getDevicePath = (deviceId: string, category: string) =>
-  `catalog/${category}/:${deviceId}`;
+export const getDevicePath = (category: string, deviceId: string) =>
+  `catalog/${category}/${deviceId}`;
 
 export const getFavouritesPath = () => 'favourites';
 
 export const getCartPath = () => 'cart';
 
-export const getBurgerMenuPath = () => 'menu';
+export const getBurgerMenuPath = (pathname?: string) =>
+  pathname !== '/' ? `${pathname}/menu` : 'menu';
