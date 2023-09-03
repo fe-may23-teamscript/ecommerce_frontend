@@ -7,6 +7,12 @@
   }
 }
 
+@mixin onTabletExtended {
+  @media (min-width: $tablet-extended-min-width) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (min-width: $desktop-min-width) {
     @content;
@@ -27,6 +33,10 @@
   column-gap: 16px;
 
   @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onTabletExtended {
     grid-template-columns: repeat(12, 1fr);
   }
 

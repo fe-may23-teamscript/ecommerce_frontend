@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import './Header.scss';
 import menuBurger from 'shared/assets/MenuBurger-Icon.svg';
@@ -9,21 +9,39 @@ import {
   getCartPath,
   getFavouritesPath,
 } from 'shared/utils/getRoutes';
+import cn from 'classnames';
 
 const Header = () => {
   return (
     <header className="header" id="header-top">
       <Navigation />
       <div className="menu-items">
-        <Link to={getBurgerMenuPath()} className="menu-items__button-right">
+        <NavLink
+          to={getBurgerMenuPath()}
+          className={() => cn('menu-items__button-right')}
+        >
           <img src={menuBurger} alt="header aside menu button" />
-        </Link>
-        <Link to={getFavouritesPath()} className="menu-items__button-right">
+        </NavLink>
+        <NavLink
+          to={getFavouritesPath()}
+          className={({ isActive }) =>
+            cn('menu-items__button-right', {
+              'menu-items__button-right--active': isActive,
+            })
+          }
+        >
           <img src={favourites} alt="header favourites products button" />
-        </Link>
-        <Link to={getCartPath()} className="menu-items__button-right">
+        </NavLink>
+        <NavLink
+          to={getCartPath()}
+          className={({ isActive }) =>
+            cn('menu-items__button-right', {
+              'menu-items__button-right--active': isActive,
+            })
+          }
+        >
           <img src={shoppingBag} alt="header shopping bag button" />
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

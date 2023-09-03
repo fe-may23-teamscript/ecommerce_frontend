@@ -6,12 +6,10 @@ import { ShopByCategory } from 'components/ShopByCategory';
 
 const HomePage: React.FC = () => (
   <div className="home-page">
-    <div className="container">
-      <PicturesSlider />
-      <ProductsSlider title="Brand new models" />
-      <ShopByCategory />
-      <ProductsSlider title="Hot prices" />
-    </div>
+    <PicturesSlider />
+    <ProductsSlider title="Brand new models" />
+    <ShopByCategory />
+    <ProductsSlider title="Hot prices" />
   </div>
 );
 

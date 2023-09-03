@@ -3,6 +3,11 @@ import { BASE_URL } from '../shared/utils/constants';
 import { IPhone } from '../models/IPhone';
 import { IPhoneModel } from '../models/IPhoneModel';
 
+interface IGetPhones {
+  count: number;
+  rows: IPhone[];
+}
+
 export const phonesAPI = createApi({
   reducerPath: 'phonesAPI',
   baseQuery: fetchBaseQuery({
@@ -10,7 +15,7 @@ export const phonesAPI = createApi({
   }),
   tagTypes: ['Phone'],
   endpoints: (build) => ({
-    getPhones: build.query<IPhone[], Record<string, number | string>>({
+    getPhones: build.query<IGetPhones, Record<string, number | string>>({
       query: ({ sortType = 'ASC', offset = 0, limit = 12 }) => ({
         url: 'phones',
         method: 'GET',

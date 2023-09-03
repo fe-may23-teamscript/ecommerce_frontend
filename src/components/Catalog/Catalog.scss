@@ -1,0 +1,7 @@
+@import 'app/styles/index';
+
+.catalog-container {
+  @include gridContainer;
+
+  row-gap: 40px;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './ProductsSlider.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
@@ -10,8 +10,33 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title }) => {
   const [start, setStart] = useState(0);
-  const visibleCount = 4;
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [visibleCount, setVisibleCount] = useState(1);
   const end = start + visibleCount;
+
+  const handleResize = () => {
+    setWindowWidth(() => window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    if (windowWidth >= 640 && windowWidth < 896) {
+      setVisibleCount(2);
+    }
+
+    if (windowWidth >= 896 && windowWidth < 1200) {
+      setVisibleCount(3);
+    }
+
+    if (windowWidth >= 1200) {
+      setVisibleCount(4);
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [windowWidth]);
 
   return (
     <section className="page__section cards-slider">

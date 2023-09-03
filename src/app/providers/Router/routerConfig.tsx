@@ -1,7 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import { HomePage } from 'pages/HomePage';
 import { CatalogPage } from 'pages/CatalogPage';
-import { DevicePage } from 'pages/DevicePage';
 import { FavouritesPage } from 'pages/FavouritesPage';
 import { CartPage } from 'pages/CartPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
@@ -33,7 +32,7 @@ export const routerConfig: RouteObject[] = [
   },
   {
     path: getDevicePath('phones', 'deviceId'),
-    element: <DevicePage />,
+    element: <CatalogPage />,
   },
   {
     path: getFavouritesPath(),
