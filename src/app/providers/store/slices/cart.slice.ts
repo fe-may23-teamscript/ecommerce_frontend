@@ -46,6 +46,8 @@ const cartSlice = createSlice({
 
         return phone;
       });
+
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
     },
     decreaseCount: (state, action: PayloadAction<number>) => {
       state.cartItems = state.cartItems.map((phone) => {
@@ -58,6 +60,8 @@ const cartSlice = createSlice({
 
         return phone;
       });
+
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
     }
   },
 });
