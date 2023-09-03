@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import './Header.scss';
 import menuBurger from 'shared/assets/MenuBurger-Icon.svg';
@@ -10,6 +10,7 @@ import {
   getCartPath,
   getFavouritesPath,
 } from 'shared/utils/getRoutes';
+import cn from 'classnames';
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -23,27 +24,41 @@ const Header = () => {
     <header className="header" id="header-top">
       <Navigation />
       <div className="menu-items">
-        <Link to={getPath} className="menu-items__button-right">
+        <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
           <img
             src={icon}
-            alt="header aside menu button"
+            alt="menu-items__button-right--icon"
             className="menu-items__button-right--icon"
           />
-        </Link>
-        <Link to={getFavouritesPath()} className="menu-items__button-right">
+        </NavLink>
+        <NavLink
+          to={getFavouritesPath()}
+          className={({ isActive }) =>
+            cn('menu-items__button-right', {
+              'menu-items__button-right--active': isActive,
+            })
+          }
+        >
           <img
             src={favourites}
             alt="header favourites products button"
             className="menu-items__button-right--icon"
           />
-        </Link>
-        <Link to={getCartPath()} className="menu-items__button-right">
+        </NavLink>
+        <NavLink
+          to={getCartPath()}
+          className={({ isActive }) =>
+            cn('menu-items__button-right', {
+              'menu-items__button-right--active': isActive,
+            })
+          }
+        >
           <img
             src={shoppingBag}
             alt="header shopping bag button"
             className="menu-items__button-right--icon"
           />
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

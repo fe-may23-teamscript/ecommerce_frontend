@@ -1,0 +1,33 @@
+@import '/src/app/styles/index';
+
+.controllers {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 24px 0;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__item {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+    font-weight: 700;
+    color: $color-secondary;
+  }
+}

@@ -5,10 +5,8 @@ import React from 'react';
 export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <div>
-        <Header />
-        {children}
-      </div>
+      <Header />
+      <div className="page">{children}</div>
       <Footer />
     </>
   );

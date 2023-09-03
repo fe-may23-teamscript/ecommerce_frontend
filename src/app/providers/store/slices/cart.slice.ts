@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LOCAL_STORAGE_CART } from 'shared/utils/constants';
-import { IPhone } from 'models/IPhone';
 import { RootState } from '../store';
+import { IProductModel } from 'models/IProductModel';
 
 export interface ICartState {
-  cartItems: IPhone[];
+  cartItems: IProductModel[];
 }
 
 const cartStore = localStorage.getItem(LOCAL_STORAGE_CART);
@@ -17,13 +17,13 @@ const cartSlice = createSlice({
   name: 'Cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<IPhone>) => {
+    addToCart: (state, action: PayloadAction<IProductModel>) => {
       state.cartItems.push(action.payload);
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state));
     },
     deleteFromCart: (state, action: PayloadAction<string>) => {
       state.cartItems = state.cartItems.filter(
-        ({ id }) => id !== action.payload,
+        ({ id }) => id !== +action.payload,
       );
 
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state));

@@ -9,6 +9,7 @@ const footerNavItems = ['github', 'contacts', 'rights'];
 
 const Footer = () => {
   const [isVisibleBackToTop, setIsVisibleBackToTop] = useState(false);
+  const { pathname } = useLocation();
 
   const toggleVisibility = () => {
     if (window.scrollY > 300) {
@@ -29,14 +30,13 @@ const Footer = () => {
     };
   }, []);
 
-  const { pathname } = useLocation();
-
-  if (pathname.includes('menu')) {
-    return <></>;
-  }
-
   return (
-    <footer className="footer">
+    <footer
+      className="footer"
+      style={
+        pathname.includes('menu') ? { display: 'none' } : { display: 'flex' }
+      }
+    >
       <div className="footer__container">
         <Link to="/" className="footer__logo">
           <img src={logo} alt="Nice Gadgets Logo" />

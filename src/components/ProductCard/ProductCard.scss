@@ -5,7 +5,7 @@
   flex-direction: column;
   padding: 32px;
   background: $color-surface1;
-  grid-column: span 3;
+  grid-column: span 4;
   cursor: pointer;
 
   &:hover {
@@ -13,7 +13,11 @@
   }
 
   @include onTablet {
-    grid-column: span 5;
+    grid-column: span 6;
+  }
+
+  @include onTabletExtended {
+    grid-column: span 4;
   }
 
   @include onDesktop {

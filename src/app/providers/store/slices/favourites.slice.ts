@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LOCAL_STORAGE_FAVOURITES } from 'shared/utils/constants';
-import { IPhone } from 'models/IPhone';
 import { RootState } from '../store';
+import { IProductModel } from 'models/IProductModel';
 
 export interface IFavouriteState {
-  favouritesItems: IPhone[];
+  favouritesItems: IProductModel[];
 }
 
 const favouriteStore = localStorage.getItem(LOCAL_STORAGE_FAVOURITES);
@@ -17,13 +17,13 @@ const cartSlice = createSlice({
   name: 'Favourite',
   initialState,
   reducers: {
-    addToFavourites: (state, action: PayloadAction<IPhone>) => {
+    addToFavourites: (state, action: PayloadAction<IProductModel>) => {
       state.favouritesItems.push(action.payload);
       localStorage.setItem(LOCAL_STORAGE_FAVOURITES, JSON.stringify(state));
     },
     deleteFromFavourites: (state, action: PayloadAction<string>) => {
       state.favouritesItems = state.favouritesItems.filter(
-        ({ id }) => id !== action.payload,
+        ({ id }) => id !== +action.payload,
       );
 
       localStorage.setItem(LOCAL_STORAGE_FAVOURITES, JSON.stringify(state));
