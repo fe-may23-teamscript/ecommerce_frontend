@@ -1,0 +1,77 @@
+@import 'app/styles/index';
+
+.phone-slider {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  grid-column: 1/-1;
+  margin-bottom: 40px;
+
+  @include onTablet {
+    grid-column: 1/6;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  @include onDesktop {
+    grid-column: 1/13;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    transition: all 0.3s;
+    border: 1px solid $color-elements;
+    background: transparent;
+
+    &:hover {
+      border: 1px solid $color-white;
+    }
+
+    &--active {
+      border: 1px solid $color-white;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+
+    @include onDesktop {
+    }
+
+    width: 80px;
+    height: 80px;
+
+    &--main {
+      width: 288px;
+      height: 288px;
+      object-fit: cover;
+
+      @include onDesktop {
+        width: 464px;
+        height: 464px;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    flex: 1 1 auto;
+    transition: 0.2s ease;
+  }
+}

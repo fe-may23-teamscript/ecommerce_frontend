@@ -1,5 +1,6 @@
 export interface IPhoneModel {
-  id: string;
+  id: number;
+  slug: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

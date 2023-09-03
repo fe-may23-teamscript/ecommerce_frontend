@@ -29,17 +29,55 @@
     }
   }
 
-  &__info {
-    @include gridContainer;
-
-    margin-block: 56px;
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 32px;
 
     @include onTablet {
-      margin-block: 64px;
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 16px;
+    }
+  }
+
+  &__id {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-secondary;
+    text-align: end;
+    grid-column: 1/-1;
+    position: absolute;
+    right: 0;
+    top: 428px;
+
+    @include onTablet {
+      grid-column: 1/-1;
+      top: 4px;
     }
 
     @include onDesktop {
-      margin-block: 80px;
+      grid-column: -3/-1;
+    }
+  }
+
+  &__info {
+    @include gridContainer;
+
+    position: relative;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
     }
   }
 }

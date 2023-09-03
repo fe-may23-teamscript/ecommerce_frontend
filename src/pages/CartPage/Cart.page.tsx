@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
-import { CheckoutModal } from 'components/CheckoutModal/CheckoutModal';
+import { CheckoutModal } from 'components/CheckoutModal';
 import { getHomePath } from 'shared/utils/getRoutes';
 
 const Cart: React.FC = () => {

@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ phoneCard }) => {
   return (
     <div className="card">
       <div className="card__img-container">
-        <Link to={getDevicePath(itemId, category)}>
+        <Link to={`/${getDevicePath(itemId, category)}`}>
           <img
             className="card__img"
             src={imgSrc}
