@@ -54,7 +54,7 @@ export const CartItem: React.FC<CartItemProps> = ({ phone }) => {
           />
         </div>
 
-        <div className="cart-item__price">$ 999</div>
+        <div className="cart-item__price">{`$ ${phone.phone.priceDiscount}`}</div>
       </div>
     </div>
   );

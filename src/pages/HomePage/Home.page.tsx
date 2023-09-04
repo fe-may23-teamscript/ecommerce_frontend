@@ -4,7 +4,10 @@ import './Home.page.scss';
 import { PicturesSlider } from 'components/PicturesSlider';
 import { ProductsSlider } from 'components/ProductsSlider';
 import { ShopByCategory } from 'components/ShopByCategory';
-import { useGetBrandNewPhonesQuery, useGetHotPricePhonesQuery, } from 'api/phones.api';
+import {
+  useGetBrandNewPhonesQuery,
+  useGetHotPricePhonesQuery,
+} from 'api/phones.api';
 
 const HomePage: FC = () => {
   const newModelResponse = useGetBrandNewPhonesQuery();

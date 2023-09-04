@@ -5,6 +5,8 @@ import menuBurger from 'shared/assets/MenuBurger-Icon.svg';
 import favourites from 'shared/assets/Favourites-Icon.svg';
 import shoppingBag from 'shared/assets/ShoppingBag-Icon.svg';
 import closeIcon from 'shared/assets/Close.svg';
+import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
+import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import {
   getBurgerMenuPath,
   getCartPath,
@@ -19,6 +21,7 @@ const Header = () => {
   const getPath = isMenuOpened
     ? pathname.slice(0, pathname.length - 5)
     : getBurgerMenuPath(pathname);
+  const totalCount = useAppSelector(getTotalCount);
 
   return (
     <header className="header" id="header-top">
@@ -58,6 +61,9 @@ const Header = () => {
             alt="header shopping bag button"
             className="menu-items__button-right--icon"
           />
+          {totalCount > 0 && (
+            <span className="menu-items__total-count">{totalCount}</span>
+          )}
         </NavLink>
       </div>
     </header>

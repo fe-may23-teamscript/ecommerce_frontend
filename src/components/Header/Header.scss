@@ -20,6 +20,23 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
+
+  &__total-count {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 2px 0;
+    font-size: 9px;
+    font-weight: 700;
+    background-color: $color-red;
+    border-radius: 50%;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
 
   &__button-right {
     position: relative;

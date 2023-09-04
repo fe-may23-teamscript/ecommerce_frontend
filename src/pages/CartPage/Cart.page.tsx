@@ -4,19 +4,29 @@ import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
 import { CheckoutModal } from 'components/CheckoutModal';
 import { getHomePath } from 'shared/utils/getRoutes';
-import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
+import {
+  useAppSelector,
+  useAppDispatch,
+} from '../../app/providers/store/lib/redux-hooks';
 import {
   getCart,
   getTotalPrice,
+  getTotalCount,
+  clearCart,
 } from '../../app/providers/store/slices/cart.slice';
 
 const Cart: React.FC = () => {
-  const [modal, setModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useAppDispatch();
 
   const { cartItems } = useAppSelector(getCart);
   const totalPrice = useAppSelector(getTotalPrice);
+  const totalCount = useAppSelector(getTotalCount);
 
-  console.log(cartItems);
+  const handleClearCart = () => {
+    dispatch(clearCart());
+    setShowModal(true);
+  };
 
   return (
     <div className="cart">
@@ -27,27 +37,31 @@ const Cart: React.FC = () => {
 
         <h2 className="cart__title">Cart</h2>
 
-        <div className="cart__content">
-          {modal ? (
-            <CheckoutModal />
-          ) : (
-            <>
-              <div className="cart__list">
-                {cartItems.map((phone) => {
-                  return <CartItem key={phone.phone.id} phone={phone} />;
-                })}
-              </div>
+        {showModal ? (
+          <CheckoutModal setShowModal={setShowModal} />
+        ) : (
+          <div className="cart__content">
+            <div className="cart__list">
+              {totalCount === 0 ? (
+                <p>Your cart is empty</p>
+              ) : (
+                <>
+                  {cartItems.map((phone) => {
+                    return <CartItem key={phone.phone.id} phone={phone} />;
+                  })}
+                </>
+              )}
+            </div>
 
-              <div className="cart__checkout">
-                <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>
-                <p className="cart__total-items">Total for 3 items</p>
-                <button className="cart__btn" onClick={() => setModal(true)}>
-                  Checkout
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+            <div className="cart__checkout">
+              <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>
+              <p className="cart__total-items">{`Total for ${totalCount} items`}</p>
+              <button className="cart__btn" onClick={handleClearCart}>
+                Checkout
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CheckoutModal.scss';
 
-export const CheckoutModal: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+type Props = {
+  setShowModal: (showModal: boolean) => void;
+};
 
+export const CheckoutModal: React.FC<Props> = ({ setShowModal }) => {
   return (
-    <>
-      {isOpen && (
-        <div className="modal">
-          <button
-            type="button"
-            className="modal__button"
-            onClick={() => setIsOpen(false)}
-          ></button>
+    <div className="modal">
+      <button
+        type="button"
+        className="modal__button"
+        onClick={() => setShowModal(false)}
+      ></button>
 
-          <h2 className="modal__title">Thank You!</h2>
-          <p className="modal__text">
-            Your order has been successfully created.
-          </p>
-        </div>
-      )}
-    </>
+      <p className="modal__text">
+        Checkout is not implemented yet.
+        <br />
+        Do you want to clear the Cart?
+      </p>
+    </div>
   );
 };
