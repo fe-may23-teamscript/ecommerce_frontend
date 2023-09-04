@@ -3,14 +3,21 @@ import { LOCAL_STORAGE_CART } from 'shared/utils/constants';
 import { RootState } from '../store';
 import { IProductModel } from 'models/IProductModel';
 
+export interface IPhoneWithCount {
+  count: number;
+  phone: IProductModel;
+}
+
 export interface ICartState {
-  cartItems: IProductModel[];
+  cartItems: IPhoneWithCount[];
 }
 
 const cartStore = localStorage.getItem(LOCAL_STORAGE_CART);
 
+const cartItems = JSON.parse(cartStore ? cartStore : '[]') as IPhoneWithCount[];
+
 const initialState: ICartState = {
-  cartItems: JSON.parse(cartStore ? cartStore : '[]'),
+  cartItems,
 };
 
 const cartSlice = createSlice({
@@ -18,21 +25,55 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<IProductModel>) => {
-      state.cartItems.push(action.payload);
-      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state));
+      state.cartItems.push({ count: 1, phone: action.payload });
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
     },
-    deleteFromCart: (state, action: PayloadAction<string>) => {
+    deleteFromCart: (state, action: PayloadAction<number>) => {
       state.cartItems = state.cartItems.filter(
-        ({ id }) => id !== +action.payload,
+        ({ phone }) => phone.id !== action.payload,
       );
 
-      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state));
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
+    },
+    increaseCount: (state, action: PayloadAction<number>) => {
+      state.cartItems = state.cartItems.map((phone) => {
+        if (phone.phone.id === action.payload) {
+          return {
+            count: phone.count + 1,
+            phone: phone.phone,
+          };
+        }
+
+        return phone;
+      });
+
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
+    },
+    decreaseCount: (state, action: PayloadAction<number>) => {
+      state.cartItems = state.cartItems.map((phone) => {
+        if (phone.phone.id === action.payload) {
+          return {
+            count: phone.count === 1 ? 1 : phone.count - 1,
+            phone: phone.phone,
+          };
+        }
+
+        return phone;
+      });
+
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
     },
   },
 });
 
-export const { addToCart, deleteFromCart } = cartSlice.actions;
+export const { addToCart, deleteFromCart, increaseCount, decreaseCount } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
 
-export const getCart = (state: RootState) => state.cart.cartItems;
+export const getCart = (state: RootState) => state.cart;
+
+export const getTotalPrice = (state: RootState) =>
+  state.cart.cartItems.reduce((previous, current) => {
+    return previous + current.phone.priceDiscount * current.count;
+  }, 0);

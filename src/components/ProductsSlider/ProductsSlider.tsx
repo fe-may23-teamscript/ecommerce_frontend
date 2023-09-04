@@ -8,14 +8,14 @@ import { ReactComponent as ArrowLeftDisabled } from 'assets/icons/arrow-left-das
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ArrowRightDisabled } from 'assets/icons/arrow-right-disabled.svg';
 import { ReactComponent as ArrowRight } from 'shared/assets/Chevron-Arrow-Right.svg';
+import { Loader } from 'components/Loader';
 
 type Props = {
   title: string;
-  products: IProductModel[];
+  phones?: IProductModel[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
-  console.log(products);
+export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   const [start, setStart] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleCount, setVisibleCount] = useState(1);
@@ -45,7 +45,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
     };
   }, [windowWidth]);
 
-  return (
+  return phones ? (
     <section className="page__section cards-slider">
       <div className="products-slider__top">
         <h2 className="page__section-title products-slider__title">{title}</h2>
@@ -71,23 +71,25 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               'products-slider__button products-slider__button--right',
               {
                 'products-slider__button--right--disabled':
-                  end > products.length - 2,
+                  end > phones.length - 2,
               },
             )}
             onClick={() => setStart((prev) => prev + 1)}
-            active={end === products.length - 1}
+            active={end === phones.length - 1}
           >
-            {end !== products.length - 1 && <ArrowRight />}
-            {end === products.length - 1 && <ArrowRightDisabled />}
+            {end !== phones.length - 1 && <ArrowRight />}
+            {end === phones.length - 1 && <ArrowRightDisabled />}
           </Button>
         </div>
       </div>
 
       <div className="products-slider__content">
-        {products.slice(start, end).map((item) => (
+        {phones.slice(start, end).map((item) => (
           <ProductCard productCard={item} key={item.id} />
         ))}
       </div>
     </section>
+  ) : (
+    <Loader />
   );
 };
