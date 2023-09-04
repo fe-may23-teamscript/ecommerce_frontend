@@ -14,7 +14,12 @@ interface Props {
 
 const CatalogControllers: React.FC<Props> = () => {
   const [title, setTitle] = useState(useLocation().pathname);
-  const dropDownSortOptions = [SortOptions.NewestYear, SortOptions.OldestYear, SortOptions.LowestPrice, SortOptions.HighestPrice];
+  const dropDownSortOptions = [
+    SortOptions.NewestYear,
+    SortOptions.OldestYear,
+    SortOptions.LowestPrice,
+    SortOptions.HighestPrice,
+  ];
   const dropDownLimitOptions = [4, 8, 12, 16];
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -45,7 +50,11 @@ const CatalogControllers: React.FC<Props> = () => {
         <div className="controllers__item">
           <div className="controllers__title">{'Sort by'}</div>
           <Dropdown
-            onSelect={(value) => setSearchParams(useSearchWith(searchParams, {order: String(value)}))}
+            onSelect={(value) =>
+              setSearchParams(
+                useSearchWith(searchParams, { order: String(value) }),
+              )
+            }
             options={dropDownSortOptions}
             selectedOption={order}
           />
@@ -53,7 +62,11 @@ const CatalogControllers: React.FC<Props> = () => {
         <div className="controllers__item">
           <div className="controllers__title">{'Items on page'}</div>
           <Dropdown
-            onSelect={(value) => setSearchParams(useSearchWith(searchParams, {limit: String(value)}))}
+            onSelect={(value) =>
+              setSearchParams(
+                useSearchWith(searchParams, { limit: String(value) }),
+              )
+            }
             options={dropDownLimitOptions}
             selectedOption={limit}
           />

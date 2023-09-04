@@ -43,7 +43,7 @@ const CatalogPage: React.FC = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-    setSearchParams(useSearchWith(searchParams, { page: '1'}));
+    setSearchParams(useSearchWith(searchParams, { page: '1' }));
   }, [limit, order]);
 
   return !isLoading && !isError && isSuccess ? (
