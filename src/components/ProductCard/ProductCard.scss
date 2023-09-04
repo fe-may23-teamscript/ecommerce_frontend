@@ -131,15 +131,23 @@
     text-align: center;
 
     @include hover(background-color, $color-accent-hover);
+
+    &:disabled {
+      background: $color-surface2;
+
+      &:hover {
+        background: $color-surface2;
+      }
+    }
   }
 
   &__favorites-icon {
     width: 40px;
     height: 40px;
     background-color: $color-surface2;
-    background-image: url('../../assets/icons/fovorite.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @include hover(background-color, $color-icons);
   }

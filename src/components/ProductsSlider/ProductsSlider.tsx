@@ -6,10 +6,10 @@ import { IProductModel } from 'models/IProductModel';
 
 type Props = {
   title: string;
-  products: IProductModel[];
+  phones?: IProductModel[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   const [start, setStart] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleCount, setVisibleCount] = useState(1);
@@ -39,6 +39,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
     };
   }, [windowWidth]);
 
+  if (!phones) {
+    return <h1>loading</h1>;
+  }
+  phones;
   return (
     <section className="page__section cards-slider">
       <div className="products-slider__top">
@@ -58,17 +62,17 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               'products-slider__button products-slider__button--right',
               {
                 'products-slider__button--right--disabled':
-                  end > products.length - 1 - visibleCount,
+                  end > phones.length - 1 - visibleCount,
               },
             )}
             onClick={() => setStart((prev) => prev + 1)}
-            disabled={end === products.length - 1}
+            disabled={end === phones.length - 1}
           ></button>
         </div>
       </div>
 
       <div className="products-slider__content">
-        {products.slice(start, end).map((item) => (
+        {phones.slice(start, end).map((item) => (
           <ProductCard productCard={item} key={item.id} />
         ))}
       </div>

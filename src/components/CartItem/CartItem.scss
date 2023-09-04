@@ -76,19 +76,35 @@
     width: 32px;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: $color-surface2;
+    border: 1px solid $color-surface2;
+
+    @include hover(background-color, $color-icons);
 
     &--plus {
       background-image: url('../../assets/icons/plus.svg');
-      background-color: $color-surface2;
-      border: 1px solid $color-surface2;
-
-      @include hover(background-color, $color-icons);
     }
 
     &--minus {
-      background-image: url('../../assets/icons/minus.svg');
-      background-color: $color-surface1;
-      border: 1px solid $color-surface2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:disabled {
+        background-color: $color-surface1;
+
+        &:hover {
+          background-color: $color-surface1;
+        }
+      }
+
+      &_icon {
+        &_disabled {
+          fill: #4a4d58;
+        }
+
+        fill: #fff;
+      }
     }
 
     &--close {
