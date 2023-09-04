@@ -37,9 +37,9 @@ const FavouritesPage: React.FC = () => {
               There is no favourite product added yet
             </h3>
           ) : (
-            favouritesItems.map((phone) => (
-              <div className="favourites__product" key={phone.id}>
-                <ProductCard productCard={phone} />
+            favouritesItems.map((product) => (
+              <div className="favourites__product" key={product.id}>
+                <ProductCard productCard={product} />
               </div>
             ))
           )}
