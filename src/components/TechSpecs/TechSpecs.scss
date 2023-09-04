@@ -1,0 +1,41 @@
+@import 'app/styles/index';
+
+.tech-specs {
+  grid-column: 1/-1;
+
+  @include onTablet {
+    grid-column: 1/-1;
+  }
+
+  @include onDesktop {
+    grid-column: -12/-1;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 26px;
+    padding-bottom: 16px;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid $color-elements;
+
+    @include onTablet {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    margin-top: 16px;
+  }
+
+  &__name {
+    color: $color-secondary;
+  }
+}

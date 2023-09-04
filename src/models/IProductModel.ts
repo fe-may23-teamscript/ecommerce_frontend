@@ -1,10 +1,11 @@
-interface Description {
+export interface Description {
   title: string;
   text: string[];
 }
 
 export interface IProductModel {
   id: number;
+  slug: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];
@@ -22,4 +23,5 @@ export interface IProductModel {
   camera: string;
   zoom: string;
   cell: string[];
+  category: string;
 }

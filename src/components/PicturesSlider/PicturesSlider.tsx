@@ -1,57 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import './PicturesSlider.scss';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
+import arrowLeft from '../../assets/icons/arrow-left.svg';
+import arrowRigth from '../../assets/icons/arrow-right.svg';
 import banner1 from 'assets/images/pictures-slider/banner-1.png';
 import banner2 from 'assets/images/pictures-slider/banner-2.png';
 import banner3 from 'assets/images/pictures-slider/banner-3.png';
 import banner4 from 'assets/images/pictures-slider/banner-4.png';
 
+const images = [banner1, banner2, banner3, banner4];
+
 export const PicturesSlider: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleArrowLeft = () => setActiveIndex((prevState) => prevState - 1);
+  const handleArrowRight = () => setActiveIndex((prevState) => prevState + 1);
+  const handlePagination = (index: number) => setActiveIndex(index);
+
+  useEffect(() => {
+    if (activeIndex > images.length - 1) {
+      setActiveIndex(0);
+    }
+
+    if (activeIndex < 0) {
+      setActiveIndex(images.length - 1);
+    }
+  }, [activeIndex, images]);
+
+  useEffect(() => {
+    const interval = setInterval(
+      () => setActiveIndex((prevState) => prevState + 1),
+      5000,
+    );
+
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
   return (
-    <section className="page__section pictures-slider">
-      <h1 className="page__section-title pictures-slider__title">
+    <div className="carousel">
+      <h1 className="page__section-title carousel__title">
         Welcome to Nice Gadgets store!
       </h1>
-      <div className="pictures-slider__slider">
-        <Carousel
-          showStatus={false}
-          showThumbs={false}
-          showArrows={true}
-          autoPlay={true}
-          interval={5000}
-          infiniteLoop={true}
+      <div className="carousel__box">
+        <div className="carousel__row">
+          {images.map((image, index) => (
+            <img
+              src={image}
+              alt={image}
+              key={image}
+              className={classNames('carousel__img', {
+                'carousel__img--active': activeIndex === index,
+              })}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={handleArrowLeft}
+          className="carousel__button carousel__button--prev"
         >
-          <div className="pictures-slider__slider-item">
-            <img
-              className="pictures-slider__slider-img"
-              src={banner1}
-              alt="banner"
-            />
-          </div>
-          <div className="pictures-slider__slider-item">
-            <img
-              className="pictures-slider__slider-img"
-              src={banner2}
-              alt="banner"
-            />
-          </div>
-          <div className="pictures-slider__slider-item">
-            <img
-              className="pictures-slider__slider-img"
-              src={banner3}
-              alt="banner"
-            />
-          </div>
-          <div className="pictures-slider__slider-item">
-            <img
-              className="pictures-slider__slider-img"
-              src={banner4}
-              alt="banner"
-            />
-          </div>
-        </Carousel>
+          <img src={arrowLeft} alt="arrowLeft" />
+        </button>
+        <button
+          type="button"
+          onClick={handleArrowRight}
+          className="carousel__button carousel__button--next"
+        >
+          <img src={arrowRigth} alt="arrowRigth" />
+        </button>
       </div>
-    </section>
+      <div className="carousel__pagination-box">
+        {images.map((image, index) => (
+          <button
+            type="button"
+            aria-label="pagination-item"
+            key={image}
+            className={classNames('carousel__item-btn', {
+              'carousel__item-btn--active': activeIndex === index,
+            })}
+            onClick={() => handlePagination(index)}
+          />
+        ))}
+      </div>
+    </div>
   );
 };

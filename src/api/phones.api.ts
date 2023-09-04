@@ -43,6 +43,12 @@ export const phonesAPI = createApi({
         method: 'GET',
       }),
     }),
+    getPhoneBySlug: build.query<IProductModel, string>({
+      query: (slug) => ({
+        url: `phones/${slug}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -51,4 +57,5 @@ export const {
   useGetHotPricePhonesQuery,
   useGetBrandNewPhonesQuery,
   useGetPhoneByIdQuery,
+  useGetPhoneBySlugQuery,
 } = phonesAPI;
