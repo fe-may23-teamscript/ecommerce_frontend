@@ -12,6 +12,7 @@ import {
   useGetHotPricePhonesQuery,
 } from 'api/phones.api';
 import { IProductModel } from 'models/IProductModel';
+import UserRoute from 'components/UserRoute/UserRoute';
 
 const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<IProductModel | null>(null);
@@ -39,12 +40,13 @@ const ProductDetailsPage: React.FC = () => {
       {product && (
         <div className="product-details">
           <div className="container">
+            <UserRoute slug={product.slug} />
             <Link to={getHomePath()} className="product-details__link">
               Back
             </Link>
             <h2 className="product-details__title">{product.name}</h2>
             <div className="product-details__info">
-              <PhoneImageSlider />
+              <PhoneImageSlider images={product.images} alt={product.name} />
               <DeviceBlock product={product} pathname={pathname} />
               <span className="product-details__id">
                 ID: {product.id.toString().padStart(4, '0')}

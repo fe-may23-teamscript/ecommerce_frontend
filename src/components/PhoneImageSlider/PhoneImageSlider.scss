@@ -47,14 +47,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: cover;
+    object-fit: contain;
     width: 80px;
     height: 80px;
 
     &--main {
       width: 288px;
       height: 288px;
-      object-fit: cover;
+      object-fit: contain;
 
       @include onDesktop {
         width: 464px;

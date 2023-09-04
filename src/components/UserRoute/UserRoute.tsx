@@ -6,14 +6,13 @@ import { ReactComponent as ChevronIcon } from 'shared/assets/Chevron-Arrow-Right
 import { getCatalog, getDevicePath } from 'shared/utils/getRoutes';
 
 interface Props {
-  currentDevice?: string;
+  slug?: string;
 }
 
-const UserRoute: FC<Props> = ({ currentDevice }) => {
+const UserRoute: FC<Props> = ({ slug }) => {
   const locationPath = useLocation()
     .pathname.split('/')
-    .filter((el) => el !== 'catalog' && el.length)
-    .join('');
+    .filter((el) => el !== 'catalog' && el.length)[0];
 
   return (
     <div className="user-route">
@@ -31,14 +30,14 @@ const UserRoute: FC<Props> = ({ currentDevice }) => {
           </Link>
         </>
       )}
-      {currentDevice && (
+      {slug && (
         <>
           <ChevronIcon />
           <Link
-            to={getDevicePath(currentDevice, locationPath)}
+            to={getDevicePath(locationPath, slug)}
             className="user-route__path-item"
           >
-            {locationPath}
+            {slug}
           </Link>
         </>
       )}
