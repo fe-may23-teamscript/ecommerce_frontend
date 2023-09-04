@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
@@ -56,7 +57,13 @@ const Cart: React.FC = () => {
             <div className="cart__checkout">
               <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>
               <p className="cart__total-items">{`Total for ${totalCount} items`}</p>
-              <button className="cart__btn" onClick={handleClearCart}>
+              <button
+                className={cn('cart__btn', {
+                  'cart__btn--disabled': totalCount === 0,
+                })}
+                onClick={handleClearCart}
+                disabled={totalCount === 0}
+              >
                 Checkout
               </button>
             </div>
