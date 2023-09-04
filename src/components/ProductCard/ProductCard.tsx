@@ -45,8 +45,8 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
 
   return (
     <div className="card">
-      <div className="card__img-container">
-        <Link to={`/${getDevicePath(category, slug)}`}>
+      <Link to={`/${getDevicePath(category, slug)}`}>
+        <div className="card__img-container">
           <img
             className="card__img"
             src={imgSrc}
@@ -54,42 +54,42 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
             width="208px"
             height="196px"
           />
-        </Link>
-      </div>
+        </div>
 
-      <h2 className="card__title">{name}</h2>
+        <h2 className="card__title">{name}</h2>
 
-      <p className="card__price">
-        <span className="card__price-current">${priceDiscount}</span>
+        <p className="card__price">
+          <span className="card__price-current">${priceDiscount}</span>
 
-        <span className="card__price-full">${priceRegular}</span>
-      </p>
-
-      <div className="card__features">
-        <p className="card__feature">
-          <span className="card__feature-name">Screen</span>
-
-          <span className="card__feature-value">
-            {/* eslint-disable */}
-            {screen.split("'").join('” ')}
-            {/* eslint-enable */}
-          </span>
+          <span className="card__price-full">${priceRegular}</span>
         </p>
 
-        <p className="card__feature">
-          <span className="card__feature-name">Capacity</span>
+        <div className="card__features">
+          <p className="card__feature">
+            <span className="card__feature-name">Screen</span>
 
-          <span className="card__feature-value">{`${parseInt(
-            capacity,
-          )} GB`}</span>
-        </p>
+            <span className="card__feature-value">
+              {/* eslint-disable */}
+              {screen.split("'").join('” ')}
+              {/* eslint-enable */}
+            </span>
+          </p>
 
-        <p className="card__feature">
-          <span className="card__feature-name">RAM</span>
+          <p className="card__feature">
+            <span className="card__feature-name">Capacity</span>
 
-          <span className="card__feature-value">{`${parseInt(ram)} GB`}</span>
-        </p>
-      </div>
+            <span className="card__feature-value">{`${parseInt(
+              capacity,
+            )} GB`}</span>
+          </p>
+
+          <p className="card__feature">
+            <span className="card__feature-name">RAM</span>
+
+            <span className="card__feature-value">{`${parseInt(ram)} GB`}</span>
+          </p>
+        </div>
+      </Link>
 
       <div className="card__buy">
         <button

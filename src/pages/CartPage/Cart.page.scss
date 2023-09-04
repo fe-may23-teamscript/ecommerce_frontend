@@ -117,5 +117,13 @@
     color: $color-white;
 
     @include hover(background-color, $color-accent-hover);
+
+    &--disabled {
+      background: $color-surface2;
+
+      @include hover(background-color, $color-surface2);
+
+      cursor: default;
+    }
   }
 }

@@ -63,11 +63,20 @@ const cartSlice = createSlice({
 
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(state.cartItems));
     },
+    clearCart: (state) => {
+      state.cartItems = [];
+      localStorage.removeItem(LOCAL_STORAGE_CART);
+    },
   },
 });
 
-export const { addToCart, deleteFromCart, increaseCount, decreaseCount } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  deleteFromCart,
+  increaseCount,
+  decreaseCount,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
 
@@ -76,4 +85,9 @@ export const getCart = (state: RootState) => state.cart;
 export const getTotalPrice = (state: RootState) =>
   state.cart.cartItems.reduce((previous, current) => {
     return previous + current.phone.priceDiscount * current.count;
+  }, 0);
+
+export const getTotalCount = (state: RootState) =>
+  state.cart.cartItems.reduce((previous, current) => {
+    return previous + current.count;
   }, 0);

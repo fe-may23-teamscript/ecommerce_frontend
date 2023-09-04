@@ -54,10 +54,7 @@ const ProductDetailsPage: React.FC = () => {
               <About productDescription={product.description} />
               <TechSpecs productInfo={product} />
             </div>
-            <ProductsSlider
-              title="You may also like"
-              phones={hotPriceModels}
-            />
+            <ProductsSlider title="You may also like" phones={hotPriceModels} />
           </div>
         </div>
       )}

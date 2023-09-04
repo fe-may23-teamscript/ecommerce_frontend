@@ -3,21 +3,10 @@
 
 .modal {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background-color: $color-surface1;
   padding: 24px;
-  gap: 16px;
-  grid-column: span 4;
-
-  @include onTablet {
-    grid-column: span 8;
-  }
-
-  @include onDesktop {
-    grid-column: 7/-7;
-  }
+  max-width: 420px;
+  margin: auto;
 
   &__button {
     position: absolute;
@@ -31,11 +20,6 @@
     background-color: $color-surface1;
 
     @include hover(background-image, url('../../assets/icons/close-hover.svg'));
-  }
-
-  &__title {
-    font-weight: 800;
-    font-size: 22px;
   }
 
   &__text {

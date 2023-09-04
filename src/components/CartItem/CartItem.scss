@@ -79,10 +79,10 @@
     background-color: $color-surface2;
     border: 1px solid $color-surface2;
 
-    @include hover(background-color, $color-icons);
-
     &--plus {
       background-image: url('../../assets/icons/plus.svg');
+
+      @include hover(background-color, $color-icons);
     }
 
     &--minus {
@@ -90,8 +90,11 @@
       align-items: center;
       justify-content: center;
 
+      @include hover(background-color, $color-icons);
+
       &:disabled {
         background-color: $color-surface1;
+        cursor: default;
 
         &:hover {
           background-color: $color-surface1;
@@ -110,6 +113,7 @@
     &--close {
       background-image: url('../../assets/icons/close.svg');
       background-color: $color-surface1;
+      border: 1px solid $color-surface1;
 
       @include hover(
         background-image,
