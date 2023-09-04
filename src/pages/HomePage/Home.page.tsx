@@ -28,7 +28,7 @@ const HomePage: FC = () => {
     if (hotPriceResponse.isSuccess) {
       setHotPriceModels(hotPriceResponse.data);
     }
-  }, [newModelResponse.currentData, hotPriceResponse.currentData]);
+  }, [newModelResponse.data, hotPriceResponse.data]);
 
   return (
     <div className="home-page">

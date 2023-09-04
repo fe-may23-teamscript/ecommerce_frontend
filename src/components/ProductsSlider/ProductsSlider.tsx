@@ -3,6 +3,11 @@ import classNames from 'classnames';
 import './ProductsSlider.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
 import { IProductModel } from 'models/IProductModel';
+import { Button } from 'shared/ui/Button';
+import { ReactComponent as ArrowLeftDisabled } from 'assets/icons/arrow-left-dasabled.svg';
+import { ReactComponent as ArrowLeft } from 'assets/icons/arrow-left.svg';
+import { ReactComponent as ArrowRightDisabled } from 'assets/icons/arrow-right-disabled.svg';
+import { ReactComponent as ArrowRight } from 'shared/assets/Chevron-Arrow-Right.svg';
 
 type Props = {
   title: string;
@@ -10,6 +15,7 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+  console.log(products);
   const [start, setStart] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleCount, setVisibleCount] = useState(1);
@@ -44,26 +50,36 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       <div className="products-slider__top">
         <h2 className="page__section-title products-slider__title">{title}</h2>
         <div className="products-slider__buttons">
-          <button
+          <Button
+            square={true}
+            size="small"
             className={classNames(
               'products-slider__button products-slider__button--left',
               { 'products-slider__button--left--disabled': start <= 0 },
             )}
             onClick={() => setStart((prev) => prev - 1)}
             disabled={start === 0}
-          ></button>
+          >
+            {start === 0 && <ArrowLeftDisabled />}
+            {start !== 0 && <ArrowLeft />}
+          </Button>
 
-          <button
+          <Button
+            square={true}
+            size="small"
             className={classNames(
               'products-slider__button products-slider__button--right',
               {
                 'products-slider__button--right--disabled':
-                  end > products.length - 1 - visibleCount,
+                  end > products.length - 2,
               },
             )}
             onClick={() => setStart((prev) => prev + 1)}
-            disabled={end === products.length - 1}
-          ></button>
+            active={end === products.length - 1}
+          >
+            {end !== products.length - 1 && <ArrowRight />}
+            {end === products.length - 1 && <ArrowRightDisabled />}
+          </Button>
         </div>
       </div>
 

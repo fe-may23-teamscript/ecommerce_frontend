@@ -1,20 +1,14 @@
+@import '/src/app/styles/index';
+
 .button {
   height: 40px;
   border: none;
-  background: #905bff;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &-square {
     width: 40px;
-  }
-
-  &:hover {
-    background: #a378ff;
-  }
-
-  &:disabled {
-    background: transparent;
-    border: 1px solid #3b3e4a;
   }
 }
 
@@ -38,7 +32,7 @@
 .round {
   background: none;
   border-radius: 50%;
-  border: 2px solid #3b3e4a;
+  border: 2px solid;
   padding: 2px;
 
   &:hover {

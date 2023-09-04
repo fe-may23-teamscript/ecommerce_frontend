@@ -2,7 +2,8 @@
 
 export const getHomePath = () => '/';
 
-export const getCatalog = (category?: string) => `catalog/${category}`;
+export const getCatalog = (category?: string) =>
+  `catalog/${category ? category : 'phones'}`;
 
 export const getDevicePath = (deviceId: string, category: string) =>
   `catalog/${category}/:${deviceId}`;

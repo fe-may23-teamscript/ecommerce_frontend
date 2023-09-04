@@ -5,6 +5,7 @@ interface Description {
 
 export interface IProductModel {
   id: number;
+  slug: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];
@@ -22,4 +23,9 @@ export interface IProductModel {
   camera: string;
   zoom: string;
   cell: string[];
+  category: string;
+  year: number;
+  mainImage: string;
+  createdAt: string;
+  updatedAt: string;
 }
