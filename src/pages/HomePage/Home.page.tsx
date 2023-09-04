@@ -16,7 +16,7 @@ const HomePage: FC = () => {
   useEffect(() => {
     newModelResponse.refetch();
     hotPriceResponse.refetch();
-  }, [newModelResponse.currentData, hotPriceResponse.currentData]);
+  }, [newModelResponse.data, hotPriceResponse.data]);
 
   return (
     <div className="home-page">

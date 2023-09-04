@@ -1,0 +1,129 @@
+@import 'app/styles/mixins';
+@import 'app/styles/container';
+
+.favourites {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include onTablet {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 80px;
+  }
+
+  &__grid {
+    @include gridContainer;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    width: 112px;
+    height: 16px;
+    grid-column: span 4;
+
+    @include onTablet {
+      grid-column: span 12;
+    }
+
+    @include onDesktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__item {
+    &-home {
+      width: 16px;
+      background-image: url('../../shared/assets/Home-Icon.svg');
+    }
+
+    &-arrow-rigth {
+      width: 16px;
+      height: 100%;
+      color: $color-icons;
+    }
+
+    &-page {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: $color-secondary;
+    }
+  }
+
+  &__title {
+    grid-column: span 4;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 40px;
+      grid-column: span 12;
+    }
+
+    @include onDesktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__no-items {
+    grid-column: span 4;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 40px;
+    font-size: 16px;
+
+    @include onTablet {
+      grid-column: span 12;
+      font-size: 20px;
+    }
+
+    @include onDesktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__count-items {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+    grid-column: span 4;
+
+    @include onTablet {
+      grid-column: span 12;
+    }
+
+    @include onDesktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__product {
+    grid-column: span 4;
+    margin-top: 40px;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onTabletExtended {
+      grid-column: span 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
+  }
+}
