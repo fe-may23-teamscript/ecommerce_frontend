@@ -27,7 +27,7 @@ export const phonesAPI = createApi({
     }),
     getHotPricePhones: build.query<IProductModel[], void>({
       query: () => ({
-        url: 'phones/ten-with-disc',
+        url: 'phones/twelve-with-disc',
         method: 'GET',
       }),
     }),
