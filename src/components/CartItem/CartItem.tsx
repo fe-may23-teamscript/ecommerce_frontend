@@ -1,6 +1,6 @@
 import React from 'react';
+import cn from 'classnames';
 import './CartItem.scss';
-import phoneImg from 'assets/images/product-card/product-1.png';
 import { useAppDispatch } from 'app/providers/store/lib/redux-hooks';
 import {
   decreaseCount,
@@ -9,7 +9,7 @@ import {
 } from 'app/providers/store/slices/cart.slice';
 import { IPhoneWithCount } from 'app/providers/store/slices/cart.slice';
 import { ReactComponent as Minus } from 'assets/icons/minus.svg';
-import cn from 'classnames';
+import { BASE_URL } from 'shared/utils/constants';
 
 type CartItemProps = {
   phone: IPhoneWithCount;
@@ -27,7 +27,11 @@ export const CartItem: React.FC<CartItemProps> = ({ phone }) => {
         />
 
         <div className="cart-item__description">
-          <img className="cart-item__img" src={phoneImg} alt="phone" />
+          <img
+            className="cart-item__img"
+            src={`${BASE_URL}${phone.phone.mainImage}`}
+            alt={phone.phone.name}
+          />
           <p className="cart-item__title">{phone.phone.name}</p>
         </div>
       </div>
