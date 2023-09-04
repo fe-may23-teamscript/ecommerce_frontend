@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
-import { CheckoutModal } from 'components/CheckoutModal/CheckoutModal';
+import { CheckoutModal } from 'components/CheckoutModal';
 import { getHomePath } from 'shared/utils/getRoutes';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import {
@@ -25,7 +25,7 @@ const Cart: React.FC = () => {
           Back
         </Link>
 
-        <h1 className="cart__title">Cart</h1>
+        <h2 className="cart__title">Cart</h2>
 
         <div className="cart__content">
           {modal ? (

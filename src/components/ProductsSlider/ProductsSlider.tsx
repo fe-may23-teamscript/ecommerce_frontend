@@ -45,7 +45,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
     };
   }, [windowWidth]);
 
-  return phones ? (
+  if (!phones) {
+    return <h1>loading</h1>;
+  }
+
+  return (
     <section className="page__section cards-slider">
       <div className="products-slider__top">
         <h2 className="page__section-title products-slider__title">{title}</h2>

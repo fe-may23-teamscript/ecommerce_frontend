@@ -6,6 +6,18 @@
     justify-content: space-between;
   }
 
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      font-size: 32px;
+    }
+  }
+
   &__content {
     @include gridContainer;
 

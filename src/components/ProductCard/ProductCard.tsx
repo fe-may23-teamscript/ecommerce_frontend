@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import imgSrc from 'assets/images/product-card/product-1.png';
 import { IProductModel } from 'models/IProductModel';
+import { getDevicePath } from 'shared/utils/getRoutes';
 import {
   useAppDispatch,
   useAppSelector,
@@ -20,8 +22,17 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ productCard }) => {
-  const { id, name, priceRegular, priceDiscount, screen, capacity, ram } =
-    productCard;
+  const {
+    id,
+    name,
+    slug,
+    category,
+    priceRegular,
+    priceDiscount,
+    screen,
+    capacity,
+    ram,
+  } = productCard;
 
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector(getCart);
@@ -35,13 +46,15 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
   return (
     <div className="card">
       <div className="card__img-container">
-        <img
-          className="card__img"
-          src={imgSrc}
-          alt="iPhone"
-          width="208px"
-          height="196px"
-        />
+        <Link to={`/${getDevicePath(category, slug)}`}>
+          <img
+            className="card__img"
+            src={imgSrc}
+            alt="iPhone"
+            width="208px"
+            height="196px"
+          />
+        </Link>
       </div>
 
       <h2 className="card__title">{name}</h2>

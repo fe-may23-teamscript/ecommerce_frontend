@@ -8,11 +8,11 @@ import {
   getBurgerMenuPath,
   getCartPath,
   getCatalog,
-  getDevicePath,
   getFavouritesPath,
   getHomePath,
 } from 'shared/utils/getRoutes';
 import { MenuPage } from 'pages/MenuPage';
+import { ProductDetailsPage } from 'pages/ProductDetailsPage';
 
 export const routerConfig: RouteObject[] = [
   {
@@ -33,8 +33,8 @@ export const routerConfig: RouteObject[] = [
     element: <CatalogPage />,
   },
   {
-    path: getDevicePath('phones', 'deviceId'),
-    element: <CatalogPage />,
+    path: 'catalog/:category/:slug',
+    element: <ProductDetailsPage />,
   },
   {
     path: getFavouritesPath(),

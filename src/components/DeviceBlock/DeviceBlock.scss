@@ -1,0 +1,207 @@
+@import 'app/styles/index';
+
+.device-block {
+  grid-column: 1/-1;
+
+  @include onTablet {
+    grid-column: -6/-1;
+  }
+
+  @include onDesktop {
+    grid-column: -12/-4;
+  }
+
+  &__buttons {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  &__color {
+    display: flex;
+    gap: 8px;
+
+    &-button {
+      width: 32px;
+      height: 32px;
+      border: 2px double $color-black;
+      outline: 1px solid $color-elements;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &--active {
+        outline-color: $color-white;
+      }
+
+      &:hover,
+      &:active {
+        outline-color: $color-white;
+      }
+
+      &--gold {
+        background-color: #c2b067;
+      }
+
+      &--silver {
+        background-color: #7e7e7e;
+      }
+
+      &--spacegray {
+        background-color: #545454;
+      }
+
+      &--black {
+        background-color: #282828;
+      }
+
+      &--yellow {
+        background-color: #fd0;
+      }
+
+      &--green {
+        background-color: #6eb61c;
+      }
+
+      &--purple {
+        background-color: #7821b2;
+      }
+
+      &--red {
+        background-color: #c20b0b;
+      }
+
+      &--white {
+        background-color: #d5d4d4;
+      }
+
+      &--coral {
+        background-color: #9f3311;
+      }
+
+      &--rosegold {
+        background-color: #a22450;
+      }
+
+      &--midnightgreen {
+        background-color: #2b4f22;
+      }
+    }
+  }
+
+  &__capacity {
+    &-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 32px;
+      color: $color-white;
+      background-color: $color-black;
+      border: 1px solid $color-icons;
+
+      &--active {
+        color: $color-black;
+        background-color: $color-white;
+        border: 1px solid transparent;
+      }
+
+      &:hover,
+      &:active {
+        color: $color-black;
+        background-color: $color-white;
+        border: 1px solid transparent;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+
+  &__price-current {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  &__price-full {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__feature {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+
+    &-value {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &-name {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      color: $color-secondary;
+    }
+  }
+
+  &__buy {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__add-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $color-accent;
+    color: $color-white;
+    text-decoration: none;
+    text-align: center;
+
+    @include hover(background-color, $color-accent-hover);
+  }
+
+  &__favorites-icon {
+    width: 48px;
+    height: 48px;
+    background-color: $color-surface2;
+    background-image: url('../../assets/icons/fovorite.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover(background-color, $color-icons);
+  }
+}

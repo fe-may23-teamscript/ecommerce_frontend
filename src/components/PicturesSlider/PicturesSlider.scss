@@ -1,38 +1,107 @@
 @import 'app/styles/index';
 
-.pictures-slider {
+.carousel {
   &__title {
     font-size: 32px;
-    padding-block: 24px;
+    margin-block: 24px;
 
     @include onTablet {
       font-size: 38px;
-      padding-block: 32px;
+      margin-block: 32px;
     }
 
     @include onDesktop {
       font-size: 48px;
-      padding-block: 56px;
+      margin-block: 56px;
     }
   }
 
-  &__slider-img {
-    object-fit: cover;
-    aspect-ratio: 1.5;
+  &__box {
+    position: relative;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__row {
+    flex-grow: 1;
+    display: flex;
+    height: 432px;
+    order: 2;
+    overflow: hidden;
+    margin-inline: -16px;
 
     @include onTablet {
-      aspect-ratio: 2;
+      margin-inline: 0;
+    }
+  }
+
+  &__img {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    transition: opacity 0.3s;
+
+    &--active {
+      opacity: 1;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__button {
+    display: none;
+    flex: 0 0 32px;
+    background-color: $color-surface2;
+
+    @include hover(background-color, $color-icons);
+
+    @include onTablet {
+      display: block;
+    }
+
+    &--prev {
+      order: 1;
+    }
+
+    &--next {
+      order: 3;
+    }
+  }
+
+  &__pagination-box {
+    display: flex;
+    justify-content: center;
+    align-self: start;
+    gap: 15px;
+    height: 30px;
+    order: 4;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 80px;
     }
 
     @include onDesktop {
-      aspect-ratio: 2.75;
+      margin-bottom: 80px;
     }
   }
 
-  .carousel .control-dots .dot {
+  &__item-btn {
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    background-color: $color-elements;
     width: 14px;
     height: 4px;
-    border-radius: 0;
-    margin: 4px;
+    margin-top: 16px;
+
+    &:hover {
+      background-color: $color-white;
+    }
+
+    &--active {
+      background-color: $color-white;
+    }
   }
 }
