@@ -23,6 +23,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ productCard }) => {
   const {
+    id,
     name,
     slug,
     category,

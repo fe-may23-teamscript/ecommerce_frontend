@@ -56,7 +56,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
             <ProductsSlider
               title="You may also like"
-              products={hotPriceModels}
+              phones={hotPriceModels}
             />
           </div>
         </div>
