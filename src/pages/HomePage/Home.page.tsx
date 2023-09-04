@@ -4,7 +4,10 @@ import './Home.page.scss';
 import { PicturesSlider } from 'components/PicturesSlider';
 import { ProductsSlider } from 'components/ProductsSlider';
 import { ShopByCategory } from 'components/ShopByCategory';
-import { useGetBrandNewPhonesQuery, useGetHotPricePhonesQuery, } from 'api/phones.api';
+import {
+  useGetBrandNewPhonesQuery,
+  useGetHotPricePhonesQuery,
+} from 'api/phones.api';
 
 const HomePage: FC = () => {
   const newModelResponse = useGetBrandNewPhonesQuery();
@@ -13,7 +16,7 @@ const HomePage: FC = () => {
   useEffect(() => {
     newModelResponse.refetch();
     hotPriceResponse.refetch();
-  }, [newModelResponse.currentData, hotPriceResponse.currentData]);
+  }, [newModelResponse.data, hotPriceResponse.data]);
 
   return (
     <div className="home-page">

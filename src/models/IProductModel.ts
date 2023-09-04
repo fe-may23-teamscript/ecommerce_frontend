@@ -24,4 +24,8 @@ export interface IProductModel {
   zoom: string;
   cell: string[];
   category: string;
+  year: number;
+  mainImage: string;
+  createdAt: string;
+  updatedAt: string;
 }

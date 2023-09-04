@@ -1,3 +1,5 @@
+@import '/src/app/styles/index';
+
 .dropdown {
   position: relative;
   border: 1px solid transparent;
@@ -9,9 +11,14 @@
 
   &-selector {
     padding: 15px;
+    min-width: 136px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include onDesktop {
+      min-width: 176px;
+    }
   }
 
   &-content {
@@ -24,9 +31,10 @@
 
   &-option {
     padding: 10px 15px;
+    background-color: #323542;
 
     &:hover {
-      background: #323542;
+      background-color: #2a2b30;
     }
   }
 }

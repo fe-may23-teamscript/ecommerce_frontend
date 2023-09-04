@@ -12,8 +12,16 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<PropsWithChildren<IButtonProps>> = (props) => {
-  const { className, isClear, square, round, size, children, ...otherProps } =
-    props;
+  const {
+    className,
+    isClear,
+    square,
+    round,
+    size,
+    active,
+    children,
+    ...otherProps
+  } = props;
 
   return (
     <button
@@ -30,6 +38,7 @@ export const Button: FC<PropsWithChildren<IButtonProps>> = (props) => {
         },
         [className],
       )}
+      disabled={active}
       {...otherProps}
     >
       {children}

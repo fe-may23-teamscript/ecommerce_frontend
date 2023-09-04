@@ -29,6 +29,29 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
+  const pagesNumbersElements = getNumbers(1, numbersOfPages).map((page) => (
+    <li
+      className={cn('pagination__item', {
+        'pagination__item--active': page === currentPage,
+      })}
+      key={page}
+    >
+      <Link
+        to={{
+          search: getSearchWith(searchParams, {
+            page: page === 1 ? null : page.toString(),
+          }),
+        }}
+        className={cn('pagination__link', {
+          'pagination__link--active': page === currentPage,
+        })}
+        onClick={() => handlePageChange(page)}
+      >
+        {page}
+      </Link>
+    </li>
+  ));
+
   return (
     <div className="pagination">
       <ul className="pagination__list">
@@ -48,28 +71,12 @@ export const Pagination: React.FC<Props> = ({
           </Link>
         </li>
 
-        {getNumbers(1, numbersOfPages).map((page) => (
-          <li
-            className={cn('pagination__item', {
-              'pagination__item--active': page === currentPage,
-            })}
-            key={page}
-          >
-            <Link
-              to={{
-                search: getSearchWith(searchParams, {
-                  page: page === 1 ? null : page.toString(),
-                }),
-              }}
-              className={cn('pagination__link', {
-                'pagination__link--active': page === currentPage,
-              })}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </Link>
-          </li>
-        ))}
+        {pagesNumbersElements
+          .filter(
+            (item, ind) => ind >= currentPage - 4 && ind <= currentPage + 5,
+          )
+          .slice(0, 7)
+          .map((item) => item)}
 
         <li className="pagination__item">
           <Link
