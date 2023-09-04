@@ -77,6 +77,23 @@
     }
   }
 
+  &__no-items {
+    grid-column: span 4;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 40px;
+    font-size: 16px;
+
+    @include onTablet {
+      grid-column: span 12;
+      font-size: 20px;
+    }
+
+    @include onDesktop {
+      grid-column: span 24;
+    }
+  }
+
   &__count-items {
     font-weight: 600;
     font-size: 14px;
