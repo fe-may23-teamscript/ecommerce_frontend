@@ -46,7 +46,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   }, [windowWidth]);
 
   if (!phones) {
-    return <h1>loading</h1>;
+    return <Loader />;
   }
 
   return (
@@ -93,7 +93,5 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
         ))}
       </div>
     </section>
-  ) : (
-    <Loader />
   );
 };

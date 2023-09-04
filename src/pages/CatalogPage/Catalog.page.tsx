@@ -3,56 +3,29 @@ import { Catalog } from 'components/Catalog/Catalog';
 import CatalogControllers from 'components/CatalogControllers/CatalogControllers';
 import { Loader } from 'components/Loader';
 import { Pagination } from 'components/Pagination';
-import { IProductModel } from 'models/IProductModel';
-import { sortOptions } from 'models/ISortTypes';
-import { useEffect } from 'react';
+// import { IProductModel } from 'models/IProductModel';
+// import { SortOptions } from 'models/ISortTypes';
+import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from 'shared/utils/SearchHelper';
+import { SortOptions } from '../../models/ISortTypes';
+import { useSearchWith } from '../../shared/hooks/useSearchWith';
+// import { useSearchWith } from '../../shared/hooks/useSearchWith';
 
 const CatalogPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const locationPath = useLocation().pathname;
 
-  const sortType = searchParams.get('sortType');
-  const perPage = searchParams.get('perPage') || 12;
-  const currentPage = searchParams.get('page') || 1;
+  // const sortType = searchParams.get('sortType');
+  const limit = searchParams.get('limit') || 12;
+  const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
+  const order = searchParams.get('order') || SortOptions.NewestYear;
 
-  const { data, isLoading, isError, isSuccess, refetch } = useGetPhonesQuery({
-    limit: perPage,
-    offset: (+currentPage - 1) * +perPage || 0,
+  const { data, isLoading, isError, isSuccess } = useGetPhonesQuery({
+    limit: limit,
+    offset: (+currentPage - 1) * +limit || 0,
+    order: order,
   });
-
-  const getPreparedData = ({
-    data,
-    sortType,
-  }: {
-    data: IProductModel[];
-    sortType: string;
-  }) => {
-    const result = [...data];
-
-    switch (sortType) {
-      case sortOptions.high:
-        result.sort(
-          (a: IProductModel, b: IProductModel) =>
-            b.priceDiscount - a.priceDiscount,
-        );
-        break;
-      case sortOptions.low:
-        result.sort(
-          (a: IProductModel, b: IProductModel) =>
-            a.priceDiscount - b.priceDiscount,
-        );
-        break;
-      case sortOptions.old:
-        result.sort((a: IProductModel, b: IProductModel) => a.year - b.year);
-        break;
-      default:
-        result.sort((a: IProductModel, b: IProductModel) => b.year - a.year);
-    }
-
-    return result;
-  };
 
   const getNewPage = (numberOfPage: number) => {
     setSearchParams(getSearchWith(searchParams, { page: `${numberOfPage}` }));
@@ -64,14 +37,14 @@ const CatalogPage: React.FC = () => {
   const handlePerPageChange = (perPage: string) =>
     setSearchParams(getSearchWith(searchParams, { perPage: perPage }));
 
-  useEffect(() => {
-    refetch();
-  }, [locationPath, searchParams]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [locationPath, searchParams]);
 
-  const preparedData = getPreparedData({
-    data: data?.rows || [],
-    sortType: sortType || '',
-  });
+  useEffect(() => {
+    setCurrentPage(1);
+    setSearchParams(useSearchWith(searchParams, { page: '1'}));
+  }, [limit, order]);
 
   return !isLoading && !isError && isSuccess ? (
     <>
@@ -80,12 +53,15 @@ const CatalogPage: React.FC = () => {
         onSortChange={handleSortChange}
         onPerPageChange={handlePerPageChange}
       />
-      <Catalog visibleData={preparedData} />
+      <Catalog visibleData={data?.rows} />
       <Pagination
         total={data.count}
-        perPage={Number(perPage)}
+        perPage={Number(limit)}
         currentPage={+currentPage}
-        onPageChange={(numberOfPage) => getNewPage(numberOfPage)}
+        onPageChange={(numberOfPage) => {
+          setCurrentPage(numberOfPage);
+          getNewPage(numberOfPage);
+        }}
       />
     </>
   ) : (
