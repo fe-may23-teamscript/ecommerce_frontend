@@ -177,31 +177,4 @@
     gap: 8px;
     margin-bottom: 32px;
   }
-
-  &__add-to-cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    background-color: $color-accent;
-    color: $color-white;
-    text-decoration: none;
-    text-align: center;
-
-    @include hover(background-color, $color-accent-hover);
-  }
-
-  &__favorites-icon {
-    width: 48px;
-    height: 48px;
-    background-color: $color-surface2;
-    background-image: url('../../assets/icons/fovorite.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-
-    @include hover(background-color, $color-icons);
-  }
 }
