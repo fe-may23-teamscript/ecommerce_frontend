@@ -42,7 +42,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   if (!phones) {
     return <h1>loading</h1>;
   }
-  phones;
+
   return (
     <section className="page__section cards-slider">
       <div className="products-slider__top">
