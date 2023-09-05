@@ -16,7 +16,7 @@ export const phonesAPI = createApi({
   endpoints: (build) => ({
     getPhones: build.query<IGetPhones, Record<string, number | string>>({
       query: ({ order = 'year:DESC', offset = 0, limit = 12 }) => ({
-        url: 'phones',
+        url: 'products',
         method: 'GET',
         params: {
           order,
@@ -27,25 +27,25 @@ export const phonesAPI = createApi({
     }),
     getHotPricePhones: build.query<IProductModel[], void>({
       query: () => ({
-        url: 'phones/twelve-with-disc',
+        url: 'products/discount',
         method: 'GET',
       }),
     }),
     getBrandNewPhones: build.query<IProductModel[], void>({
       query: () => ({
-        url: 'phones/last-year-phones',
+        url: 'products/new',
         method: 'GET',
       }),
     }),
     getPhoneById: build.query<IProductModel, string>({
       query: (id) => ({
-        url: `phones/${id}`,
+        url: `products/${id}`,
         method: 'GET',
       }),
     }),
     getPhoneBySlug: build.query<IProductModel, string>({
       query: (slug) => ({
-        url: `phones/${slug}`,
+        url: `products/${slug}`,
         method: 'GET',
       }),
     }),

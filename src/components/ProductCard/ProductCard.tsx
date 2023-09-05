@@ -1,9 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
-import imgSrc from 'assets/images/product-card/product-1.png';
 import { IProductModel } from 'models/IProductModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from 'app/providers/store/lib/redux-hooks';
+import { addToCart, getCart } from 'app/providers/store/slices/cart.slice';
+import {
+  addToFavourites,
+  deleteFromFavourites,
+  getFavourites,
+} from 'app/providers/store/slices/favourites.slice';
+import { ReactComponent as Like } from 'assets/icons/fovorite.svg';
+import { ReactComponent as Unlike } from 'assets/icons/unlike.svg';
+import { BASE_URL } from 'shared/utils/constants';
 import { AddToCartButton } from 'components/AddToCartButton';
 import { FavouritesButton } from 'components/FavouritesButton';
 
@@ -21,6 +33,7 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
     screen,
     capacity,
     ram,
+    mainImage,
   } = productCard;
 
   return (
@@ -29,8 +42,8 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
         <div className="card__img-container">
           <img
             className="card__img"
-            src={imgSrc}
-            alt="iPhone"
+            src={`${BASE_URL}${mainImage}`}
+            alt={name}
             width="208px"
             height="196px"
           />

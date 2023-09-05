@@ -33,6 +33,16 @@
     background-color: $color-red;
     border-radius: 50%;
     position: absolute;
+
+    @include onTablet {
+      top: 10px;
+      right: 10px;
+    }
+
+    @include onDesktop {
+      top: 18px;
+      right: 18px;
+    }
     top: 17px;
     right: 17px;
   }

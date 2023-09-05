@@ -50,6 +50,15 @@
     @include gridContainer;
   }
 
+  &__text {
+    font-weight: 600;
+    font-size: 16px;
+
+    @include onTablet {
+      font-size: 20px;
+    }
+  }
+
   &__list {
     grid-column: span 4;
     display: flex;
