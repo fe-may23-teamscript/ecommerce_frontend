@@ -44,7 +44,7 @@ const Cart: React.FC = () => {
           <div className="cart__content">
             <div className="cart__list">
               {totalCount === 0 ? (
-                <p>Your cart is empty</p>
+                <p className="cart__text">Your cart is empty</p>
               ) : (
                 <>
                   {cartItems.map((phone) => {
