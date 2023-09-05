@@ -3,18 +3,6 @@ import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { IProductModel } from 'models/IProductModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from 'app/providers/store/lib/redux-hooks';
-import { addToCart, getCart } from 'app/providers/store/slices/cart.slice';
-import {
-  addToFavourites,
-  deleteFromFavourites,
-  getFavourites,
-} from 'app/providers/store/slices/favourites.slice';
-import { ReactComponent as Like } from 'assets/icons/fovorite.svg';
-import { ReactComponent as Unlike } from 'assets/icons/unlike.svg';
 import { BASE_URL } from 'shared/utils/constants';
 import { AddToCartButton } from 'components/AddToCartButton';
 import { FavouritesButton } from 'components/FavouritesButton';
