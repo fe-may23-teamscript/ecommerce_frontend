@@ -54,6 +54,10 @@ export const Pagination: React.FC<Props> = ({
   ));
 
   const getCorrectPages = (currentPage: number, allPages: JSX.Element[]) => {
+    if (allPages.length < 7) {
+      return allPages.slice(0, 7);
+    }
+
     if (currentPage < 4) {
       return allPages.slice(0, 7);
     }
