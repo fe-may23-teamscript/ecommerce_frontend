@@ -3,11 +3,11 @@ import { Theme, ThemeContext } from './Theme.context';
 import { LOCAL_STORAGE_THEME_KEY } from 'shared/utils/constants';
 
 interface UseThemeResult {
-  toggleTheme: () => void,
-  theme: Theme,
+  toggleTheme: () => void;
+  theme: Theme;
 }
 
-export const useTheme = () : UseThemeResult => {
+export const useTheme = (): UseThemeResult => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleTheme = () => {
