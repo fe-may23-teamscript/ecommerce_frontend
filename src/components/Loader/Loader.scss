@@ -1,21 +1,49 @@
-.loader {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+@import '/src/app/styles/index';
 
-  &__content {
+.lds-ring {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+
+  @include onTablet {
+    width: 80px;
+    height: 80px;
+  }
+
+  & div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    margin: 8px;
+    border: 8px solid $color-accent-hover;
     border-radius: 50%;
-    width: 2em;
-    height: 2em;
-    margin: 1em auto;
-    border: 0.3em solid #ddd;
-    border-left-color: #000;
-    animation: load8 1.2s infinite linear;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: $color-accent-hover transparent transparent transparent;
+
+    @include onTablet {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
   }
 }
 
-@keyframes load8 {
+@keyframes lds-ring {
   0% {
     transform: rotate(0deg);
   }
