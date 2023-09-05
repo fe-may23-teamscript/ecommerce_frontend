@@ -7,6 +7,7 @@ import shoppingBag from 'shared/assets/ShoppingBag-Icon.svg';
 import closeIcon from 'shared/assets/Close.svg';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
+import { getFavourites } from 'app/providers/store/slices/favourites.slice';
 import {
   getBurgerMenuPath,
   getCartPath,
@@ -22,6 +23,7 @@ const Header = () => {
     ? pathname.slice(0, pathname.length - 5)
     : getBurgerMenuPath(pathname);
   const totalCount = useAppSelector(getTotalCount);
+  const favouritesItems = useAppSelector(getFavourites);
 
   return (
     <header className="header" id="header-top">
@@ -47,6 +49,11 @@ const Header = () => {
             alt="header favourites products button"
             className="menu-items__button-right--icon"
           />
+          {favouritesItems.length > 0 && (
+            <span className="menu-items__total-count">
+              {favouritesItems.length}
+            </span>
+          )}
         </NavLink>
         <NavLink
           to={getCartPath()}

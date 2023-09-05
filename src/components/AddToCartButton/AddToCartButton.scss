@@ -1,0 +1,25 @@
+@import 'app/styles/index';
+
+.add-to-cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  background-color: $color-accent;
+  color: $color-white;
+  text-decoration: none;
+  text-align: center;
+
+  @include hover(background-color, $color-accent-hover);
+
+  &:disabled {
+    background: $color-surface2;
+
+    &:hover {
+      background: $color-surface2;
+    }
+  }
+}

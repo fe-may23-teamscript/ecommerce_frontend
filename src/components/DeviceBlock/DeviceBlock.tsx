@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { IProductModel } from 'models/IProductModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
 import './DeviceBlock.scss';
+import { AddToCartButton } from 'components/AddToCartButton';
+import { FavouritesButton } from 'components/FavouritesButton';
 
 type Props = {
   product: IProductModel;
@@ -78,8 +80,8 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
       </p>
 
       <div className="device-block__buy">
-        <button className="device-block__add-to-cart">Add to cart</button>
-        <button className="device-block__favorites-icon"></button>
+        <AddToCartButton product={product} />
+        <FavouritesButton product={product} />
       </div>
 
       <div className="device-block__features">
