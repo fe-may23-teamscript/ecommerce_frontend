@@ -7,6 +7,7 @@ import './app/styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/providers/store/store';
+import ThemeProvider from './app/providers/Theme/ThemeProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter basename={'/ecommerce_frontend'}>
       <Provider store={store}>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
