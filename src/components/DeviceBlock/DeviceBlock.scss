@@ -26,12 +26,16 @@
     gap: 8px;
 
     &-button {
-      width: 32px;
-      height: 32px;
+      width: 26px;
+      height: 26px;
       border: 2px double $color-black;
       outline: 1px solid $color-elements;
       border-radius: 50%;
-      cursor: pointer;
+
+      @include onDesktop {
+        width: 32px;
+        height: 32px;
+      }
 
       &--active {
         outline-color: $color-white;

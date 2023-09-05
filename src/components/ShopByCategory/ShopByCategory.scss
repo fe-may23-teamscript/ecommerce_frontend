@@ -7,6 +7,10 @@
     row-gap: 32px;
   }
 
+  &__title {
+    margin-bottom: 24px;
+  }
+
   &__category {
     grid-column: span 4;
     cursor: pointer;

@@ -77,15 +77,6 @@
     gap: 15px;
     height: 30px;
     order: 4;
-    margin-bottom: 56px;
-
-    @include onTablet {
-      margin-bottom: 80px;
-    }
-
-    @include onDesktop {
-      margin-bottom: 80px;
-    }
   }
 
   &__item-btn {

@@ -13,37 +13,35 @@ const FavouritesPage: React.FC = () => {
 
   return (
     <div className="favourites">
-      <div className="container">
-        <div className="favourites__grid">
-          <div className="favourites__nav">
-            <Link
-              to={getHomePath()}
-              className="favourites__item favourites__item-home"
-            ></Link>
-            <img
-              src={ArrowRight}
-              className="favourites__item favourites__item-arrow-rigth"
-            />
-            <div className="favourites__item favourites__item-page">
-              Favourites
-            </div>
+      <div className="favourites__grid">
+        <div className="favourites__nav">
+          <Link
+            to={getHomePath()}
+            className="favourites__item favourites__item-home"
+          ></Link>
+          <img
+            src={ArrowRight}
+            className="favourites__item favourites__item-arrow-rigth"
+          />
+          <div className="favourites__item favourites__item-page">
+            Favourites
           </div>
-
-          <h2 className="favourites__title">Favourites</h2>
-          <p className="favourites__count-items">{total} items</p>
-
-          {total === 0 ? (
-            <h3 className="favourites__no-items">
-              There is no favourite product added yet
-            </h3>
-          ) : (
-            favouritesItems.map((product) => (
-              <div className="favourites__product" key={product.id}>
-                <ProductCard productCard={product} />
-              </div>
-            ))
-          )}
         </div>
+
+        <h2 className="favourites__title">Favourites</h2>
+        <p className="favourites__count-items">{total} items</p>
+
+        {total === 0 ? (
+          <h3 className="favourites__no-items">
+            There is no favourite product added yet
+          </h3>
+        ) : (
+          favouritesItems.map((product) => (
+            <div className="favourites__product" key={product.id}>
+              <ProductCard productCard={product} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

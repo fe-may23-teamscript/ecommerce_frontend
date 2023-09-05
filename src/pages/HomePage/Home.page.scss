@@ -1,28 +1,18 @@
 @import 'app/styles/mixins';
-@import 'app/styles/container';
 
-.page {
-  &__section {
-    margin-bottom: 56px;
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-bottom: 56px;
 
-    @include onTablet {
-      margin-bottom: 64px;
-    }
-
-    @include onDesktop {
-      margin-bottom: 80px;
-    }
+  @include onTablet {
+    gap: 64px;
+    padding-bottom: 64px;
   }
 
-  &__section-title {
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
-
-    @include onTablet {
-      font-size: 32px;
-    }
+  @include onDesktop {
+    gap: 80px;
+    padding-bottom: 80px;
   }
 }

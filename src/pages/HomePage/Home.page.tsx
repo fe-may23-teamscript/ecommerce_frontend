@@ -19,16 +19,11 @@ const HomePage: FC = () => {
   }, [newModelResponse.data, hotPriceResponse.data]);
 
   return (
-    <div className="home-page">
-      <div className="container">
-        <PicturesSlider />
-        <ProductsSlider
-          title="Brand new models"
-          phones={newModelResponse.data}
-        />
-        <ShopByCategory />
-        <ProductsSlider title="Hot prices" phones={hotPriceResponse.data} />
-      </div>
+    <div className="home">
+      <PicturesSlider />
+      <ProductsSlider title="Brand new models" phones={newModelResponse.data} />
+      <ShopByCategory />
+      <ProductsSlider title="Hot prices" phones={hotPriceResponse.data} />
     </div>
   );
 };

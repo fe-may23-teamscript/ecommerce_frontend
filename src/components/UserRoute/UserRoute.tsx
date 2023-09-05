@@ -37,7 +37,7 @@ const UserRoute: FC<Props> = ({ slug }) => {
             to={getDevicePath(locationPath, slug)}
             className="user-route__path-item"
           >
-            {slug}
+            {slug.split('-').join(' ')}
           </Link>
         </>
       )}
