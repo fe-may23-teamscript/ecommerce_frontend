@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../shared/utils/constants';
 import { IProductModel } from 'models/IProductModel';
 
-interface IGetPhones {
+interface IGetProducts {
   count: number;
   rows: IProductModel[];
 }
@@ -14,7 +14,25 @@ export const phonesAPI = createApi({
   }),
   tagTypes: ['Phone'],
   endpoints: (build) => ({
-    getPhones: build.query<IGetPhones, Record<string, number | string>>({
+    getAllProducts: build.query<IGetProducts, Record<string, number | string>>({
+      query: () => ({
+        url: 'products',
+        method: 'GET',
+      }),
+    }),
+    getProductsByCategory: build.query<
+      IGetProducts,
+      Record<string, number | string>
+    >({
+      query: ({ category = '' }: { category?: string }) => ({
+        url: 'products',
+        method: 'GET',
+        params: {
+          productType: category,
+        },
+      }),
+    }),
+    getPhones: build.query<IGetProducts, Record<string, number | string>>({
       query: ({ order = 'year:DESC', offset = 0, limit = 12 }) => ({
         url: 'products',
         method: 'GET',
@@ -53,6 +71,7 @@ export const phonesAPI = createApi({
 });
 
 export const {
+  useGetProductsByCategoryQuery,
   useGetPhonesQuery,
   useGetHotPricePhonesQuery,
   useGetBrandNewPhonesQuery,

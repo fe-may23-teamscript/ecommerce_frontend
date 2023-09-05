@@ -3,13 +3,13 @@ import './UserRoute.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from 'shared/assets/Home-Icon.svg';
 import { ReactComponent as ChevronIcon } from 'shared/assets/Chevron-Arrow-Right.svg';
-import { getCatalog, getDevicePath } from 'shared/utils/getRoutes';
+import { getCatalog } from 'shared/utils/getRoutes';
 
 interface Props {
-  slug?: string;
+  name?: string;
 }
 
-const UserRoute: FC<Props> = ({ slug }) => {
+const UserRoute: FC<Props> = ({ name }) => {
   const locationPath = useLocation()
     .pathname.split('/')
     .filter((el) => el !== 'catalog' && el.length)[0];
@@ -22,23 +22,15 @@ const UserRoute: FC<Props> = ({ slug }) => {
       {locationPath && (
         <>
           <ChevronIcon />
-          <Link
-            to={'/' + getCatalog(locationPath)}
-            className="user-route__path-item"
-          >
+          <Link to={'/' + getCatalog(locationPath)} className="uppercase">
             {locationPath}
           </Link>
         </>
       )}
-      {slug && (
+      {name && (
         <>
           <ChevronIcon />
-          <Link
-            to={getDevicePath(locationPath, slug)}
-            className="user-route__path-item"
-          >
-            {slug.split('-').join(' ')}
-          </Link>
+          <span className="user-route__path-item uppercase">{name}</span>
         </>
       )}
     </div>
