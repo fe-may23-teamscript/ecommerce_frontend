@@ -1,5 +1,4 @@
 @import 'app/styles/mixins';
-@import 'app/styles/container';
 
 .cart {
   padding-top: 24px;
@@ -31,10 +30,12 @@
   }
 
   &__link {
-    align-items: center;
-    height: min-content;
+    display: block;
+    color: $color-white;
+    background-color: transparent;
     font-weight: 700;
     line-height: 15px;
+    margin-top: 24px;
 
     &::before {
       content: '';

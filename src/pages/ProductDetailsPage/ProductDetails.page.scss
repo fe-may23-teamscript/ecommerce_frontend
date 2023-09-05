@@ -1,5 +1,4 @@
 @import 'app/styles/mixins';
-@import 'app/styles/container';
 
 .product-details {
   margin-top: 24px;
@@ -15,6 +14,8 @@
 
   &__link {
     display: block;
+    color: $color-white;
+    background-color: transparent;
     font-weight: 700;
     line-height: 15px;
     margin-top: 24px;

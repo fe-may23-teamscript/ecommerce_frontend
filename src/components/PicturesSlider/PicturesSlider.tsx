@@ -38,9 +38,7 @@ export const PicturesSlider: React.FC = () => {
 
   return (
     <div className="carousel">
-      <h1 className="page__section-title carousel__title">
-        Welcome to Nice Gadgets store!
-      </h1>
+      <h1 className="carousel__title">Welcome to Nice Gadgets store!</h1>
       <div className="carousel__box">
         <div className="carousel__row">
           {images.map((image, index) => (

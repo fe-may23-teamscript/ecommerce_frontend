@@ -26,7 +26,6 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
     processor,
     ram,
   } = product;
-
   const category = pathname.split('/').splice(-2, 1).join('');
 
   return (

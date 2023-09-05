@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import './ProductDetails.page.scss';
-import { getHomePath } from 'shared/utils/getRoutes';
 import { ProductsSlider } from 'components/ProductsSlider';
 import { About } from 'components/About';
 import { TechSpecs } from 'components/TechSpecs';
 import { DeviceBlock } from 'components/DeviceBlock';
 import { PhoneImageSlider } from 'components/PhoneImageSlider';
+import { Loader } from 'components/Loader';
 import {
   useGetPhoneBySlugQuery,
   useGetHotPricePhonesQuery,
@@ -17,10 +17,11 @@ import UserRoute from 'components/UserRoute/UserRoute';
 const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<IProductModel | null>(null);
   const [hotPriceModels, setHotPriceModels] = useState<IProductModel[]>([]);
-  const { pathname } = useLocation();
+  const pathname = useLocation().pathname;
   const slug = useParams().slug || '';
   const productResponse = useGetPhoneBySlugQuery(slug);
   const hotPriceResponse = useGetHotPricePhonesQuery();
+  const navigate = useNavigate();
 
   useEffect(() => {
     productResponse.refetch();
@@ -35,32 +36,30 @@ const ProductDetailsPage: React.FC = () => {
     }
   }, [productResponse.currentData, hotPriceResponse.currentData]);
 
+  if (!product) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {product && (
-        <div className="product-details">
-          <div className="container">
-            <UserRoute slug={product.slug} />
-            <Link to={getHomePath()} className="product-details__link">
-              Back
-            </Link>
-            <h2 className="product-details__title">{product.name}</h2>
-            <div className="product-details__info">
-              <PhoneImageSlider images={product.images} alt={product.name} />
-              <DeviceBlock product={product} pathname={pathname} />
-              <span className="product-details__id">
-                ID: {product.id.toString().padStart(4, '0')}
-              </span>
-            </div>
-            <div className="product-details__info">
-              <About productDescription={product.description} />
-              <TechSpecs productInfo={product} />
-            </div>
-            <ProductsSlider title="You may also like" phones={hotPriceModels} />
-          </div>
-        </div>
-      )}
-    </>
+    <div className="product-details">
+      <UserRoute slug={product.slug} />
+      <button className="product-details__link" onClick={() => navigate(-1)}>
+        Back
+      </button>
+      <h2 className="product-details__title">{product.name}</h2>
+      <div className="product-details__info">
+        <PhoneImageSlider images={product.images} alt={product.name} />
+        <DeviceBlock product={product} pathname={pathname} />
+        <span className="product-details__id">
+          ID: {product.id.toString().padStart(4, '0')}
+        </span>
+      </div>
+      <div className="product-details__info">
+        <About productDescription={product.description} />
+        <TechSpecs productInfo={product} />
+      </div>
+      <ProductsSlider title="You may also like" phones={hotPriceModels} />
+    </div>
   );
 };
 

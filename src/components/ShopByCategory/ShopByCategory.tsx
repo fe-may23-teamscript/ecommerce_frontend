@@ -31,10 +31,8 @@ export const ShopByCategory: React.FC = () => {
   ];
 
   return (
-    <div className="page__section shop-by-category">
-      <h2 className="page__section-title shop-by-category__title">
-        Shop by category
-      </h2>
+    <div className="shop-by-category">
+      <h2 className="shop-by-category__title">Shop by category</h2>
       <div className="shop-by-category__content">
         {categories.map((item) => (
           <div key={item.title} className="shop-by-category__category">

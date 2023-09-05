@@ -50,9 +50,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
   }
 
   return (
-    <section className="page__section cards-slider">
+    <section className="cards-slider">
       <div className="products-slider__top">
-        <h2 className="page__section-title products-slider__title">{title}</h2>
+        <h2 className="products-slider__title">{title}</h2>
         <div className="products-slider__buttons">
           <Button
             square={true}
