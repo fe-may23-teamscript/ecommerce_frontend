@@ -45,7 +45,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
     };
   }, [windowWidth]);
 
-  return phones ? (
+  if (!phones) {
+    return <Loader />;
+  }
+
+  return (
     <section className="page__section cards-slider">
       <div className="products-slider__top">
         <h2 className="page__section-title products-slider__title">{title}</h2>
@@ -89,7 +93,5 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
         ))}
       </div>
     </section>
-  ) : (
-    <Loader />
   );
 };

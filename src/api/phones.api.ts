@@ -15,11 +15,11 @@ export const phonesAPI = createApi({
   tagTypes: ['Phone'],
   endpoints: (build) => ({
     getPhones: build.query<IGetPhones, Record<string, number | string>>({
-      query: ({ sortType = 'ASC', offset = 0, limit = 12 }) => ({
+      query: ({ order = 'year:DESC', offset = 0, limit = 12 }) => ({
         url: 'phones',
         method: 'GET',
         params: {
-          sortType,
+          order,
           offset,
           limit,
         },
