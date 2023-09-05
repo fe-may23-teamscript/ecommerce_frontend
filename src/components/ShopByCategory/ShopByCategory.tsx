@@ -1,31 +1,44 @@
-import React from 'react';
+import { useEffect, FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ShopByCategory.scss';
-import phones from 'assets/images/shop-by-category/mobile_phones.jpg';
-import tablets from 'assets/images/shop-by-category/tablets.jpg';
-import accessories from 'assets/images/shop-by-category/accessories.jpg';
+import phonesImage from 'assets/images/shop-by-category/mobile_phones.jpg';
+import tabletsImage from 'assets/images/shop-by-category/tablets.jpg';
+import accessoriesImage from 'assets/images/shop-by-category/accessories.jpg';
 import { getCatalog } from 'shared/utils/getRoutes';
+import { useGetProductsByCategoryQuery } from 'api/phones.api';
 
-export const ShopByCategory: React.FC = () => {
+export const ShopByCategory: FC = () => {
   const navigate = useNavigate();
+
+  const phones = useGetProductsByCategoryQuery({ category: 'phones' });
+  const tablets = useGetProductsByCategoryQuery({ category: 'tablets' });
+  const accessories = useGetProductsByCategoryQuery({
+    category: 'accessories',
+  });
+
+  useEffect(() => {
+    phones.refetch();
+    tablets.refetch();
+    accessories.refetch();
+  }, [phones.currentData, tablets.data, accessories.data]);
 
   const categories = [
     {
       title: 'Mobile phones',
-      image: phones,
-      models: 95,
+      image: phonesImage,
+      models: phones.data?.count,
       path: 'phones',
     },
     {
       title: 'Tablets',
-      image: tablets,
-      models: 24,
+      image: tabletsImage,
+      models: tablets.data?.count,
       path: 'tablets',
     },
     {
       title: 'Accessories',
-      image: accessories,
-      models: 100,
+      image: accessoriesImage,
+      models: accessories.data?.count,
       path: 'accessories',
     },
   ];

@@ -3,20 +3,16 @@ import { Catalog } from 'components/Catalog/Catalog';
 import CatalogControllers from 'components/CatalogControllers/CatalogControllers';
 import { Loader } from 'components/Loader';
 import { Pagination } from 'components/Pagination';
-// import { IProductModel } from 'models/IProductModel';
-// import { SortOptions } from 'models/ISortTypes';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from 'shared/utils/SearchHelper';
 import { SortOptions } from '../../models/ISortTypes';
 import { useSearchWith } from '../../shared/hooks/useSearchWith';
-// import { useSearchWith } from '../../shared/hooks/useSearchWith';
 
 const CatalogPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const locationPath = useLocation().pathname;
 
-  // const sortType = searchParams.get('sortType');
   const limit = searchParams.get('limit') || 12;
   const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
   const order = searchParams.get('order') || SortOptions.NewestYear;
@@ -27,19 +23,8 @@ const CatalogPage: React.FC = () => {
     order: order,
   });
 
-  const getNewPage = (numberOfPage: number) => {
+  const getNewPage = (numberOfPage: number) =>
     setSearchParams(getSearchWith(searchParams, { page: `${numberOfPage}` }));
-  };
-
-  const handleSortChange = (sortType: string) =>
-    setSearchParams(getSearchWith(searchParams, { sortType: sortType }));
-
-  const handlePerPageChange = (perPage: string) =>
-    setSearchParams(getSearchWith(searchParams, { perPage: perPage }));
-
-  // useEffect(() => {
-  //   refetch();
-  // }, [locationPath, searchParams]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -48,11 +33,7 @@ const CatalogPage: React.FC = () => {
 
   return !isLoading && !isError && isSuccess ? (
     <>
-      <CatalogControllers
-        key={locationPath}
-        onSortChange={handleSortChange}
-        onPerPageChange={handlePerPageChange}
-      />
+      <CatalogControllers key={locationPath} />
       <Catalog visibleData={data?.rows} />
       <Pagination
         total={data.count}

@@ -1,10 +1,13 @@
+@import '/src/app/styles/index';
+
 .user-route {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
+  text-transform: capitalize;
 
   &__path-item {
-    text-transform: capitalize;
+    color: $color-secondary;
   }
 }
