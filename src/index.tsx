@@ -7,6 +7,7 @@ import './app/styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/providers/store/store';
+import ErrorBoundary from './app/providers/ErrorBoundary/ErrorBoundary';
 import ThemeProvider from './app/providers/Theme/ThemeProvider';
 
 const root = ReactDOM.createRoot(
@@ -16,9 +17,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter basename={'/ecommerce_frontend'}>
       <Provider store={store}>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ErrorBoundary>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
