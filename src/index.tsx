@@ -4,7 +4,7 @@ import './app/styles/reset.scss';
 import App from './app/App';
 import reportWebVitals from './app/types/reportWebVitals';
 import './app/styles/index.scss';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/providers/store/store';
 import ErrorBoundary from './app/providers/ErrorBoundary/ErrorBoundary';
@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={'/ecommerce_frontend'}>
+    <HashRouter>
       <Provider store={store}>
         <ErrorBoundary>
           <ThemeProvider>
@@ -23,7 +23,7 @@ root.render(
           </ThemeProvider>
         </ErrorBoundary>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
 );
 
