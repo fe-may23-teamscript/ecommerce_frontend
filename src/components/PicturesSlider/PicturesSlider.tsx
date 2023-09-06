@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import './PicturesSlider.scss';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import arrowRigth from '../../assets/icons/arrow-right.svg';
@@ -46,7 +46,7 @@ export const PicturesSlider: React.FC = () => {
               src={image}
               alt={image}
               key={image}
-              className={classNames('carousel__img', {
+              className={cn('carousel__img', {
                 'carousel__img--active': activeIndex === index,
               })}
             />
@@ -73,7 +73,7 @@ export const PicturesSlider: React.FC = () => {
             type="button"
             aria-label="pagination-item"
             key={image}
-            className={classNames('carousel__item-btn', {
+            className={cn('carousel__item-btn', {
               'carousel__item-btn--active': activeIndex === index,
             })}
             onClick={() => handlePagination(index)}

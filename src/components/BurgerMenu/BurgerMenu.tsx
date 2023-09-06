@@ -7,11 +7,16 @@ import {
   getFavouritesPath,
   getHomePath,
 } from 'shared/utils/getRoutes';
+import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
+import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
+import { getFavourites } from 'app/providers/store/slices/favourites.slice';
 
 const navBar = ['phones', 'tablets', 'accessories'];
 
 export const BurgerMenu: React.FC = () => {
   const { pathname } = useLocation();
+  const totalCount = useAppSelector(getTotalCount);
+  const favouritesItems = useAppSelector(getFavourites);
 
   return (
     <aside className="menu">
@@ -35,8 +40,7 @@ export const BurgerMenu: React.FC = () => {
                 relative="path"
                 key={navItemName}
                 className={cn('nav__link', {
-                  'nav__link--active':
-                    pathname === `/catalog/${navItemName}/menu`,
+                  'nav__link--active': pathname.includes(navItemName),
                 })}
               >
                 {navItemName}
@@ -51,13 +55,28 @@ export const BurgerMenu: React.FC = () => {
           className={cn('menu__link menu__link--favourite', {
             'menu__link--active': pathname.includes('favourites'),
           })}
-        />
+        >
+          <div className="menu__count-wrapper">
+            {favouritesItems.length > 0 && (
+              <span className="menu__total-count menu__total-count--favourites">
+                {favouritesItems.length}
+              </span>
+            )}
+          </div>
+        </Link>
+
         <Link
           to={`/${getCartPath()}`}
           className={cn('menu__link menu__link--shopping-bag', {
             'menu__link--active': pathname.includes('cart'),
           })}
-        />
+        >
+          <div className="menu__count-wrapper">
+            {totalCount > 0 && (
+              <span className="menu__total-count">{totalCount}</span>
+            )}
+          </div>
+        </Link>
       </div>
     </aside>
   );

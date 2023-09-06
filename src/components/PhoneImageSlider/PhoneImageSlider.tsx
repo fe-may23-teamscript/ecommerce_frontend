@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import './PhoneImageSlider.scss';
 import { BASE_URL } from 'shared/utils/constants';
 
@@ -23,7 +23,7 @@ export const PhoneImageSlider: React.FC<Props> = ({ images, alt }) => {
             key={image}
             aria-label="image"
             type="button"
-            className={classNames('phone-slider__button', {
+            className={cn('phone-slider__button', {
               'phone-slider__button--active': selected === image,
             })}
             onClick={() => setSelected(image)}
