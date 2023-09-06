@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import cn from 'classnames';
 import './Pagination.scss';
@@ -52,6 +53,22 @@ export const Pagination: React.FC<Props> = ({
     </li>
   ));
 
+  const getCorrectPages = (currentPage: number, allPages: JSX.Element[]) => {
+    if (allPages.length < 7) {
+      return allPages.slice(0, 7);
+    }
+
+    if (currentPage < 4) {
+      return allPages.slice(0, 7);
+    }
+
+    if (currentPage > allPages.length - 4) {
+      return allPages.slice(allPages.length - 7);
+    }
+
+    return allPages.slice(currentPage - 4, currentPage + 3);
+  };
+
   return (
     <div className="pagination">
       <ul className="pagination__list">
@@ -71,12 +88,7 @@ export const Pagination: React.FC<Props> = ({
           </Link>
         </li>
 
-        {pagesNumbersElements
-          .filter(
-            (item, ind) => ind >= currentPage - 4 && ind <= currentPage + 5,
-          )
-          .slice(0, 7)
-          .map((item) => item)}
+        {getCorrectPages(currentPage, pagesNumbersElements).map((item) => item)}
 
         <li className="pagination__item">
           <Link

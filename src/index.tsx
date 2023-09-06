@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/providers/store/store';
 import ErrorBoundary from './app/providers/ErrorBoundary/ErrorBoundary';
+import ThemeProvider from './app/providers/Theme/ThemeProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter basename={'/ecommerce_frontend'}>
       <Provider store={store}>
         <ErrorBoundary>
-          <App />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
         </ErrorBoundary>
       </Provider>
     </BrowserRouter>

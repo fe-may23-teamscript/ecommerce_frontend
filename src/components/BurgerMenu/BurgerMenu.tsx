@@ -35,7 +35,8 @@ export const BurgerMenu: React.FC = () => {
                 relative="path"
                 key={navItemName}
                 className={cn('nav__link', {
-                  'nav__link--active': pathname.includes(navItemName),
+                  'nav__link--active':
+                    pathname === `/catalog/${navItemName}/menu`,
                 })}
               >
                 {navItemName}

@@ -42,7 +42,7 @@ const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className="product-details">
-      <UserRoute slug={product.slug} />
+      <UserRoute name={product.name} />
       <button className="product-details__link" onClick={() => navigate(-1)}>
         Back
       </button>

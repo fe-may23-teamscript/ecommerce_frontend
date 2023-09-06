@@ -49,15 +49,7 @@ export const routerConfig: RouteObject[] = [
     element: <MenuPage />,
   },
   {
-    path: getBurgerMenuPath('catalog/phones'),
-    element: <MenuPage />,
-  },
-  {
-    path: getBurgerMenuPath('catalog/tablets'),
-    element: <MenuPage />,
-  },
-  {
-    path: getBurgerMenuPath('catalog/accessories'),
+    path: getBurgerMenuPath('catalog/:category'),
     element: <MenuPage />,
   },
   {
@@ -66,6 +58,10 @@ export const routerConfig: RouteObject[] = [
   },
   {
     path: getBurgerMenuPath('cart'),
+    element: <MenuPage />,
+  },
+  {
+    path: getBurgerMenuPath('/catalog/:category/:slug'),
     element: <MenuPage />,
   },
   {
