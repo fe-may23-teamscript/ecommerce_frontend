@@ -29,9 +29,11 @@
     order: 2;
     overflow: hidden;
     margin-inline: -16px;
+    max-height: 320px;
 
     @include onTablet {
       margin-inline: 0;
+      max-height: 400px;
     }
   }
 

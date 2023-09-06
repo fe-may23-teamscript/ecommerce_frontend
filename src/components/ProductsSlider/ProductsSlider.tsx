@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import './ProductsSlider.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
 import { IProductModel } from 'models/IProductModel';
@@ -57,7 +57,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
           <Button
             square={true}
             size="small"
-            className={classNames(
+            className={cn(
               'products-slider__button products-slider__button--left',
               { 'products-slider__button--left--disabled': start <= 0 },
             )}
@@ -71,7 +71,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
           <Button
             square={true}
             size="small"
-            className={classNames(
+            className={cn(
               'products-slider__button products-slider__button--right',
               {
                 'products-slider__button--right--disabled':

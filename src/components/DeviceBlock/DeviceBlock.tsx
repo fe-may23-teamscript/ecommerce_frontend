@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { IProductModel } from 'models/IProductModel';
 import { getDevicePath } from 'shared/utils/getRoutes';
@@ -38,7 +38,7 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
               category,
               slug.replace(color, currentColor),
             )}`}
-            className={classNames(
+            className={cn(
               'device-block__color-button',
               `device-block__color-button--${currentColor}`,
               {
@@ -61,7 +61,7 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
                 currentCapacity.toLocaleLowerCase(),
               ),
             )}`}
-            className={classNames('device-block__capacity-button', {
+            className={cn('device-block__capacity-button', {
               'device-block__capacity-button--active':
                 currentCapacity === capacity,
             })}
