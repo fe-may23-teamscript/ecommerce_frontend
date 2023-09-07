@@ -1,4 +1,4 @@
-.devBlock {
+.dev-block {
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
   gap: 20px;
 }
 
-.imageBlock {
+.image-block {
   height: 300px;
 
   img {
@@ -22,7 +22,7 @@
   gap: 20px;
 }
 
-.goHome {
+.go-home {
   display: flex;
   gap: 5px;
   align-items: center;

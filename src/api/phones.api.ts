@@ -24,7 +24,7 @@ export const phonesAPI = createApi({
       IGetProducts,
       Record<string, number | string>
     >({
-      query: ({ category = '' }: { category?: string }) => ({
+      query: ({ category = '' }) => ({
         url: 'products',
         method: 'GET',
         params: {
@@ -67,10 +67,24 @@ export const phonesAPI = createApi({
         method: 'GET',
       }),
     }),
+    getProductsBySearch: build.query<
+      IGetProducts,
+      Record<string, null | string>
+    >({
+      query: ({ query }) => ({
+        url: 'products',
+        method: 'GET',
+        params: {
+          searchQuery: query,
+          limit: 6,
+        },
+      }),
+    }),
   }),
 });
 
 export const {
+  useGetProductsBySearchQuery,
   useGetProductsByCategoryQuery,
   useGetPhonesQuery,
   useGetHotPricePhonesQuery,

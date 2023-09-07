@@ -1,7 +1,7 @@
 @import 'app/styles/index';
 
 .theme-switcher {
-  padding-inline: 24px;
+  padding-inline: 12px;
 }
 
 .switch {
@@ -43,6 +43,6 @@ input:checked + .switch {
   background: $color-white;
 }
 
-input {
+#switch {
   display: none;
 }

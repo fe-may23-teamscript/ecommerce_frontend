@@ -1,0 +1,103 @@
+@import '/src/app/styles/index';
+
+.search {
+  &__wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__container {
+    background-color: var(--color-main-text);
+    border: none;
+    width: 208px;
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+
+    @include onDesktop {
+      width: 272px;
+      height: 40px;
+    }
+  }
+
+  &__icon {
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-main-text);
+  }
+
+  &__field {
+    background-color: transparent;
+    color: var(--color-icons);
+    text-justify: center;
+    height: 100%;
+    font-size: 12px;
+
+    @include onTablet {
+      font-size: 16px;
+    }
+
+    @include onDesktop {
+      font-size: 18px;
+    }
+  }
+
+  &__results {
+    position: absolute;
+    z-index: 1;
+    top: 38px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid $color-elements;
+    border-right: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
+    background-color: $color-black;
+
+    @include onDesktop {
+      top: 52px;
+    }
+  }
+
+  &__results-item {
+    box-sizing: border-box;
+    padding: 8px 0;
+    height: 80px;
+    width: 310px;
+    color: $color-white;
+    border: 1px solid $color-elements;
+    background-color: $color-black;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    font-size: 12px;
+
+    @include onTablet {
+      width: 278px;
+    }
+
+    @include onTabletExtended {
+      width: 342px;
+    }
+
+    @include onDesktop {
+      width: 410px;
+    }
+  }
+
+  &__results-photo {
+    height: 100%;
+    background-color: $color-white;
+    margin: 8px;
+  }
+}
+
+#search-icon {
+  color: var(--color-icons);
+}
