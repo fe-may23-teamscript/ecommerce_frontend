@@ -34,10 +34,12 @@
     text-decoration: none;
     box-sizing: border-box;
     text-align: center;
+
     @include hover(color, var(--color-main-text));
 
     &--active {
       color: var(--color-main-text);
+
       &::after {
         content: attr(div);
         position: absolute;

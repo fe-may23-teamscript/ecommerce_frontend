@@ -2,7 +2,6 @@
 
 .dropdown {
   position: relative;
-  border: 1px solid transparent;
   background: var(--color-bg);
   border: 1px solid $color-elements;
   z-index: 2;
@@ -36,6 +35,7 @@
       color: var(--color-main-text);
     }
   }
+
   &-icon {
     fill: var(--color-main-text);
   }
