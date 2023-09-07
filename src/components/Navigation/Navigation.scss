@@ -10,10 +10,6 @@
   line-height: 11px;
   letter-spacing: 0.48px;
 
-  @include onTablet {
-    display: flex;
-  }
-
   &__logo {
     margin: 0 16px;
     box-sizing: border-box;
@@ -28,8 +24,8 @@
   &__item {
     position: relative;
     display: none;
-    margin: 0 16px;
-    color: $color-secondary;
+    margin: 0 12px;
+    color: var(--color-main-text);
     text-transform: uppercase;
     text-decoration: none;
     box-sizing: border-box;
@@ -51,7 +47,7 @@
       }
     }
 
-    @include onTablet {
+    @include onTabletExtended {
       display: block;
       padding: 16px 0;
     }

@@ -19,6 +19,7 @@ import {
 } from 'shared/utils/getRoutes';
 import cn from 'classnames';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
+import SearchBar from 'components/SearchBar/SearchBar';
 import { Login } from 'components/Login';
 
 type Props = {
@@ -40,9 +41,16 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
   return (
     <header className="header" id="header-top">
       <Navigation />
+      <SearchBar />
       <div className="menu-items">
         <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
-
+        <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
+          {isMenuOpened ? (
+            <Close className="menu-items__button-right--icon" />
+          ) : (
+            <BurgerMenu className="menu-items__button-right--icon" />
+          )}
+        </NavLink>
         <NavLink
           to={getFavouritesPath()}
           className={({ isActive }) =>
@@ -89,13 +97,6 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
           )}
         </NavLink>
         {showModal && <Login setShowModal={setShowModal} />}
-        <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
-          {isMenuOpened ? (
-            <Close className="menu-items__button-right--icon" />
-          ) : (
-            <BurgerMenu className="menu-items__button-right--icon" />
-          )}
-        </NavLink>
       </div>
     </header>
   );

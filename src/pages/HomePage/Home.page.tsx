@@ -16,6 +16,8 @@ const HomePage: FC = () => {
   useEffect(() => {
     newModelResponse.refetch();
     hotPriceResponse.refetch();
+
+    console.log(hotPriceResponse.data);
   }, [newModelResponse.data, hotPriceResponse.data]);
 
   return (

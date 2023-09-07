@@ -9,7 +9,7 @@
   letter-spacing: 0.48px;
   background-color: var(--color-bg);
 
-  @include onTablet {
+  @include onTabletExtended {
     display: none;
   }
 

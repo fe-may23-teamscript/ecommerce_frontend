@@ -5,7 +5,6 @@ import { Loader } from 'components/Loader';
 import { Pagination } from 'components/Pagination';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { getSearchWith } from 'shared/utils/SearchHelper';
 import { SortOptions } from '../../models/ISortTypes';
 import { useSearchWith } from '../../shared/hooks/useSearchWith';
 
@@ -29,7 +28,7 @@ const CatalogPage: React.FC = () => {
   );
 
   const getNewPage = (numberOfPage: number) =>
-    setSearchParams(getSearchWith(searchParams, { page: `${numberOfPage}` }));
+    setSearchParams(useSearchWith(searchParams, { page: `${numberOfPage}` }));
 
   useEffect(() => {
     setCurrentPage(1);

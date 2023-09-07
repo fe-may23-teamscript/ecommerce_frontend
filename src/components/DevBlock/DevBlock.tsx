@@ -6,15 +6,15 @@ import techWorks from 'shared/assets/techWorks.png';
 
 const DevBlock = () => {
   return (
-    <div className="devBlock">
+    <div className="dev-block">
       <div className="title">This Page Is Being Developed Right Now</div>
 
-      <div className="imageBlock">
+      <div className="image-block">
         <img src={techWorks} alt="technical works" />
       </div>
 
-      <Link to={'/'} className="goHome">
-        <HomeIcon className="goHome__icon" />
+      <Link to={'/'} className="go-home">
+        <HomeIcon className="go-home__icon" />
         Go Home
       </Link>
     </div>

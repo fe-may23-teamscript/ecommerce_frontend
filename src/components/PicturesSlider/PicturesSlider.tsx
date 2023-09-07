@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import './PicturesSlider.scss';
 import { ReactComponent as ArrowLeft } from '../../assets/icons/arrow-left.svg';
@@ -7,6 +8,7 @@ import banner1 from 'assets/images/pictures-slider/banner-1.png';
 import banner2 from 'assets/images/pictures-slider/banner-2.png';
 import banner3 from 'assets/images/pictures-slider/banner-3.png';
 import banner4 from 'assets/images/pictures-slider/banner-4.png';
+import { getCatalog } from 'shared/utils/getRoutes';
 
 const images = [banner1, banner2, banner3, banner4];
 
@@ -42,14 +44,15 @@ export const PicturesSlider: React.FC = () => {
       <div className="carousel__box">
         <div className="carousel__row">
           {images.map((image, index) => (
-            <img
-              src={image}
-              alt={image}
-              key={image}
+            <Link
+              key={index}
+              to={getCatalog('phones')}
               className={cn('carousel__img', {
                 'carousel__img--active': activeIndex === index,
               })}
-            />
+            >
+              <img src={image} alt={image} key={image} />
+            </Link>
           ))}
         </div>
         <button
