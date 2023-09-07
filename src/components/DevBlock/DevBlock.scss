@@ -26,4 +26,8 @@
   display: flex;
   gap: 5px;
   align-items: center;
+
+  &__icon {
+    fill: var(--color-main-text);
+  }
 }

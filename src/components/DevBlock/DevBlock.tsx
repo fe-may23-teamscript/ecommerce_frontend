@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as HomeIcon } from 'shared/assets/Home-Icon.svg';
+import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
 import './DevBlock.scss';
 import techWorks from 'shared/assets/techWorks.png';
 
@@ -19,7 +19,7 @@ const DevBlock = () => {
         to={'/'}
         className="goHome"
       >
-        <HomeIcon/>
+        <HomeIcon className="goHome__icon"/>
         Go Home
       </Link>
 
