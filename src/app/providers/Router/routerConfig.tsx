@@ -10,10 +10,11 @@ import {
   getCatalog,
   getFavouritesPath,
   getHomePath,
+  getProfilePath,
 } from 'shared/utils/getRoutes';
 import { MenuPage } from 'pages/MenuPage';
 import { ProductDetailsPage } from 'pages/ProductDetailsPage';
-import DevelopPage from '../../../pages/DevelopPage/DevelopPage';
+import { ProfilePage } from 'pages/ProfilePage';
 
 export const routerConfig: RouteObject[] = [
   {
@@ -27,11 +28,11 @@ export const routerConfig: RouteObject[] = [
   },
   {
     path: getCatalog('tablets'),
-    element: <DevelopPage />,
+    element: <CatalogPage />,
   },
   {
     path: getCatalog('accessories'),
-    element: <DevelopPage />,
+    element: <CatalogPage />,
   },
   {
     path: 'catalog/:category/:slug',
@@ -64,6 +65,10 @@ export const routerConfig: RouteObject[] = [
   {
     path: getBurgerMenuPath('/catalog/:category/:slug'),
     element: <MenuPage />,
+  },
+  {
+    path: getProfilePath(),
+    element: <ProfilePage />,
   },
   {
     path: '*',
