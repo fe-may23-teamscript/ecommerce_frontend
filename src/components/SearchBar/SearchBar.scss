@@ -10,15 +10,24 @@
   }
 
   &__container {
-    background-color: var(--color-main-text);
+    background-color: var(--color-bg);
     border: none;
-    width: 208px;
+    width: 88px;
     height: 28px;
+    border: 1px solid;
     border-radius: 4px;
     display: flex;
     align-items: center;
     padding: 4px 6px;
 
+    @include onTablet {
+      width: 256px;
+      height: 40px;
+    }
+    @include onDesktop {
+      width: 272px;
+      height: 40px;
+    }
     @include onDesktop {
       width: 272px;
       height: 40px;
@@ -35,7 +44,7 @@
 
   &__field {
     background-color: transparent;
-    color: var(--color-icons);
+    color: var(--color-elements);
     text-justify: center;
     height: 100%;
     font-size: 12px;
@@ -70,9 +79,9 @@
     padding: 8px 0;
     height: 80px;
     width: 310px;
-    color: $color-white;
+    color: var(--color-elements);
     border: 1px solid $color-elements;
-    background-color: $color-black;
+    background-color: var(--color-bg);
     display: flex;
     overflow: hidden;
     align-items: center;
@@ -99,5 +108,5 @@
 }
 
 #search-icon {
-  color: var(--color-icons);
+  color: var(--color-elements);
 }
