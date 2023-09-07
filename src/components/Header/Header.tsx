@@ -2,11 +2,11 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import './Header.scss';
-import menuBurger from 'shared/assets/MenuBurger-Icon.svg';
-import favourites from 'shared/assets/Favourites-Icon.svg';
-import shoppingBag from 'shared/assets/ShoppingBag-Icon.svg';
-import closeIcon from 'shared/assets/Close.svg';
-import userIcon from 'shared/assets/User-Icon.svg';
+import { ReactComponent as Like } from 'assets/icons/favourite.svg';
+import { ReactComponent as Cart } from 'assets/icons/cart.svg';
+import { ReactComponent as Close } from 'assets/icons/close.svg';
+import { ReactComponent as BurgerMenu } from 'assets/icons/menuBurger.svg';
+import { ReactComponent as User } from 'assert/icons/user.svg';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
@@ -27,7 +27,7 @@ type Props = {
 const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
   const { pathname } = useLocation();
   const isMenuOpened = pathname.includes('menu');
-  const icon = isMenuOpened ? closeIcon : menuBurger;
+  // const icon = isMenuOpened ? closeIcon : menuBurger;
   const getPath = isMenuOpened
     ? pathname.slice(0, pathname.length - 5)
     : getBurgerMenuPath(pathname);
@@ -48,11 +48,7 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             })
           }
         >
-          <img
-            src={favourites}
-            alt="header favourites products button"
-            className="menu-items__button-right--icon"
-          />
+          <Like className="menu-items__button-right--icon" />
           {favouritesItems.length > 0 && (
             <span className="menu-items__total-count">
               {favouritesItems.length}
@@ -67,11 +63,7 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             })
           }
         >
-          <img
-            src={shoppingBag}
-            alt="header shopping bag button"
-            className="menu-items__button-right--icon"
-          />
+          <Cart className="menu-items__button-right--icon" />
           {totalCount > 0 && (
             <span className="menu-items__total-count">{totalCount}</span>
           )}
@@ -84,18 +76,14 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             })
           }
         >
-          <img
-            src={userIcon}
-            alt="menu-items__button-right--icon"
-            className="menu-items__button-right--icon"
-          />
+          <User className="menu-items__button-right--icon" />
         </NavLink>
         <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
-          <img
-            src={icon}
-            alt="menu-items__button-right--icon"
-            className="menu-items__button-right--icon"
-          />
+          {isMenuOpened ? (
+            <Close className="menu-items__button-right--icon" />
+          ) : (
+            <BurgerMenu className="menu-items__button-right--icon" />
+          )}
         </NavLink>
       </div>
     </header>
