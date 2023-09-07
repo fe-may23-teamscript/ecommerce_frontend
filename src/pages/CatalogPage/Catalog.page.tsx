@@ -38,23 +38,21 @@ const CatalogPage: React.FC = () => {
 
   return !isLoading && !isError && isSuccess ? (
     <>
-      <CatalogControllers/>
+      <CatalogControllers />
       <Catalog visibleData={data?.rows} />
 
-      {
-        data.rows.length > 0 && (
-          <Pagination
-            total={data.count}
-            perPage={Number(limit)}
-            currentPage={+currentPage}
-            onPageChange={(numberOfPage) => {
-              setCurrentPage(numberOfPage);
-              getNewPage(numberOfPage);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          />
-        )
-      }
+      {data.rows.length > 0 && (
+        <Pagination
+          total={data.count}
+          perPage={Number(limit)}
+          currentPage={+currentPage}
+          onPageChange={(numberOfPage) => {
+            setCurrentPage(numberOfPage);
+            getNewPage(numberOfPage);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        />
+      )}
     </>
   ) : (
     <Loader />
