@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import './Header.scss';
@@ -7,6 +7,7 @@ import { ReactComponent as Cart } from 'assets/icons/cart.svg';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 import { ReactComponent as BurgerMenu } from 'assets/icons/menuBurger.svg';
 import { ReactComponent as User } from 'assets/icons/user.svg';
+import { ReactComponent as LogOut } from 'assets/icons/log-out.svg';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
@@ -19,6 +20,7 @@ import {
 import cn from 'classnames';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
 import SearchBar from 'components/SearchBar/SearchBar';
+import { Login } from 'components/Login';
 
 type Props = {
   theme: string;
@@ -26,6 +28,7 @@ type Props = {
 };
 
 const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
+  const [showModal, setShowModal] = useState(false);
   const { pathname } = useLocation();
   const isMenuOpened = pathname.includes('menu');
   const getPath = isMenuOpened
@@ -33,6 +36,7 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
     : getBurgerMenuPath(pathname);
   const totalCount = useAppSelector(getTotalCount);
   const favouritesItems = useAppSelector(getFavourites);
+  const authorization = false;
 
   return (
     <header className="header" id="header-top">
@@ -83,8 +87,16 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             })
           }
         >
-          <User className="menu-items__button-right--icon" />
+          {authorization ? (
+            <LogOut className="menu-items__button-right--icon" />
+          ) : (
+            <User
+              className="menu-items__button-right--icon"
+              onClick={() => setShowModal(true)}
+            />
+          )}
         </NavLink>
+        {showModal && <Login setShowModal={setShowModal} />}
       </div>
     </header>
   );
