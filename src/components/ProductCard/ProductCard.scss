@@ -5,11 +5,11 @@
   flex-direction: column;
   padding: 32px;
   background: var(--color-surface1);
-  border: 1px solid $color-elements;
+  border: 1px solid var(--card-border);
   grid-column: span 4;
 
   &:hover {
-    box-shadow: 0 3px 8px $color-elements;
+    border-color: var(--card-border-hover);
   }
 
   @include onTablet {
