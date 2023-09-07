@@ -42,6 +42,7 @@ const CatalogPage: React.FC = () => {
         onPageChange={(numberOfPage) => {
           setCurrentPage(numberOfPage);
           getNewPage(numberOfPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
     </>
