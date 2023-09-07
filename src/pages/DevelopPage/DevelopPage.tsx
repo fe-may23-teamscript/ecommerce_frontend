@@ -2,9 +2,7 @@ import React from 'react';
 import DevBlock from '../../components/DevBlock/DevBlock';
 
 const DevelopPage = () => {
-  return (
-    <DevBlock />
-  );
+  return <DevBlock />;
 };
 
 export default DevelopPage;
