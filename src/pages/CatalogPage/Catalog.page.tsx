@@ -1,4 +1,4 @@
-import { useGetPhonesQuery } from 'api/phones.api';
+import { useGetProductsByCategoryQuery } from 'api/phones.api';
 import { Catalog } from 'components/Catalog/Catalog';
 import CatalogControllers from 'components/CatalogControllers/CatalogControllers';
 import { Loader } from 'components/Loader';
@@ -12,15 +12,20 @@ const CatalogPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const locationPath = useLocation().pathname;
 
+  const [last] = locationPath.split('/').reverse();
+
   const limit = searchParams.get('limit') || 12;
   const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
   const order = searchParams.get('order') || SortOptions.NewestYear;
 
-  const { data, isLoading, isError, isSuccess } = useGetPhonesQuery({
-    limit: limit,
-    offset: (+currentPage - 1) * +limit || 0,
-    order: order,
-  });
+  const { data, isLoading, isError, isSuccess } = useGetProductsByCategoryQuery(
+    {
+      category: last,
+      limit: limit,
+      offset: (+currentPage - 1) * +limit || 0,
+      order: order,
+    },
+  );
 
   const getNewPage = (numberOfPage: number) =>
     setSearchParams(useSearchWith(searchParams, { page: `${numberOfPage}` }));
@@ -32,18 +37,21 @@ const CatalogPage: React.FC = () => {
 
   return !isLoading && !isError && isSuccess ? (
     <>
-      <CatalogControllers key={locationPath} />
+      <CatalogControllers />
       <Catalog visibleData={data?.rows} />
-      <Pagination
-        total={data.count}
-        perPage={Number(limit)}
-        currentPage={+currentPage}
-        onPageChange={(numberOfPage) => {
-          setCurrentPage(numberOfPage);
-          getNewPage(numberOfPage);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      />
+
+      {data.rows.length > 0 && (
+        <Pagination
+          total={data.count}
+          perPage={Number(limit)}
+          currentPage={+currentPage}
+          onPageChange={(numberOfPage) => {
+            setCurrentPage(numberOfPage);
+            getNewPage(numberOfPage);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        />
+      )}
     </>
   ) : (
     <Loader />

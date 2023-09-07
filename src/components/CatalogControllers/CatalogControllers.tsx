@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './CatalogControllers.scss';
-import { getCatalog } from 'shared/utils/getRoutes';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Dropdown } from 'shared/ui/Dropdown';
 import { SortOptions, SortOptionsValue } from 'models/ISortTypes';
@@ -8,7 +7,10 @@ import UserRoute from 'components/UserRoute/UserRoute';
 import { useSearchWith } from '../../shared/hooks/useSearchWith';
 
 const CatalogControllers: React.FC = () => {
-  const [title, setTitle] = useState(useLocation().pathname);
+  const locationPath = useLocation()
+    .pathname.split('/')
+    .filter((el) => el !== 'catalog' && el.length)[0];
+
   const dropDownSortOptions = [
     SortOptionsValue.NewestYear,
     SortOptionsValue.OldestYear,
@@ -67,26 +69,10 @@ const CatalogControllers: React.FC = () => {
   const onPerPageSelectChange = (value: string) =>
     setSearchParams(useSearchWith(searchParams, { limit: String(value) }));
 
-  useEffect(() => {
-    switch (title) {
-      case '/' + getCatalog('phones'):
-        setTitle('Mobile phones');
-        break;
-      case '/' + getCatalog('tablets'):
-        setTitle('Tablet devices');
-        break;
-      case '/' + getCatalog('accessories'):
-        setTitle('Accessories');
-        break;
-      default:
-        '';
-    }
-  }, []);
-
   return (
     <section className="controllers">
       <UserRoute />
-      <h1>{title}</h1>
+      <h1>{locationPath.charAt(0).toUpperCase() + locationPath.slice(1)}</h1>
       <div className="controllers__container">
         <div className="controllers__item">
           <div className="controllers__title">{'Sort by'}</div>
