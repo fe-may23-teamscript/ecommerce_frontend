@@ -1,4 +1,4 @@
-import { useGetPhonesQuery } from 'api/phones.api';
+import { useGetProductsByCategoryQuery } from 'api/phones.api';
 import { Catalog } from 'components/Catalog/Catalog';
 import CatalogControllers from 'components/CatalogControllers/CatalogControllers';
 import { Loader } from 'components/Loader';
@@ -13,11 +13,14 @@ const CatalogPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const locationPath = useLocation().pathname;
 
+  const [last] = locationPath.split('/').reverse();
+
   const limit = searchParams.get('limit') || 12;
   const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
   const order = searchParams.get('order') || SortOptions.NewestYear;
 
-  const { data, isLoading, isError, isSuccess } = useGetPhonesQuery({
+  const { data, isLoading, isError, isSuccess } = useGetProductsByCategoryQuery({
+    category: last,
     limit: limit,
     offset: (+currentPage - 1) * +limit || 0,
     order: order,
