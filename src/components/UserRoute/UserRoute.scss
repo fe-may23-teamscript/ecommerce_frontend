@@ -6,8 +6,12 @@
   align-items: center;
   gap: 8px;
   text-transform: capitalize;
+  height: 16px;
 
   &__path-item {
     color: $color-secondary;
+  }
+  &__icon {
+    fill: var(--color-main-text);
   }
 }

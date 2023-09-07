@@ -31,15 +31,14 @@
 
   &__button {
     transition: all 0.3s;
-    border: 1px solid $color-elements;
-    background: transparent;
+    border: 1px solid var(--color-icons);
 
     &:hover {
-      border: 1px solid $color-white;
+      border: 1px solid var(--color-main-text);
     }
 
     &--active {
-      border: 1px solid $color-white;
+      border: 1px solid var(--color-main-text);
     }
   }
 

@@ -4,6 +4,7 @@
   &__title {
     font-size: 32px;
     margin-block: 24px;
+    font-weight: 800;
 
     @include onTablet {
       font-size: 38px;
@@ -55,9 +56,11 @@
   &__button {
     display: none;
     flex: 0 0 32px;
-    background-color: $color-surface2;
-
-    @include hover(background-color, $color-icons);
+    background-color: var(--color-surface1);
+    border: 1px solid var(--color-icons);
+    &:hover {
+      border: 1px solid var(--color-main-text);
+    }
 
     @include onTablet {
       display: block;
@@ -72,6 +75,10 @@
     }
   }
 
+  &__icon {
+    fill: var(--color-main-text);
+  }
+
   &__pagination-box {
     display: flex;
     justify-content: center;
@@ -82,19 +89,18 @@
   }
 
   &__item-btn {
-    border: 1px solid transparent;
     transition: all 0.3s;
-    background-color: $color-elements;
+    background-color: var(--color-icons);
     width: 14px;
     height: 4px;
     margin-top: 16px;
 
     &:hover {
-      background-color: $color-white;
+      background-color: var(--color-main-text);
     }
 
     &--active {
-      background-color: $color-white;
+      background-color: var(--color-main-text);
     }
   }
 }

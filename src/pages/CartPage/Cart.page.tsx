@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
 import { CheckoutModal } from 'components/CheckoutModal';
+import { ReactComponent as Back } from 'assets/icons/arrow-left.svg';
 import {
   useAppSelector,
   useAppDispatch,
@@ -31,6 +32,7 @@ const Cart: React.FC = () => {
   return (
     <div className="cart">
       <button className="cart__link" onClick={() => navigate(-1)}>
+        <Back className="cart__back" />
         Back
       </button>
 

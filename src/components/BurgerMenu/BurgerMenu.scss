@@ -7,7 +7,7 @@
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.48px;
-  background-color: $color-black;
+  background-color: var(--color-bg);
 
   @include onTablet {
     display: none;
@@ -32,7 +32,6 @@
 
   &__link {
     display: block;
-    height: 64px;
     width: 50%;
     border-top: 1px solid $color-surface2;
 
@@ -41,24 +40,23 @@
       z-index: 1;
     }
 
-    background-repeat: no-repeat;
-    background-position: center;
-
-    &--favourite {
-      background-image: url('../../shared/assets/Favourites-Icon.svg');
-    }
-
-    &--shopping-bag {
-      background-image: url('../../shared/assets/ShoppingBag-Icon.svg');
-    }
-
     &--active {
-      border-bottom: 3px solid $color-white;
+      border-bottom: 3px solid var(--color-main-text);
     }
   }
 
-  &__count-wrapper {
+  &__link-icon {
+    fill: var(--color-main-text);
+    left: 50%;
+    top: 50%;
+  }
+
+  &__link-wrapper {
     position: relative;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__total-count {
@@ -87,6 +85,7 @@
   &__item {
     height: 27px;
     margin-top: 16px;
+    font-weight: 800;
     text-transform: uppercase;
     box-sizing: border-box;
     text-align: center;
@@ -98,8 +97,8 @@
     position: relative;
 
     &--active {
-      border-bottom: 3px solid $color-white;
-      color: $color-white;
+      border-bottom: 3px solid var(--color-main-text);
+      color: var(--color-main-text);
     }
   }
 }

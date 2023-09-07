@@ -19,18 +19,25 @@
     box-sizing: border-box;
   }
 
+  &__logo-link {
+    width: 80px;
+    height: 28px;
+    background-image: var(--logo-url);
+  }
+
   &__item {
     position: relative;
     display: none;
     margin: 0 16px;
-    color: $color-elements;
-    color: $color-white;
+    color: $color-secondary;
     text-transform: uppercase;
     text-decoration: none;
     box-sizing: border-box;
     text-align: center;
+    @include hover(color, var(--color-main-text));
 
     &--active {
+      color: var(--color-main-text);
       &::after {
         content: attr(div);
         position: absolute;
@@ -38,7 +45,7 @@
         left: 0;
         width: 100%;
         height: 3px;
-        background-color: $color-white;
+        background-color: var(--color-main-text);
       }
     }
 

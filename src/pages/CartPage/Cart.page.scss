@@ -30,21 +30,24 @@
   }
 
   &__link {
-    display: block;
-    color: $color-white;
+    display: flex;
+    align-items: center;
+    color: var(--color-main-text);
     background-color: transparent;
     font-weight: 700;
-    line-height: 15px;
+    line-height: 16px;
     margin-top: 24px;
+    vertical-align: middle;
 
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 10px;
-      background: url('../../assets/icons/arrow-left.svg') center;
-      margin-right: 8px;
+    @include onTablet {
+      margin-top: 40px;
     }
+  }
+
+  &__back {
+    fill: var(--color-main-text);
+    margin-right: 4px;
+    margin-bottom: 2px;
   }
 
   &__content {
@@ -85,6 +88,7 @@
     border: 1px solid $color-elements;
     padding: 24px;
     margin: 32px 0 56px;
+    background-color: var(--color-surface1);
 
     @include onTablet {
       grid-column: span 12;
@@ -102,7 +106,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: $color-white;
+    color: var(--color-main-text);
   }
 
   &__total-items {

@@ -6,6 +6,7 @@ import { About } from 'components/About';
 import { TechSpecs } from 'components/TechSpecs';
 import { DeviceBlock } from 'components/DeviceBlock';
 import { PhoneImageSlider } from 'components/PhoneImageSlider';
+import { ReactComponent as Back } from 'assets/icons/arrow-left.svg';
 import { Loader } from 'components/Loader';
 import {
   useGetPhoneBySlugQuery,
@@ -44,6 +45,7 @@ const ProductDetailsPage: React.FC = () => {
     <div className="product-details">
       <UserRoute name={product.name} />
       <button className="product-details__link" onClick={() => navigate(-1)}>
+        <Back className="product-details__back" />
         Back
       </button>
       <h2 className="product-details__title">{product.name}</h2>

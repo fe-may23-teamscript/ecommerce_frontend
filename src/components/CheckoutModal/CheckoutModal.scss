@@ -3,7 +3,7 @@
 
 .modal {
   position: relative;
-  background-color: $color-surface1;
+  background-color: var(--color-surface1);
   padding: 24px;
   max-width: 460px;
   margin: auto;
@@ -13,14 +13,20 @@
     position: absolute;
     right: 20px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    width: 16px;
-    height: 16px;
-    background-image: url('../../assets/icons/close.svg');
-    background-color: $color-surface1;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-surface1);
+    border: 1px solid var(--color-icons);
 
-    @include hover(background-image, url('../../assets/icons/close-hover.svg'));
+    &:hover {
+      border: 1px solid var(--color-main-text);
+    }
+  }
+
+  &__button-icon {
+    fill: var(--color-main-text);
   }
 
   &__text {

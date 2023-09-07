@@ -3,11 +3,9 @@
 .dropdown {
   position: relative;
   border: 1px solid transparent;
-  background: #323542;
-
-  &-active {
-    border: 1px solid #905bff;
-  }
+  background: var(--color-bg);
+  border: 1px solid $color-elements;
+  z-index: 2;
 
   &-selector {
     padding: 15px;
@@ -25,16 +23,20 @@
     position: absolute;
     width: 100%;
     margin-top: 5px;
-    border: 1px solid #3b3e4a;
-    color: #75767f;
+    border: 1px solid $color-elements;
+    color: $color-secondary;
   }
 
   &-option {
     padding: 10px 15px;
-    background-color: #323542;
+    background-color: var(--color-bg);
+    cursor: pointer;
 
     &:hover {
-      background-color: #2a2b30;
+      color: var(--color-main-text);
     }
+  }
+  &-icon {
+    fill: var(--color-main-text);
   }
 }

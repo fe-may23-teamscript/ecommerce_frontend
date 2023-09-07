@@ -33,27 +33,6 @@
     }
   }
 
-  &__item {
-    &-home {
-      width: 16px;
-      background-image: url('../../shared/assets/Home-Icon.svg');
-    }
-
-    &-arrow-rigth {
-      width: 16px;
-      height: 100%;
-      color: $color-icons;
-    }
-
-    &-page {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 18px;
-      text-align: center;
-      color: $color-secondary;
-    }
-  }
-
   &__title {
     grid-column: span 4;
     font-weight: 800;

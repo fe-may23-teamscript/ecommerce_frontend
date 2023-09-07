@@ -9,7 +9,7 @@ import {
   deleteFromFavourites,
   getFavourites,
 } from 'app/providers/store/slices/favourites.slice';
-import { ReactComponent as Like } from 'assets/icons/fovorite.svg';
+import { ReactComponent as Like } from 'assets/icons/favourite.svg';
 import { ReactComponent as Unlike } from 'assets/icons/unlike.svg';
 import { IProductModel } from 'models/IProductModel';
 
@@ -26,14 +26,18 @@ export const FavouritesButton: React.FC<Props> = ({ product }) => {
 
   return (
     <button
-      className="favorites-icon"
+      className="favourites-btn"
       onClick={() => {
         isInFavourites
           ? dispatch(deleteFromFavourites(product.id))
           : dispatch(addToFavourites(product));
       }}
     >
-      {isInFavourites ? <Unlike /> : <Like />}
+      {isInFavourites ? (
+        <Unlike className="favourites-btn__icon" />
+      ) : (
+        <Like className="favourites-btn__icon" />
+      )}
     </button>
   );
 };

@@ -1,0 +1,52 @@
+@import 'app/styles/index';
+
+.theme-switcher {
+  padding-inline: 24px;
+}
+.switch {
+  display: flex;
+  width: 48px;
+  height: 24px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6px;
+  background: $color-black;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+}
+.switchl .ball {
+  display: none;
+}
+
+.switch .ball {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: 2px;
+  left: 2px;
+  background: $color-white;
+  border-radius: 50%;
+  transition: 0.8s;
+}
+
+input:checked + .switch .ball {
+  transform: translateX(24px);
+}
+
+.switch {
+  transition: 0.3s;
+}
+
+input:checked + .switch {
+  background: $color-white;
+}
+
+input:checked + .switch .ball {
+  background: $color-elements;
+}
+
+input {
+  display: none;
+}

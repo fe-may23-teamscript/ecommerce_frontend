@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import './PicturesSlider.scss';
-import arrowLeft from '../../assets/icons/arrow-left.svg';
-import arrowRigth from '../../assets/icons/arrow-right.svg';
+import { ReactComponent as ArrowLeft } from '../../assets/icons/arrow-left.svg';
+import { ReactComponent as ArrowRigth } from 'assets/icons/arrow-right.svg';
 import banner1 from 'assets/images/pictures-slider/banner-1.png';
 import banner2 from 'assets/images/pictures-slider/banner-2.png';
 import banner3 from 'assets/images/pictures-slider/banner-3.png';
@@ -57,14 +57,14 @@ export const PicturesSlider: React.FC = () => {
           onClick={handleArrowLeft}
           className="carousel__button carousel__button--prev"
         >
-          <img src={arrowLeft} alt="arrowLeft" />
+          <ArrowLeft className="carousel__icon" />
         </button>
         <button
           type="button"
           onClick={handleArrowRight}
           className="carousel__button carousel__button--next"
         >
-          <img src={arrowRigth} alt="arrowRigth" />
+          <ArrowRigth className="carousel__icon" />
         </button>
       </div>
       <div className="carousel__pagination-box">
