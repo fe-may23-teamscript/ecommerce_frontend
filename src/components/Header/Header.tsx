@@ -38,19 +38,6 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
         <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
 
         <NavLink
-          to={getPath}
-          className={() =>
-            cn('menu-items__button-right menu-items__button-right--burger')
-          }
-        >
-          {isMenuOpened ? (
-            <Close className="menu-items__button-right--icon" />
-          ) : (
-            <BurgerMenu className="menu-items__button-right--icon" />
-          )}
-        </NavLink>
-
-        <NavLink
           to={getFavouritesPath()}
           className={({ isActive }) =>
             cn('menu-items__button-right', {
@@ -76,6 +63,14 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
           <Cart className="menu-items__button-right--icon" />
           {totalCount > 0 && (
             <span className="menu-items__total-count">{totalCount}</span>
+          )}
+        </NavLink>
+
+        <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
+          {isMenuOpened ? (
+            <Close className="menu-items__button-right--icon" />
+          ) : (
+            <BurgerMenu className="menu-items__button-right--icon" />
           )}
         </NavLink>
       </div>

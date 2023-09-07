@@ -15,6 +15,7 @@
   border-radius: 50px;
   cursor: pointer;
   position: relative;
+  transition: 0.3s;
 }
 
 .switchl .ball {
@@ -35,18 +36,11 @@
 
 input:checked + .switch .ball {
   transform: translateX(24px);
-}
-
-.switch {
-  transition: 0.3s;
+  background: $color-elements;
 }
 
 input:checked + .switch {
   background: $color-white;
-}
-
-input:checked + .switch .ball {
-  background: $color-elements;
 }
 
 input {

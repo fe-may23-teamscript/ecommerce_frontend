@@ -63,7 +63,7 @@
     cursor: pointer;
     box-sizing: border-box;
 
-    &:not(.menu-items__button-right--burger) {
+    &:not(:last-child) {
       display: none;
     }
 
@@ -80,11 +80,11 @@
     }
 
     @include onTablet {
-      &:not(.menu-items__button-right--burger) {
+      &:not(:last-child) {
         display: flex;
       }
 
-      &--burger {
+      &:last-child {
         display: none;
       }
     }
