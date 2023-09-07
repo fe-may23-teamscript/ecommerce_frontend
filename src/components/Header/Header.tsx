@@ -27,7 +27,6 @@ type Props = {
 const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
   const { pathname } = useLocation();
   const isMenuOpened = pathname.includes('menu');
-  // const icon = isMenuOpened ? closeIcon : menuBurger;
   const getPath = isMenuOpened
     ? pathname.slice(0, pathname.length - 5)
     : getBurgerMenuPath(pathname);
