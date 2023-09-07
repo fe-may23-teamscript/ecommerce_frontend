@@ -7,6 +7,12 @@ interface Props {
 }
 
 export const Catalog: React.FC<Props> = ({ visibleData }: Props) => {
+  if (visibleData.length === 0) {
+    return (
+      <p>No items found</p>
+    );
+  }
+
   return (
     <section className="catalog-container">
       {visibleData.map((item) => (
