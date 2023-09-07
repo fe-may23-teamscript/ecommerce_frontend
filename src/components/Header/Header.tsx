@@ -6,6 +6,7 @@ import { ReactComponent as Like } from 'assets/icons/favourite.svg';
 import { ReactComponent as Cart } from 'assets/icons/cart.svg';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 import { ReactComponent as BurgerMenu } from 'assets/icons/menuBurger.svg';
+import { ReactComponent as User } from 'assert/icons/user.svg';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
@@ -13,6 +14,7 @@ import {
   getBurgerMenuPath,
   getCartPath,
   getFavouritesPath,
+  getProfilePath,
 } from 'shared/utils/getRoutes';
 import cn from 'classnames';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
@@ -65,7 +67,16 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
             <span className="menu-items__total-count">{totalCount}</span>
           )}
         </NavLink>
-
+        <NavLink
+          to={getProfilePath()}
+          className={({ isActive }) =>
+            cn('menu-items__button-right', {
+              'menu-items__button-right--active': isActive,
+            })
+          }
+        >
+          <User className="menu-items__button-right--icon" />
+        </NavLink>
         <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
           {isMenuOpened ? (
             <Close className="menu-items__button-right--icon" />

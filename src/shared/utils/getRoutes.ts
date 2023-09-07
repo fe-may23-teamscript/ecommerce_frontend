@@ -14,3 +14,5 @@ export const getCartPath = () => 'cart';
 
 export const getBurgerMenuPath = (pathname?: string) =>
   pathname !== '/' ? `${pathname}/menu` : 'menu';
+
+export const getProfilePath = () => 'profile';

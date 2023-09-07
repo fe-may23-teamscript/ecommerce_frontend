@@ -19,12 +19,14 @@ const CatalogPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
   const order = searchParams.get('order') || SortOptions.NewestYear;
 
-  const { data, isLoading, isError, isSuccess } = useGetProductsByCategoryQuery({
-    category: last,
-    limit: limit,
-    offset: (+currentPage - 1) * +limit || 0,
-    order: order,
-  });
+  const { data, isLoading, isError, isSuccess } = useGetProductsByCategoryQuery(
+    {
+      category: last,
+      limit: limit,
+      offset: (+currentPage - 1) * +limit || 0,
+      order: order,
+    },
+  );
 
   const getNewPage = (numberOfPage: number) =>
     setSearchParams(getSearchWith(searchParams, { page: `${numberOfPage}` }));

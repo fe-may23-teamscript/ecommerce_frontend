@@ -24,7 +24,12 @@ export const phonesAPI = createApi({
       IGetProducts,
       Record<string, number | string>
     >({
-      query: ({ order = 'year:DESC', offset = 0, limit = 12, category = '' }) => ({
+      query: ({
+        order = 'year:DESC',
+        offset = 0,
+        limit = 12,
+        category = '',
+      }) => ({
         url: 'products',
         method: 'GET',
         params: {
