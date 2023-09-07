@@ -7,4 +7,7 @@
   --color-surface2: #{$color-surface2};
   --color-icons: #{$color-icons};
   --logo-url: url('../../../assets/icons/Logo.svg');
+
+  --card-border: #{$color-surface2};
+  --card-border-hover: #{$color-accent-hover};
 }
