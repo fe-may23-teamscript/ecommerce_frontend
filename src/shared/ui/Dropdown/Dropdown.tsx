@@ -2,8 +2,8 @@ import { useState, useRef } from 'react';
 import cn from 'classnames';
 import './Dropdown.scss';
 import { useOutsideClick } from 'shared/hooks/useOutsideClick';
-import { ReactComponent as ArrowUp } from 'shared/assets/ArrowUp-Icon.svg';
-import { ReactComponent as ArrowDown } from 'shared/assets/ArrowDown-Icon.svg';
+import { ReactComponent as ArrowUp } from 'assets/icons/arrow-up.svg';
+import { ReactComponent as ArrowDown } from 'assets/icons/arrow-down.svg';
 
 export interface IDropdown<T> {
   options: T[];
@@ -36,9 +36,9 @@ export function Dropdown<T>(props: IDropdown<T>) {
       >
         {`${selectedValue}`}
         {isActive ? (
-          <ArrowDown style={{ marginLeft: '16px' }} />
+          <ArrowDown className="dropdown-icon" />
         ) : (
-          <ArrowUp style={{ marginLeft: '16px' }} />
+          <ArrowUp className="dropdown-icon" />
         )}
       </div>
 

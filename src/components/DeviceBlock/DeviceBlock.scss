@@ -28,8 +28,8 @@
     &-button {
       width: 26px;
       height: 26px;
-      border: 2px double $color-black;
-      outline: 1px solid $color-elements;
+      border: 2px double var(--color-bg);
+      outline: 1px solid var(--color-icons);
       border-radius: 50%;
 
       @include onDesktop {
@@ -38,12 +38,12 @@
       }
 
       &--active {
-        outline-color: $color-white;
+        outline-color: var(--color-main-text);
       }
 
       &:hover,
       &:active {
-        outline-color: $color-white;
+        outline-color: var(--color-main-text);
       }
 
       &--gold {
@@ -103,20 +103,20 @@
       align-items: center;
       width: 60px;
       height: 32px;
-      color: $color-white;
-      background-color: $color-black;
-      border: 1px solid $color-icons;
+      color: var(--color-main-text);
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-icons);
 
       &--active {
-        color: $color-black;
-        background-color: $color-white;
+        color: var(--color-bg);
+        background-color: var(--color-main-text);
         border: 1px solid transparent;
       }
 
       &:hover,
       &:active {
-        color: $color-black;
-        background-color: $color-white;
+        color: var(--color-bg);
+        background-color: var(--color-main-text);
         border: 1px solid transparent;
       }
     }

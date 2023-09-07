@@ -1,6 +1,10 @@
 @import 'app/styles/variables/global';
 
 .dark {
-  --bg-color: #{$color-black};
-  --main-text-color: #{$color-white};
+  --color-bg: #{$color-black};
+  --color-main-text: #{$color-white};
+  --color-surface1: #{$color-surface1};
+  --color-surface2: #{$color-surface2};
+  --color-icons: #{$color-icons};
+  --logo-url: url('../../../assets/icons/Logo.svg');
 }

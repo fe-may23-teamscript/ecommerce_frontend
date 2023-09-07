@@ -13,25 +13,24 @@
   }
 
   &__link {
-    display: block;
-    color: $color-white;
+    display: flex;
+    align-items: center;
+    color: var(--color-main-text);
     background-color: transparent;
     font-weight: 700;
-    line-height: 15px;
+    line-height: 16px;
     margin-top: 24px;
+    vertical-align: middle;
 
     @include onTablet {
       margin-top: 40px;
     }
+  }
 
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 10px;
-      background: url('../../assets/icons/arrow-left.svg') center;
-      margin-right: 8px;
-    }
+  &__back {
+    fill: var(--color-main-text);
+    margin-right: 4px;
+    margin-bottom: 2px;
   }
 
   &__title {

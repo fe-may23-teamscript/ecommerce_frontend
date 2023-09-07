@@ -1,12 +1,19 @@
 @import 'app/styles/index';
 
-.favorites-icon {
+.favourites-btn {
   width: 40px;
   height: 40px;
-  background-color: $color-surface2;
+  background-color: var(--color-surface1);
+  border: 1px solid var(--color-icons);
   display: flex;
   justify-content: center;
   align-items: center;
 
-  @include hover(background-color, $color-icons);
+  &:hover {
+    border: 1px solid var(--color-main-text);
+  }
+
+  &__icon {
+    fill: var(--color-main-text);
+  }
 }

@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background-color: $color-black;
+  background-color: var(--color-bg);
   border-top: 1px solid $color-elements;
 
   @include onTablet {
@@ -36,10 +36,14 @@
   }
 
   &__logo {
+    display: flex;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 89px;
     height: 32px;
     padding: 0;
     grid-column: 1 / -1;
+    background-image: var(--logo-url);
 
     @include onTablet {
       grid-column: 1 / 4;
@@ -73,11 +77,15 @@
     margin-bottom: 16px;
     text-decoration: none;
     text-transform: uppercase;
-    color: $color-white;
+    color: $color-secondary;
     font-weight: 800;
     line-height: 11px;
     letter-spacing: 0.48px;
     font-size: 12px;
+
+    &:hover {
+      color: var(--color-main-text);
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -108,13 +116,32 @@
     font-size: 12px;
     font-weight: 700;
     background: none;
+
+    &:hover {
+      color: var(--color-main-text);
+    }
   }
 
   &__back-to-top-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 32px;
     height: 32px;
-    padding: 0;
-    border: none;
+    border: 1px solid var(--color-icons);
+    background-color: var(--color-surface1);
+
+    &:hover {
+      border: 1px solid var(--color-main-text);
+    }
+  }
+
+  &__back-to-top-icon {
+    fill: var(--color-main-text);
+
+    &--disabled {
+      fill: var(--color-icons);
+    }
   }
 }
 

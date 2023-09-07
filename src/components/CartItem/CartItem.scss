@@ -5,7 +5,8 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  background-color: $color-surface1;
+  background-color: var(--color-surface1);
+  border: 1px solid $color-elements;
   padding: 16px;
 
   &:last-child {
@@ -69,57 +70,34 @@
     height: 80px;
     object-fit: contain;
   }
-}
 
-.icon {
-  &__cart-item {
+  &__btn {
     height: 32px;
     width: 32px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: $color-surface2;
-    border: 1px solid $color-surface2;
+    background-color: var(--color-surface1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-icons);
 
-    &--plus {
-      background-image: url('../../assets/icons/plus.svg');
-
-      @include hover(background-color, $color-icons);
+    &:hover {
+      border: 1px solid var(--color-main-text);
     }
 
-    &--minus {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &:disabled {
+      cursor: default;
 
-      @include hover(background-color, $color-icons);
-
-      &:disabled {
-        background-color: $color-surface1;
-        cursor: default;
-
-        &:hover {
-          background-color: $color-surface1;
-        }
-      }
-
-      &_icon {
-        &_disabled {
-          fill: #4a4d58;
-        }
-
-        fill: #fff;
+      &:hover {
+        border: 1px solid var(--color-icons);
       }
     }
+  }
 
-    &--close {
-      background-image: url('../../assets/icons/close.svg');
-      background-color: $color-surface1;
-      border: 1px solid $color-surface1;
+  &__icon {
+    fill: var(--color-main-text);
 
-      @include hover(
-        background-image,
-        url('../../assets/icons/close-hover.svg')
-      );
+    &--disabled {
+      fill: var(--color-icons);
     }
   }
 }

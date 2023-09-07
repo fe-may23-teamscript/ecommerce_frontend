@@ -1,11 +1,9 @@
 import React from 'react';
 import './Favourites.page.scss';
-import { getHomePath } from 'shared/utils/getRoutes';
-import { Link } from 'react-router-dom';
-import ArrowRight from 'shared/assets/ArrowRight-Icon.svg';
 import { ProductCard } from 'components/ProductCard';
 import { useAppSelector } from 'app/providers/store/lib/redux-hooks';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
+import UserRoute from 'components/UserRoute/UserRoute';
 
 const FavouritesPage: React.FC = () => {
   const favouritesItems = useAppSelector(getFavourites);
@@ -15,17 +13,7 @@ const FavouritesPage: React.FC = () => {
     <div className="favourites">
       <div className="favourites__grid">
         <div className="favourites__nav">
-          <Link
-            to={getHomePath()}
-            className="favourites__item favourites__item-home"
-          ></Link>
-          <img
-            src={ArrowRight}
-            className="favourites__item favourites__item-arrow-rigth"
-          />
-          <div className="favourites__item favourites__item-page">
-            Favourites
-          </div>
+          <UserRoute />
         </div>
 
         <h2 className="favourites__title">Favourites</h2>

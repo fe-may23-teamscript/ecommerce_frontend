@@ -24,10 +24,11 @@
     width: 32px;
     line-height: 32px;
     text-align: center;
-    background-color: $color-surface1;
+    background-color: var(--color-bg);
+    border: 1px solid $color-elements;
 
     &:hover {
-      background-color: $color-elements;
+      background-color: $color-accent;
     }
 
     &--active {
@@ -41,9 +42,8 @@
 
     &--disabled {
       pointer-events: none;
-      background-color: $color-black;
       color: $color-elements;
-      border: 1px solid $color-elements;
+      border: 1px solid var(--color-icons);
     }
   }
 }

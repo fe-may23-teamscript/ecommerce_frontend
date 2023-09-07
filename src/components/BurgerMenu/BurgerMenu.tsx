@@ -7,6 +7,8 @@ import {
   getFavouritesPath,
   getHomePath,
 } from 'shared/utils/getRoutes';
+import { ReactComponent as Like } from 'assets/icons/favourite.svg';
+import { ReactComponent as Cart } from 'assets/icons/cart.svg';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
@@ -56,7 +58,8 @@ export const BurgerMenu: React.FC = () => {
             'menu__link--active': pathname.includes('favourites'),
           })}
         >
-          <div className="menu__count-wrapper">
+          <div className="menu__link-wrapper">
+            <Like className="menu__link-icon" />
             {favouritesItems.length > 0 && (
               <span className="menu__total-count menu__total-count--favourites">
                 {favouritesItems.length}
@@ -67,11 +70,12 @@ export const BurgerMenu: React.FC = () => {
 
         <Link
           to={`/${getCartPath()}`}
-          className={cn('menu__link menu__link--shopping-bag', {
+          className={cn('menu__link', {
             'menu__link--active': pathname.includes('cart'),
           })}
         >
-          <div className="menu__count-wrapper">
+          <div className="menu__link-wrapper">
+            <Cart className="menu__link-icon" />
             {totalCount > 0 && (
               <span className="menu__total-count">{totalCount}</span>
             )}

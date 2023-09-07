@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import './UserRoute.scss';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as HomeIcon } from 'shared/assets/Home-Icon.svg';
-import { ReactComponent as ChevronIcon } from 'shared/assets/Chevron-Arrow-Right.svg';
+import { ReactComponent as HomeIcon } from 'assets/icons/home.svg';
+import { ReactComponent as ChevronIcon } from 'assets/icons/arrow-right.svg';
 import { getCatalog } from 'shared/utils/getRoutes';
 
 interface Props {
@@ -17,11 +17,11 @@ const UserRoute: FC<Props> = ({ name }) => {
   return (
     <div className="user-route">
       <Link to={'/'}>
-        <HomeIcon />
+        <HomeIcon className="user-route__icon" />
       </Link>
       {locationPath && (
         <>
-          <ChevronIcon />
+          <ChevronIcon className="user-route__icon" />
           <Link to={'/' + getCatalog(locationPath)} className="uppercase">
             {locationPath}
           </Link>
@@ -29,7 +29,7 @@ const UserRoute: FC<Props> = ({ name }) => {
       )}
       {name && (
         <>
-          <ChevronIcon />
+          <ChevronIcon className="user-route__icon" />
           <span className="user-route__path-item uppercase">{name}</span>
         </>
       )}

@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import './Footer.scss';
-import logo from 'shared/assets/Logo.svg';
-import slider from 'shared/assets/SliderButton-Icon.svg';
+import { ReactComponent as BackToTop } from 'assets/icons/arrow-up.svg';
 
 const footerNavItems = ['github', 'contacts', 'rights'];
 
@@ -38,9 +37,7 @@ const Footer = () => {
       }
     >
       <div className="footer__container">
-        <Link to="/" className="footer__logo">
-          <img src={logo} alt="Nice Gadgets Logo" />
-        </Link>
+        <Link to="/" className="footer__logo"></Link>
         <div className="footer__navigation">
           {footerNavItems.map((navItemName) => (
             <Link
@@ -61,7 +58,7 @@ const Footer = () => {
             Back to top
           </button>
           <button className="footer__back-to-top-button" onClick={scrollToTop}>
-            <img src={slider} alt="back to top button corner top" />
+            <BackToTop className="footer__back-to-top-icon" />
           </button>
         </div>
       </div>
