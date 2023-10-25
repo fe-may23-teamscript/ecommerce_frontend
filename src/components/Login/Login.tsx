@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import './Login.scss';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 import { useAppDispatch } from '../../app/providers/store/lib/redux-hooks';
-import { login, toggleFirst, toggleModal } from '../../app/providers/store/slices/userSlice';
-
+import {
+  login,
+  toggleFirst,
+  toggleModal,
+} from '../../app/providers/store/slices/userSlice';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -44,10 +47,7 @@ export const Login: React.FC = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button
-          type="submit"
-          className="login__submit"
-        >
+        <button type="submit" className="login__submit">
           Log in
         </button>
       </form>

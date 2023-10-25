@@ -4,8 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
 import { ReactComponent as Back } from 'assets/icons/arrow-left.svg';
-import { useAppDispatch, useAppSelector, } from '../../app/providers/store/lib/redux-hooks';
-import { clearCart, getCart, getTotalCount, getTotalPrice, } from '../../app/providers/store/slices/cart.slice';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../app/providers/store/lib/redux-hooks';
+import {
+  clearCart,
+  getCart,
+  getTotalCount,
+  getTotalPrice,
+} from '../../app/providers/store/slices/cart.slice';
 
 const Cart: React.FC = () => {
   // const [showModal, setShowModal] = useState(false);

@@ -69,7 +69,11 @@ export const routerConfig: RouteObject[] = [
   },
   {
     path: getProfilePath(),
-    element: <PrivateRoute><ProfilePage /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <ProfilePage />
+      </PrivateRoute>
+    ),
   },
   {
     path: '*',

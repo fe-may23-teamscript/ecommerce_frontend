@@ -6,9 +6,7 @@ import { Loader } from 'components/Loader';
 const Router = () => {
   const routing = useRoutes(routerConfig);
 
-  return <Suspense fallback={<Loader/>}>
-    {routing}
-  </Suspense>;
+  return <Suspense fallback={<Loader />}>{routing}</Suspense>;
 };
 
 export default Router;

@@ -2,10 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 interface IUserState {
-  user: string | null,
-  isAuthenticated: boolean,
-  modal: boolean,
-  first: boolean
+  user: string | null;
+  isAuthenticated: boolean;
+  modal: boolean;
+  first: boolean;
 }
 
 const initialState: IUserState = {
@@ -32,8 +32,8 @@ export const UserSlice = createSlice({
     },
     toggleFirst: (state, action: PayloadAction<boolean>) => {
       state.first = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { login, logout, toggleModal, toggleFirst } = UserSlice.actions;

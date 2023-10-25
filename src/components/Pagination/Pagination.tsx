@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import cn from 'classnames';
 import './Pagination.scss';
 import { getNumbers } from 'shared/utils/GetNumbers';
-import { getSearchWith } from 'shared/utils/SearchHelper';
 import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchWith } from 'shared/hooks/useSearchWith';
 
 type Props = {
   total: number;
@@ -39,7 +38,7 @@ export const Pagination: React.FC<Props> = ({
     >
       <Link
         to={{
-          search: getSearchWith(searchParams, {
+          search: useSearchWith(searchParams, {
             page: page === 1 ? null : page.toString(),
           }),
         }}
@@ -75,7 +74,7 @@ export const Pagination: React.FC<Props> = ({
         <li className="pagination__item">
           <Link
             to={{
-              search: getSearchWith(searchParams, {
+              search: useSearchWith(searchParams, {
                 page: currentPage === 2 ? null : (currentPage - 1).toString(),
               }),
             }}
@@ -93,7 +92,7 @@ export const Pagination: React.FC<Props> = ({
         <li className="pagination__item">
           <Link
             to={{
-              search: getSearchWith(searchParams, {
+              search: useSearchWith(searchParams, {
                 page: (currentPage + 1).toString(),
               }),
             }}

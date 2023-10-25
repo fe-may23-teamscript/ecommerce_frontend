@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import React, { PropsWithChildren } from 'react';
 import { getHomePath } from '../../../shared/utils/getRoutes';
 
-export const PrivateRoute:React.FC<PropsWithChildren> = ({ children }) => {
+export const PrivateRoute: React.FC<PropsWithChildren> = ({ children }) => {
   const { isAuthenticated } = useAppSelector(selectUser);
 
   if (!isAuthenticated) {

@@ -1,6 +1,9 @@
 import React from 'react';
 import './Profile.page.scss';
-import { useAppDispatch, useAppSelector } from '../../app/providers/store/lib/redux-hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../app/providers/store/lib/redux-hooks';
 import { logout, selectUser } from '../../app/providers/store/slices/userSlice';
 
 const ProfilePage: React.FC = () => {
@@ -9,8 +12,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
-      profile page
-      ------
+      profile page ------
       <h1>{user}</h1>
       ------
       <button
@@ -18,7 +20,7 @@ const ProfilePage: React.FC = () => {
           dispatch(logout);
           location.reload();
         }}
-        style={{ width: '200px', padding: '30px'}}
+        style={{ width: '200px', padding: '30px' }}
       >
         Logout
       </button>

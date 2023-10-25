@@ -8,15 +8,27 @@ import { ReactComponent as Close } from 'assets/icons/close.svg';
 import { ReactComponent as BurgerMenu } from 'assets/icons/menuBurger.svg';
 import { ReactComponent as User } from 'assets/icons/user.svg';
 import { ReactComponent as LogOut } from 'assets/icons/log-out.svg';
-import { useAppDispatch, useAppSelector } from '../../app/providers/store/lib/redux-hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
-import { getBurgerMenuPath, getCartPath, getFavouritesPath, getProfilePath, } from 'shared/utils/getRoutes';
+import {
+  getBurgerMenuPath,
+  getCartPath,
+  getFavouritesPath,
+  getProfilePath,
+} from 'shared/utils/getRoutes';
 import cn from 'classnames';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
 import { Login } from 'components/Login';
 import { Modal } from '../../shared/hooks/useModal';
-import { selectUser, toggleFirst, toggleModal } from '../../app/providers/store/slices/userSlice';
+import {
+  selectUser,
+  toggleFirst,
+  toggleModal,
+} from '../../app/providers/store/slices/userSlice';
 
 type Props = {
   theme: string;
@@ -37,9 +49,9 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
   return (
     <>
       <header className="header" id="header-top">
-        <Navigation/>
+        <Navigation />
         <div className="menu-items">
-          <ThemeSwitcher theme={theme} toggleTheme={toggleTheme}/>
+          <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
 
           <NavLink
             to={getFavouritesPath()}
@@ -49,7 +61,7 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
               })
             }
           >
-            <Like className="menu-items__button-right--icon"/>
+            <Like className="menu-items__button-right--icon" />
             {favouritesItems.length > 0 && (
               <span className="menu-items__total-count">
                 {favouritesItems.length}
@@ -64,52 +76,50 @@ const Header: React.FC<Props> = ({ theme, toggleTheme }) => {
               })
             }
           >
-            <Cart className="menu-items__button-right--icon"/>
+            <Cart className="menu-items__button-right--icon" />
             {totalCount > 0 && (
               <span className="menu-items__total-count">{totalCount}</span>
             )}
           </NavLink>
 
-          {
-            isAuthenticated ? (
-              <NavLink
-                to={getProfilePath()}
-                className={({ isActive }) =>
-                  cn('menu-items__button-right', {
-                    'menu-items__button-right--active': isActive,
-                  })
-                }
-              >
-                <LogOut className="menu-items__button-right--icon"/>
-              </NavLink>
-            ) : (
-              <button
-                className="menu-items__button-right"
-                onClick={() => {
-                  dispatch(toggleModal(true));
-                  dispatch(toggleFirst(true));
-                }}
-              >
-                <User
-                  className="menu-items__button-right--icon"
-                />
-              </button>
-            )
-          }
+          {isAuthenticated ? (
+            <NavLink
+              to={getProfilePath()}
+              className={({ isActive }) =>
+                cn('menu-items__button-right', {
+                  'menu-items__button-right--active': isActive,
+                })
+              }
+            >
+              <LogOut className="menu-items__button-right--icon" />
+            </NavLink>
+          ) : (
+            <button
+              className="menu-items__button-right"
+              onClick={() => {
+                dispatch(toggleModal(true));
+                dispatch(toggleFirst(true));
+              }}
+            >
+              <User className="menu-items__button-right--icon" />
+            </button>
+          )}
 
-
-          <NavLink to={getPath} className={() => cn('menu-items__button-right')}>
+          <NavLink
+            to={getPath}
+            className={() => cn('menu-items__button-right')}
+          >
             {isMenuOpened ? (
-              <Close className="menu-items__button-right--icon"/>
+              <Close className="menu-items__button-right--icon" />
             ) : (
-              <BurgerMenu className="menu-items__button-right--icon"/>
+              <BurgerMenu className="menu-items__button-right--icon" />
             )}
           </NavLink>
         </div>
       </header>
 
       <Modal>
-        <Login/>
+        <Login />
       </Modal>
     </>
   );

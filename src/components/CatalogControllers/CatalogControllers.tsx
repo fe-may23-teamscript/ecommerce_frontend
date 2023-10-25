@@ -69,22 +69,6 @@ const CatalogControllers: React.FC = () => {
   const onPerPageSelectChange = (value: string) =>
     setSearchParams(useSearchWith(searchParams, { limit: String(value) }));
 
-  // useEffect(() => {
-  //   switch (title) {
-  //     case '/' + getCatalog('phones'):
-  //       setTitle('Mobile phones');
-  //       break;
-  //     case '/' + getCatalog('tablets'):
-  //       setTitle('Tablet devices');
-  //       break;
-  //     case '/' + getCatalog('accessories'):
-  //       setTitle('Accessories');
-  //       break;
-  //     default:
-  //       '';
-  //   }
-  // }, []);
-
   return (
     <section className="controllers">
       <UserRoute />

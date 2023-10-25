@@ -75,10 +75,24 @@ export const phonesAPI = createApi({
         method: 'GET',
       }),
     }),
+    getProductsBySearch: build.query<
+      IGetProducts,
+      Record<string, null | string>
+    >({
+      query: ({ query }) => ({
+        url: 'products',
+        method: 'GET',
+        params: {
+          searchQuery: query,
+          limit: 6,
+        },
+      }),
+    }),
   }),
 });
 
 export const {
+  useGetProductsBySearchQuery,
   useGetProductsByCategoryQuery,
   useGetPhonesQuery,
   useGetHotPricePhonesQuery,

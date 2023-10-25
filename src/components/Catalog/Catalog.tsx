@@ -3,7 +3,7 @@ import './Catalog.scss';
 import { ProductCard } from 'components/ProductCard';
 
 interface Props {
-  visibleData: IProductModel[]; // maybe later add another interfaces for tablets and accessories
+  visibleData: IProductModel[];
 }
 
 export const Catalog: React.FC<Props> = ({ visibleData }: Props) => {
