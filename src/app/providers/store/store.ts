@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { phonesAPI } from 'api/phones.api';
 import cartSlice from './slices/cart.slice';
 import favouritesSlice from './slices/favourites.slice';
+import userSlice from './slices/userSlice';
 
 const rootReducer = combineReducers({
   cart: cartSlice,
   favourites: favouritesSlice,
+  user: userSlice,
   [phonesAPI.reducerPath]: phonesAPI.reducer,
 });
 

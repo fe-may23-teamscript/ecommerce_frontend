@@ -15,7 +15,7 @@ import {
 import { MenuPage } from 'pages/MenuPage';
 import { ProductDetailsPage } from 'pages/ProductDetailsPage';
 import { ProfilePage } from 'pages/ProfilePage';
-import DevelopPage from '../../../pages/DevelopPage/DevelopPage';
+import { PrivateRoute } from './PrivateRoute';
 
 export const routerConfig: RouteObject[] = [
   {
@@ -29,11 +29,11 @@ export const routerConfig: RouteObject[] = [
   },
   {
     path: getCatalog('tablets'),
-    element: <DevelopPage />,
+    element: <CatalogPage />,
   },
   {
     path: getCatalog('accessories'),
-    element: <DevelopPage />,
+    element: <CatalogPage />,
   },
   {
     path: 'catalog/:category/:slug',
@@ -69,7 +69,11 @@ export const routerConfig: RouteObject[] = [
   },
   {
     path: getProfilePath(),
-    element: <ProfilePage />,
+    element: (
+      <PrivateRoute>
+        <ProfilePage />
+      </PrivateRoute>
+    ),
   },
   {
     path: '*',
