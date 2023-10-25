@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
-import { CheckoutModal } from 'components/CheckoutModal';
 import { ReactComponent as Back } from 'assets/icons/arrow-left.svg';
 import {
-  useAppSelector,
   useAppDispatch,
+  useAppSelector,
 } from '../../app/providers/store/lib/redux-hooks';
 import {
-  getCart,
-  getTotalPrice,
-  getTotalCount,
   clearCart,
+  getCart,
+  getTotalCount,
+  getTotalPrice,
 } from '../../app/providers/store/slices/cart.slice';
+import { CheckoutModal } from 'components/CheckoutModal';
 import { useTranslation } from 'react-i18next';
 
 const Cart: React.FC = () => {
