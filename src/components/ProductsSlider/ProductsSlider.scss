@@ -1,9 +1,10 @@
 @import 'app/styles/index';
 
-.products-slider {
+.slider {
   &__top {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 24px;
   }
 
   &__title {
@@ -18,14 +19,6 @@
     }
   }
 
-  &__content {
-    @include gridContainer;
-
-    grid-template-rows: 1fr;
-    row-gap: 16px;
-    overflow: hidden;
-  }
-
   &__buttons {
     display: flex;
     gap: 16px;
@@ -33,31 +26,48 @@
 
   &__button {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     width: 32px;
     height: 32px;
-    border: 1px solid var(--color-icons);
     background-color: var(--color-surface1);
+    border: 1px solid var(--color-icons);
 
-    &:hover {
-      border: 1px solid var(--color-main-text);
-    }
+    @include hover(border-color, var(--color-main-text));
 
-    &--disabled {
-      cursor: default;
-
-      &:hover {
-        border: 1px solid var(--color-icons);
-      }
+    &-left--disabled,
+    &-right--disabled {
+      pointer-events: none;
     }
   }
 
   &__icon {
     fill: var(--color-main-text);
 
-    &--disabled {
+    &-left--disabled,
+    &-right--disabled {
       fill: var(--color-icons);
     }
+  }
+
+  &__bottom {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__slider {
+    display: inline-flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__card {
+    width: 272px;
+    height: 100%;
+    background-color: $color-secondary;
+    margin: 8px;
   }
 }

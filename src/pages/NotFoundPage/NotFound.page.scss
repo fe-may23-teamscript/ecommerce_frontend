@@ -1,4 +1,4 @@
-@import 'app/styles/mixins';
+@import 'app/styles/index';
 
 .not-found {
   padding: 16px;
@@ -6,22 +6,70 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 32px;
+  margin: auto;
 
-  &__img {
-    object-fit: cover;
-    max-width: 400px;
+  @include onTablet {
+    gap: 56px;
+    flex-direction: row;
   }
 
   &__title {
     font-weight: 800;
+    font-size: 56px;
+
+    @include onTablet {
+      font-size: 112px;
+    }
+  }
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+
+    @include onTablet {
+      width: 1px;
+      height: 250px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include onTablet {
+      align-items: flex-start;
+    }
+  }
+
+  &__oops {
+    font-weight: 800;
     font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
 
     @include onTablet {
       font-size: 48px;
-      line-height: 56px;
     }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $color-accent;
+    border: 1px solid $color-accent;
+    color: $color-white;
+    padding: 10px 40px;
+    text-align: center;
+    margin-top: 32px;
+
+    @include hover(background-color, $color-accent-hover);
   }
 }

@@ -1,30 +1,34 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import './Profile.page.scss';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../app/providers/store/lib/redux-hooks';
-import { logout, selectUser } from '../../app/providers/store/slices/userSlice';
+import defaultProfile from 'assets/images/profile.jpg';
 
 const ProfilePage: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { user } = useAppSelector(selectUser);
+  const { user } = useAuth0();
 
   return (
-    <>
-      profile page ------
-      <h1>{user}</h1>
-      ------
-      <button
-        onClick={() => {
-          dispatch(logout);
-          location.reload();
-        }}
-        style={{ width: '200px', padding: '30px' }}
-      >
-        Logout
-      </button>
-    </>
+    <div className="profile">
+      <h2 className="profile__title">Profile</h2>
+      <div className="profile__info">
+        <img
+          className="profile__image"
+          src={user?.picture ? user?.picture : defaultProfile}
+          alt={user?.name}
+        />
+        <table>
+          <tbody>
+            <tr>
+              <td className="profile__info-title">Name: </td>
+              <td>{user?.name}</td>
+            </tr>
+            <tr>
+              <td className="profile__info-title">Email: </td>
+              <td>{user?.email}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

@@ -1,93 +1,121 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import cn from 'classnames';
 import './ProductsSlider.scss';
 import { ProductCard } from 'components/ProductCard/ProductCard';
 import { IProductModel } from 'models/IProductModel';
-import { ReactComponent as ArrowLeftDisabled } from 'assets/icons/arrow-left-disabled.svg';
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow-left.svg';
-import { ReactComponent as ArrowRightDisabled } from 'assets/icons/arrow-right-disabled.svg';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow-right.svg';
 import { Loader } from 'components/Loader';
 
 type Props = {
   title: string;
-  phones?: IProductModel[];
+  products?: IProductModel[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, phones }) => {
-  const [start, setStart] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [visibleCount, setVisibleCount] = useState(1);
-  const end = start + visibleCount;
-
-  const handleResize = () => {
-    setWindowWidth(() => window.innerWidth);
-  };
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    const setOrUpdateMaxScroll = () => {
+      if (containerRef.current) {
+        const scrollWidth = containerRef.current?.scrollWidth;
+        const offsetWidth = containerRef.current?.offsetWidth;
+        const maxScrollValue = scrollWidth - offsetWidth;
 
-    if (windowWidth >= 640 && windowWidth < 896) {
-      setVisibleCount(2);
-    }
-
-    if (windowWidth >= 896 && windowWidth < 1200) {
-      setVisibleCount(3);
-    }
-
-    if (windowWidth >= 1200) {
-      setVisibleCount(4);
-    }
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
+        setMaxScroll(maxScrollValue);
+      }
     };
-  }, [windowWidth]);
 
-  if (!phones) {
+    setOrUpdateMaxScroll();
+    window.addEventListener('resize', setOrUpdateMaxScroll);
+  }, [products]);
+
+  if (!products) {
     return <Loader />;
   }
 
-  return (
-    <section className="cards-slider">
-      <div className="products-slider__top">
-        <h2 className="products-slider__title">{title}</h2>
-        <div className="products-slider__buttons">
-          <button
-            className={cn('products-slider__button', {
-              'products-slider__button--disabled': start <= 0,
-            })}
-            onClick={() => setStart((prev) => prev - 1)}
-            disabled={start === 0}
-          >
-            {start === 0 && (
-              <ArrowLeftDisabled className="products-slider__icon--disabled" />
-            )}
-            {start !== 0 && <ArrowLeft className="products-slider__icon" />}
-          </button>
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      const current = containerRef.current as HTMLDivElement;
 
-          <button
-            className={cn('products-slider__button', {
-              'products-slider__button--disabled': end === phones.length - 1,
+      if (current.scrollLeft && current.offsetWidth) {
+        current.scrollTo({
+          left: current.scrollLeft - current.offsetWidth / 2,
+          behavior: 'smooth',
+        });
+      }
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      const current = containerRef.current as HTMLDivElement;
+
+      if (current.scrollLeft != null && current.offsetWidth) {
+        current.scrollTo({
+          left: current.scrollLeft + current.offsetWidth / 2,
+          behavior: 'smooth',
+        });
+      }
+    }
+  };
+
+  const handleScroll = () => {
+    if (containerRef.current) {
+      setScrollPosition(+containerRef.current?.scrollLeft);
+    }
+  };
+
+  return (
+    <div className="slider">
+      <div className="slider__top">
+        <h2 className="slider__title">{title}</h2>
+
+        <div className="slider__buttons">
+          <div
+            className={cn('slider__button', {
+              'slider__button-left--disabled': scrollPosition === 0,
             })}
-            onClick={() => setStart((prev) => prev + 1)}
-            disabled={end === phones.length - 1}
+            onClick={handleScrollLeft}
           >
-            {end !== phones.length - 1 && (
-              <ArrowRight className="products-slider__icon" />
-            )}
-            {end === phones.length - 1 && (
-              <ArrowRightDisabled className="products-slider__icon--disabled" />
-            )}
-          </button>
+            <ArrowLeft
+              className={cn('slider__icon', {
+                'slider__icon-left--disabled': scrollPosition === 0,
+              })}
+            />
+          </div>
+
+          <div
+            className={cn('slider__button', {
+              'slider__button-right--disabled':
+                maxScroll - scrollPosition <= 10,
+            })}
+            onClick={handleScrollRight}
+          >
+            <ArrowRight
+              className={cn('slider__icon', {
+                'slider__icon-right--disabled':
+                  maxScroll - scrollPosition <= 10,
+              })}
+            />
+          </div>
         </div>
       </div>
-
-      <div className="products-slider__content">
-        {phones.slice(start, end).map((item) => (
-          <ProductCard productCard={item} key={item.id} />
-        ))}
+      <div
+        className="slider__bottom"
+        ref={containerRef}
+        onScroll={handleScroll}
+      >
+        <div className="slider__slider">
+          {products.map((product) => (
+            <div className="slider__card" key={product.id}>
+              <ProductCard productCard={product} />
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };

@@ -13,14 +13,11 @@ export interface IDropdown<T> {
 
 export function Dropdown<T>(props: IDropdown<T>) {
   const { options, selectedOption, onSelect } = props;
-
   const [selectedValue, setSelectedValue] = useState<T>(
     selectedOption || options[0],
   );
   const [isActive, setIsActive] = useState(false);
-
   const dropdownRef = useRef<HTMLDivElement>(null);
-
   useOutsideClick(dropdownRef, () => setIsActive(false));
 
   return (

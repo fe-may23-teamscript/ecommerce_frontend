@@ -6,6 +6,7 @@ import { getDevicePath } from 'shared/utils/getRoutes';
 import { BASE_URL } from 'shared/utils/constants';
 import { AddToCartButton } from 'components/AddToCartButton';
 import { FavouritesButton } from 'components/FavouritesButton';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   productCard: IProductModel;
@@ -23,6 +24,7 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
     ram,
     mainImage,
   } = productCard;
+  const { t } = useTranslation();
 
   return (
     <div className="card">
@@ -47,7 +49,7 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
 
         <div className="card__features">
           <p className="card__feature">
-            <span className="card__feature-name">Screen</span>
+            <span className="card__feature-name">{t('screen')}</span>
 
             <span className="card__feature-value">
               {/* eslint-disable */}
@@ -57,7 +59,7 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
           </p>
 
           <p className="card__feature">
-            <span className="card__feature-name">Capacity</span>
+            <span className="card__feature-name">{t('capacity')}</span>
 
             <span className="card__feature-value">{`${parseInt(
               capacity,
@@ -65,7 +67,7 @@ export const ProductCard: React.FC<Props> = ({ productCard }) => {
           </p>
 
           <p className="card__feature">
-            <span className="card__feature-name">RAM</span>
+            <span className="card__feature-name">{t('ram')}</span>
 
             <span className="card__feature-value">{`${parseInt(ram)} GB`}</span>
           </p>

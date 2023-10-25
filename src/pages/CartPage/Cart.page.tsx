@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
 import { ReactComponent as Back } from 'assets/icons/arrow-left.svg';
@@ -14,88 +15,74 @@ import {
   getTotalCount,
   getTotalPrice,
 } from '../../app/providers/store/slices/cart.slice';
+import { CheckoutModal } from 'components/CheckoutModal';
+import { useTranslation } from 'react-i18next';
 
 const Cart: React.FC = () => {
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector(getCart);
   const totalPrice = useAppSelector(getTotalPrice);
   const totalCount = useAppSelector(getTotalCount);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClearCart = () => {
     dispatch(clearCart());
-    // setShowModal(true);
+    setShowModal(true);
+    document.body.classList.add('modal-open');
+
+    setTimeout(() => {
+      setShowModal(false);
+      document.body.classList.remove('modal-open');
+    }, 3000);
   };
 
   return (
-    <div className="cart">
+    <div className={cn('cart', { 'modal-open': showModal })}>
       <button className="cart__link" onClick={() => navigate(-1)}>
         <Back className="cart__back" />
-        Back
+        {t('back')}
       </button>
 
-      <h2 className="cart__title">Cart</h2>
+      <h2 className="cart__title">{t('cart')}</h2>
 
-      <div className="cart__content">
-        <div className="cart__list">
-          {totalCount === 0 ? (
-            <p className="cart__text">Your cart is empty</p>
-          ) : (
-            <>
-              {cartItems.map((phone) => {
-                return <CartItem key={phone.phone.id} phone={phone} />;
+      {showModal ? (
+        <div className="cart__modal">
+          <CheckoutModal setShowModal={setShowModal} />
+        </div>
+      ) : (
+        <div className="cart__content">
+          <div className="cart__list">
+            {totalCount === 0 ? (
+              <p className="cart__text">{t('emptyCart')}</p>
+            ) : (
+              <>
+                {cartItems.map((phone) => {
+                  return <CartItem key={phone.phone.id} phone={phone} />;
+                })}
+              </>
+            )}
+          </div>
+
+          <div className="cart__checkout">
+            <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>
+            <p className="cart__total-items">{`${t(
+              'totalFor',
+            )} ${totalCount} ${t('items')}`}</p>
+            <button
+              className={cn('cart__btn', {
+                'cart__btn--disabled': totalCount === 0,
               })}
-            </>
-          )}
+              onClick={handleClearCart}
+              disabled={totalCount === 0}
+            >
+              {t('checkout')}
+            </button>
+          </div>
         </div>
-
-        <div className="cart__checkout">
-          <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>
-          <p className="cart__total-items">{`Total for ${totalCount} items`}</p>
-          <button
-            className={cn('cart__btn', {
-              'cart__btn--disabled': totalCount === 0,
-            })}
-            onClick={handleClearCart}
-            disabled={totalCount === 0}
-          >
-            Checkout
-          </button>
-        </div>
-      </div>
-
-      {/*{showModal ? (*/}
-      {/*  <CheckoutModal setShowModal={setShowModal} />*/}
-      {/*) : (*/}
-      {/*  <div className="cart__content">*/}
-      {/*    <div className="cart__list">*/}
-      {/*      {totalCount === 0 ? (*/}
-      {/*        <p className="cart__text">Your cart is empty</p>*/}
-      {/*      ) : (*/}
-      {/*        <>*/}
-      {/*          {cartItems.map((phone) => {*/}
-      {/*            return <CartItem key={phone.phone.id} phone={phone} />;*/}
-      {/*          })}*/}
-      {/*        </>*/}
-      {/*      )}*/}
-      {/*    </div>*/}
-
-      {/*    <div className="cart__checkout">*/}
-      {/*      <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>*/}
-      {/*      <p className="cart__total-items">{`Total for ${totalCount} items`}</p>*/}
-      {/*      <button*/}
-      {/*        className={cn('cart__btn', {*/}
-      {/*          'cart__btn--disabled': totalCount === 0,*/}
-      {/*        })}*/}
-      {/*        onClick={handleClearCart}*/}
-      {/*        disabled={totalCount === 0}*/}
-      {/*      >*/}
-      {/*        Checkout*/}
-      {/*      </button>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*)}*/}
+      )}
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

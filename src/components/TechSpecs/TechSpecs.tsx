@@ -1,6 +1,7 @@
 import React from 'react';
 import './TechSpecs.scss';
 import { IProductModel } from 'models/IProductModel';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   productInfo: IProductModel;
@@ -9,13 +10,14 @@ type Props = {
 export const TechSpecs: React.FC<Props> = ({ productInfo }) => {
   const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
     productInfo;
+  const { t } = useTranslation();
 
   return (
     <div className="tech-specs">
-      <h3 className="tech-specs__title">Tech specs</h3>
+      <h3 className="tech-specs__title">{t('techSpecs')}</h3>
 
       <div className="tech-specs__item">
-        <p className="tech-specs__name">Screen</p>
+        <p className="tech-specs__name">{t('screen')}</p>
         <p className="tech-specs__value">
           {/* eslint-disable */}
           {screen.split("'").join('” ')}
@@ -24,27 +26,27 @@ export const TechSpecs: React.FC<Props> = ({ productInfo }) => {
       </div>
 
       <div className="tech-specs__item">
-        <p className="tech-specs__name">Resolution</p>
+        <p className="tech-specs__name">{t('resolution')}</p>
         <p className="tech-specs__value">{resolution}</p>
       </div>
 
       <div className="tech-specs__item">
-        <p className="tech-specs__name">Processor</p>
+        <p className="tech-specs__name">{t('processor')}</p>
         <p className="tech-specs__value">{processor}</p>
       </div>
 
       <div className="tech-specs__item">
-        <p className="tech-specs__name">RAM</p>
+        <p className="tech-specs__name">{t('ram')}</p>
         <p className="tech-specs__value">{`${parseInt(ram)} GB`}</p>
       </div>
 
       <div className="tech-specs__item">
-        <p className="tech-specs__name">Built in memory</p>
+        <p className="tech-specs__name">{t('capacity')}</p>
         <p className="tech-specs__value">{`${parseInt(capacity)} GB`}</p>
       </div>
 
       <div className="tech-specs__item">
-        <p className="tech-specs__name">Camera</p>
+        <p className="tech-specs__name">{t('camera')}</p>
         <p className="tech-specs__value">{camera}</p>
       </div>
 

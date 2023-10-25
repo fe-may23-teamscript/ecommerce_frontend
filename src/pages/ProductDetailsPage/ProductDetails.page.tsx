@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import './ProductDetails.page.scss';
 import { ProductsSlider } from 'components/ProductsSlider';
+import { ToastContainer } from 'react-toastify';
 import { About } from 'components/About';
 import { TechSpecs } from 'components/TechSpecs';
 import { DeviceBlock } from 'components/DeviceBlock';
-import { PhoneImageSlider } from 'components/PhoneImageSlider';
+import { ModelImages } from 'components/ModelImages';
 import { ReactComponent as Back } from 'assets/icons/arrow-left.svg';
 import { Loader } from 'components/Loader';
 import {
@@ -14,6 +15,7 @@ import {
 } from 'api/phones.api';
 import { IProductModel } from 'models/IProductModel';
 import UserRoute from 'components/UserRoute/UserRoute';
+import { useTranslation } from 'react-i18next';
 
 const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<IProductModel | null>(null);
@@ -23,6 +25,7 @@ const ProductDetailsPage: React.FC = () => {
   const productResponse = useGetPhoneBySlugQuery(slug);
   const hotPriceResponse = useGetHotPricePhonesQuery();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     productResponse.refetch();
@@ -46,11 +49,11 @@ const ProductDetailsPage: React.FC = () => {
       <UserRoute name={product.name} />
       <button className="product-details__link" onClick={() => navigate(-1)}>
         <Back className="product-details__back" />
-        Back
+        {t('back')}
       </button>
       <h2 className="product-details__title">{product.name}</h2>
       <div className="product-details__info">
-        <PhoneImageSlider images={product.images} alt={product.name} />
+        <ModelImages images={product.images} alt={product.name} />
         <DeviceBlock product={product} pathname={pathname} />
         <span className="product-details__id">
           ID: {product.id.toString().padStart(4, '0')}
@@ -60,7 +63,8 @@ const ProductDetailsPage: React.FC = () => {
         <About productDescription={product.description} />
         <TechSpecs productInfo={product} />
       </div>
-      <ProductsSlider title="You may also like" phones={hotPriceModels} />
+      <ProductsSlider title={t('youMayAlsoLike')} products={hotPriceModels} />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { SortOptions } from '../../models/ISortTypes';
 import { useSearchWith } from '../../shared/hooks/useSearchWith';
+import { ToastContainer } from 'react-toastify';
 
 const CatalogPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,6 +53,7 @@ const CatalogPage: React.FC = () => {
           }}
         />
       )}
+      <ToastContainer position="bottom-right" />
     </>
   ) : (
     <Loader />
