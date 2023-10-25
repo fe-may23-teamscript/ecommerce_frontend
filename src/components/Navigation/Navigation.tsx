@@ -2,10 +2,12 @@ import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 import './Navigation.scss';
 import { getCatalog, getHomePath } from 'shared/utils/getRoutes';
-
-const navBar = ['phones', 'tablets', 'accessories'];
+import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
+  const { t } = useTranslation();
+  const navBar = ['phones', 'tablets', 'accessories'];
+
   return (
     <nav className="navigation">
       <Link to={getHomePath()} className={cn('navigation__logo')}>
@@ -19,7 +21,7 @@ const Navigation = () => {
           })
         }
       >
-        {'home'}
+        {t('home')}
       </NavLink>
       {navBar.map((navItemName) => (
         <NavLink
@@ -31,7 +33,7 @@ const Navigation = () => {
             })
           }
         >
-          {navItemName}
+          {t(navItemName)}
         </NavLink>
       ))}
     </nav>

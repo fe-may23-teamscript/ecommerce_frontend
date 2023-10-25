@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../shared/utils/constants';
 import { IProductModel } from 'models/IProductModel';
+import { getToken } from 'shared/utils/auth';
 
 interface IGetProducts {
   count: number;
@@ -11,6 +12,9 @@ export const phonesAPI = createApi({
   reducerPath: 'phonesAPI',
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
   }),
   tagTypes: ['Phone'],
   endpoints: (build) => ({

@@ -2,9 +2,9 @@
 
 .dropdown {
   position: relative;
-  background: var(--color-bg);
+  background: var(--color-surface1);
   border: 1px solid $color-elements;
-  z-index: 2;
+  z-index: 5;
 
   &-selector {
     padding: 15px;

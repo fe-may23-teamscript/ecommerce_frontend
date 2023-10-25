@@ -2,3 +2,8 @@
 @import 'app/styles/mixins';
 @import 'app/styles/themes/dark';
 @import 'app/styles/themes/light';
+
+:root {
+  --toastify-color-success: #{$color-green};
+  --toastify-font-family: mont;
+}

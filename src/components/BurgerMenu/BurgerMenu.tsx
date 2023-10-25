@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import './BurgerMenu.scss';
 import {
@@ -9,16 +10,41 @@ import {
 } from 'shared/utils/getRoutes';
 import { ReactComponent as Like } from 'assets/icons/favourite.svg';
 import { ReactComponent as Cart } from 'assets/icons/cart.svg';
+import { ReactComponent as User } from 'assets/icons/user.svg';
+import { ReactComponent as LogOut } from 'assets/icons/log-out.svg';
 import { useAppSelector } from '../../app/providers/store/lib/redux-hooks';
 import { getTotalCount } from '../../app/providers/store/slices/cart.slice';
 import { getFavourites } from 'app/providers/store/slices/favourites.slice';
+import { getProfilePath } from 'shared/utils/getRoutes';
+import { useTranslation } from 'react-i18next';
+import { useAuth0 } from '@auth0/auth0-react';
+import defaultProfile from 'assets/images/profile.jpg';
 
 const navBar = ['phones', 'tablets', 'accessories'];
 
-export const BurgerMenu: React.FC = () => {
+type Props = {
+  closeBurger: () => void;
+};
+
+export const BurgerMenu: React.FC<Props> = ({ closeBurger }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const totalCount = useAppSelector(getTotalCount);
   const favouritesItems = useAppSelector(getFavourites);
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+
+  useEffect(() => {
+    const body = document.body;
+    body.classList.add('lock');
+
+    return () => {
+      body.classList.remove('lock');
+    };
+  }, []);
+
+  const handleLogout = () => {
+    return logout({ logoutParams: { returnTo: window.location.origin } });
+  };
 
   return (
     <aside className="menu">
@@ -26,13 +52,14 @@ export const BurgerMenu: React.FC = () => {
         <ul className="nav__list">
           <li className="nav__item">
             <Link
-              to={`/${getHomePath()}`}
+              to={getHomePath()}
               key={'home'}
               className={cn('nav__link', {
-                'nav__link--active': pathname === '/menu',
+                'nav__link--active': pathname === '/',
               })}
+              onClick={closeBurger}
             >
-              {'home'}
+              {t('home')}
             </Link>
           </li>
           {navBar.map((navItemName, index) => (
@@ -44,8 +71,9 @@ export const BurgerMenu: React.FC = () => {
                 className={cn('nav__link', {
                   'nav__link--active': pathname.includes(navItemName),
                 })}
+                onClick={closeBurger}
               >
-                {navItemName}
+                {t(navItemName)}
               </Link>
             </li>
           ))}
@@ -53,10 +81,11 @@ export const BurgerMenu: React.FC = () => {
       </div>
       <div className="menu__bottom">
         <Link
-          to={`/${getFavouritesPath()}`}
+          to={getFavouritesPath()}
           className={cn('menu__link menu__link--favourite', {
             'menu__link--active': pathname.includes('favourites'),
           })}
+          onClick={closeBurger}
         >
           <div className="menu__link-wrapper">
             <Like className="menu__link-icon" />
@@ -69,10 +98,11 @@ export const BurgerMenu: React.FC = () => {
         </Link>
 
         <Link
-          to={`/${getCartPath()}`}
+          to={getCartPath()}
           className={cn('menu__link', {
             'menu__link--active': pathname.includes('cart'),
           })}
+          onClick={closeBurger}
         >
           <div className="menu__link-wrapper">
             <Cart className="menu__link-icon" />
@@ -81,6 +111,24 @@ export const BurgerMenu: React.FC = () => {
             )}
           </div>
         </Link>
+        {isAuthenticated ? (
+          <div className="menu__link">
+            <NavLink to={getProfilePath()}>
+              <img
+                src={user?.picture ? user?.picture : defaultProfile}
+                className="menu__profile-img"
+              />
+            </NavLink>
+            <LogOut className="menu__link-icon" onClick={handleLogout} />
+          </div>
+        ) : (
+          <div className="menu__link">
+            <User
+              className="menu__link-icon"
+              onClick={() => loginWithRedirect()}
+            />
+          </div>
+        )}
       </div>
     </aside>
   );

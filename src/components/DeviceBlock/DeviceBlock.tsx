@@ -6,6 +6,7 @@ import { getDevicePath } from 'shared/utils/getRoutes';
 import './DeviceBlock.scss';
 import { AddToCartButton } from 'components/AddToCartButton';
 import { FavouritesButton } from 'components/FavouritesButton';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: IProductModel;
@@ -27,10 +28,11 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
     ram,
   } = product;
   const category = pathname.split('/').splice(-2, 1).join('');
+  const { t } = useTranslation();
 
   return (
     <div className="device-block">
-      <span className="device-block__feature-name">Available colors</span>
+      <span className="device-block__feature-name">{t('availableColors')}</span>
       <div className="device-block__buttons">
         {colorsAvailable.map((currentColor) => (
           <Link
@@ -50,7 +52,7 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
         ))}
       </div>
 
-      <span className="device-block__feature-name">Select capacity</span>
+      <span className="device-block__feature-name">{t('selectCapacity')}</span>
       <div className="device-block__buttons">
         {capacityAvailable.map((currentCapacity) => (
           <Link
@@ -85,7 +87,7 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
 
       <div className="device-block__features">
         <p className="device-block__feature">
-          <span className="device-block__feature-name">Screen</span>
+          <span className="device-block__feature-name">{t('screen')}</span>
 
           <span className="device-block__feature-value">
             {/* eslint-disable */}
@@ -95,17 +97,17 @@ export const DeviceBlock: React.FC<Props> = ({ product, pathname }) => {
         </p>
 
         <p className="device-block__feature">
-          <span className="device-block__feature-name">Resolution</span>
+          <span className="device-block__feature-name">{t('resolution')}</span>
           <span className="device-block__feature-value">{resolution}</span>
         </p>
 
         <p className="device-block__feature">
-          <span className="device-block__feature-name">Processor</span>
+          <span className="device-block__feature-name">{t('processor')}</span>
           <span className="device-block__feature-value">{processor}</span>
         </p>
 
         <p className="device-block__feature">
-          <span className="device-block__feature-name">RAM</span>
+          <span className="device-block__feature-name">{t('ram')}</span>
           <span className="device-block__feature-value">{`${parseInt(
             ram,
           )} GB`}</span>

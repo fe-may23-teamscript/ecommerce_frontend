@@ -9,6 +9,7 @@ import { BASE_URL } from 'shared/utils/constants';
 import { useOutsideClick } from 'shared/hooks/useOutsideClick';
 import { getDevicePath } from 'shared/utils/getRoutes';
 import { IProductModel } from 'models/IProductModel';
+import { useTranslation } from 'react-i18next';
 
 const SearchBar: FC = () => {
   const [query, setQuery] = useState<string>('');
@@ -18,6 +19,8 @@ const SearchBar: FC = () => {
   const { data, isLoading, isFetching, refetch } = useGetProductsBySearchQuery({
     query: searchQuery,
   });
+  const { t } = useTranslation();
+
   const locationPath = useLocation().pathname;
 
   const resultsRef = useRef(null);
@@ -47,7 +50,7 @@ const SearchBar: FC = () => {
           type="search"
           name="product search"
           id="search"
-          placeholder="Search..."
+          placeholder={t('search')}
           className="search__field"
           onChange={(event) => {
             setQuery(event.target.value);
@@ -61,8 +64,8 @@ const SearchBar: FC = () => {
           ) : (
             <>
               {!data?.rows.length && (
-                <h4 style={{ color: 'var(--color-icons)' }}>
-                  Not found any products
+                <h4 className="search__results-item">
+                  {t('notFoundProducts')}
                 </h4>
               )}
               {data?.rows.map((product: IProductModel) => (

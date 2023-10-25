@@ -3,15 +3,19 @@
 
 .menu {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
   margin: 0 auto;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.48px;
   background-color: var(--color-bg);
-
-  @include onTabletExtended {
-    display: none;
-  }
+  z-index: 5;
 
   @include onDesktop {
     display: none;
@@ -19,23 +23,24 @@
 
   &__nav {
     margin: 24px 16px;
+    height: 100%;
   }
 
   &__bottom {
     display: flex;
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
+    position: static;
+    bottom: 0;
   }
 
   &__link {
-    display: block;
-    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 3);
     border-top: 1px solid $color-surface2;
 
-    &:first-of-type {
+    &:not(:last-child) {
       border-right: 1px solid $color-surface2;
       z-index: 1;
     }
@@ -47,8 +52,9 @@
 
   &__link-icon {
     fill: var(--color-main-text);
-    left: 50%;
-    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin: 16px;
   }
 
   &__link-wrapper {
@@ -72,6 +78,13 @@
     position: absolute;
     top: 17px;
     left: 51%;
+  }
+
+  &__profile-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-left: 16px;
   }
 }
 

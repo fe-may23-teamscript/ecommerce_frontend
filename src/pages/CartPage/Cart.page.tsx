@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './Cart.page.scss';
 import { CartItem } from 'components/CartItem/CartItem';
 import { CheckoutModal } from 'components/CheckoutModal';
@@ -15,6 +16,7 @@ import {
   getTotalCount,
   clearCart,
 } from '../../app/providers/store/slices/cart.slice';
+import { useTranslation } from 'react-i18next';
 
 const Cart: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,28 +25,37 @@ const Cart: React.FC = () => {
   const totalPrice = useAppSelector(getTotalPrice);
   const totalCount = useAppSelector(getTotalCount);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClearCart = () => {
     dispatch(clearCart());
     setShowModal(true);
+    document.body.classList.add('modal-open');
+
+    setTimeout(() => {
+      setShowModal(false);
+      document.body.classList.remove('modal-open');
+    }, 3000);
   };
 
   return (
-    <div className="cart">
+    <div className={cn('cart', { 'modal-open': showModal })}>
       <button className="cart__link" onClick={() => navigate(-1)}>
         <Back className="cart__back" />
-        Back
+        {t('back')}
       </button>
 
-      <h2 className="cart__title">Cart</h2>
+      <h2 className="cart__title">{t('cart')}</h2>
 
       {showModal ? (
-        <CheckoutModal setShowModal={setShowModal} />
+        <div className="cart__modal">
+          <CheckoutModal setShowModal={setShowModal} />
+        </div>
       ) : (
         <div className="cart__content">
           <div className="cart__list">
             {totalCount === 0 ? (
-              <p className="cart__text">Your cart is empty</p>
+              <p className="cart__text">{t('emptyCart')}</p>
             ) : (
               <>
                 {cartItems.map((phone) => {
@@ -56,7 +67,9 @@ const Cart: React.FC = () => {
 
           <div className="cart__checkout">
             <h2 className="cart__sum">$&nbsp;{totalPrice}</h2>
-            <p className="cart__total-items">{`Total for ${totalCount} items`}</p>
+            <p className="cart__total-items">{`${t(
+              'totalFor',
+            )} ${totalCount} ${t('items')}`}</p>
             <button
               className={cn('cart__btn', {
                 'cart__btn--disabled': totalCount === 0,
@@ -64,11 +77,12 @@ const Cart: React.FC = () => {
               onClick={handleClearCart}
               disabled={totalCount === 0}
             >
-              Checkout
+              {t('checkout')}
             </button>
           </div>
         </div>
       )}
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

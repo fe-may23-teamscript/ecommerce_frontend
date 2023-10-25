@@ -90,23 +90,30 @@ body {
 }
 
 .app {
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-bg);
   color: var(--color-main-text);
+
+  @include onTablet {
+    min-height: calc(100vh - 64px);
+  }
 }
 
 .page {
   width: 100%;
   display: flex;
+  position: relative;
+  top: 80px;
   flex-direction: column;
   flex: 1;
   padding: 0 $phone-page-padding;
 
   @include onTablet {
+    top: 64px;
     padding: 0 $tablet-page-padding;
   }
 
@@ -114,4 +121,8 @@ body {
     padding: 0 $desktop-page-padding;
     max-width: 1200px;
   }
+}
+
+body.lock {
+  overflow: hidden;
 }

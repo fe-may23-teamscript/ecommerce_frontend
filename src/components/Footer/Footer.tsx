@@ -3,12 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import './Footer.scss';
 import { ReactComponent as BackToTop } from 'assets/icons/arrow-up.svg';
-
-const footerNavItems = ['github', 'contacts', 'rights'];
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const [isVisibleBackToTop, setIsVisibleBackToTop] = useState(false);
   const { pathname } = useLocation();
+  const { t } = useTranslation();
+  const footerNavItems = ['github', t('contacts'), t('rights')];
 
   const toggleVisibility = () => {
     if (window.scrollY > 300) {
@@ -55,7 +56,7 @@ const Footer = () => {
           })}
         >
           <button className="footer__back-to-top-link" onClick={scrollToTop}>
-            Back to top
+            {t('backToTop')}
           </button>
           <button className="footer__back-to-top-button" onClick={scrollToTop}>
             <BackToTop className="footer__back-to-top-icon" />

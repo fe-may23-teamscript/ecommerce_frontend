@@ -12,6 +12,8 @@ import { ReactComponent as Delete } from 'assets/icons/close.svg';
 import { ReactComponent as Minus } from 'assets/icons/minus.svg';
 import { ReactComponent as Plus } from 'assets/icons/plus.svg';
 import { BASE_URL } from 'shared/utils/constants';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 type CartItemProps = {
   phone: IPhoneWithCount;
@@ -19,13 +21,17 @@ type CartItemProps = {
 
 export const CartItem: React.FC<CartItemProps> = ({ phone }) => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   return (
     <div className="cart-item">
       <div className="cart-item__info">
         <button
           className="cart-item__btn"
-          onClick={() => dispatch(deleteFromCart(phone.phone.id))}
+          onClick={() => {
+            dispatch(deleteFromCart(phone.phone.id));
+            toast.success(t('toastRemovedFromCart'));
+          }}
         >
           <Delete className="cart-item__icon" />
         </button>

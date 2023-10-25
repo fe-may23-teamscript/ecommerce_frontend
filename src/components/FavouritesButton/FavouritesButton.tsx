@@ -12,6 +12,8 @@ import {
 import { ReactComponent as Like } from 'assets/icons/favourite.svg';
 import { ReactComponent as Unlike } from 'assets/icons/unlike.svg';
 import { IProductModel } from 'models/IProductModel';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: IProductModel;
@@ -20,19 +22,23 @@ type Props = {
 export const FavouritesButton: React.FC<Props> = ({ product }) => {
   const dispatch = useAppDispatch();
   const favouritesItems = useAppSelector(getFavourites);
+  const { t } = useTranslation();
   const isInFavourites = Boolean(
     favouritesItems.find((phone) => phone.id === product.id),
   );
 
+  const handleClick = () => {
+    if (isInFavourites) {
+      dispatch(deleteFromFavourites(product.id));
+      toast.success(t('toastRemovedFromFavourites'));
+    } else {
+      dispatch(addToFavourites(product));
+      toast.success(t('toastAddedToFavourites'));
+    }
+  };
+
   return (
-    <button
-      className="favourites-btn"
-      onClick={() => {
-        isInFavourites
-          ? dispatch(deleteFromFavourites(product.id))
-          : dispatch(addToFavourites(product));
-      }}
-    >
+    <button className="favourites-btn" onClick={handleClick}>
       {isInFavourites ? (
         <Unlike className="favourites-btn__icon" />
       ) : (

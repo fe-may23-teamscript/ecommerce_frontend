@@ -15,8 +15,8 @@ export const ThemeSwitcher: React.FC<Props> = ({ theme, toggleTheme }) => {
         onChange={toggleTheme}
         id="switch"
       />
-      <label htmlFor="switch" className="switch">
-        <span className="ball"></span>
+      <label htmlFor="switch" className="theme-switcher__switch">
+        <span className="theme-switcher__ball"></span>
       </label>
     </div>
   );

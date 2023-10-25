@@ -20,6 +20,6 @@
     background-color: var(--color-surface1);
     border: 1px solid var(--color-icons);
     color: $color-green;
-    cursor: default;
+    pointer-events: none;
   }
 }

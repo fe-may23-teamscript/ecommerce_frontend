@@ -6,10 +6,11 @@ import tabletsImage from 'assets/images/shop-by-category/tablets.jpg';
 import accessoriesImage from 'assets/images/shop-by-category/accessories.jpg';
 import { getCatalog } from 'shared/utils/getRoutes';
 import { useGetProductsByCategoryQuery } from 'api/phones.api';
+import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory: FC = () => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const phones = useGetProductsByCategoryQuery({ category: 'phones' });
   const tablets = useGetProductsByCategoryQuery({ category: 'tablets' });
   const accessories = useGetProductsByCategoryQuery({
@@ -24,19 +25,19 @@ export const ShopByCategory: FC = () => {
 
   const categories = [
     {
-      title: 'Mobile phones',
+      title: t('mobilePhones'),
       image: phonesImage,
       models: phones.data?.count,
       path: 'phones',
     },
     {
-      title: 'Tablets',
+      title: t('tablets'),
       image: tabletsImage,
       models: tablets.data?.count,
       path: 'tablets',
     },
     {
-      title: 'Accessories',
+      title: t('accessories'),
       image: accessoriesImage,
       models: accessories.data?.count,
       path: 'accessories',
@@ -45,7 +46,7 @@ export const ShopByCategory: FC = () => {
 
   return (
     <div className="shop-by-category">
-      <h2 className="shop-by-category__title">Shop by category</h2>
+      <h2 className="shop-by-category__title">{t('shopByCategory')}</h2>
       <div className="shop-by-category__content">
         {categories.map((item) => (
           <div key={item.title} className="shop-by-category__category">
@@ -56,7 +57,9 @@ export const ShopByCategory: FC = () => {
               onClick={() => navigate(getCatalog(item.path), { state: true })}
             />
             <h4 className="shop-by-category__name">{item.title}</h4>
-            <p className="shop-by-category__models">{`${item.models} models`}</p>
+            <p className="shop-by-category__models">{`${item.models} ${t(
+              'models',
+            )}`}</p>
           </div>
         ))}
       </div>

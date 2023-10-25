@@ -2,109 +2,102 @@
 
 .search {
   &__wrapper {
-    position: relative;
+    position: absolute;
+    top: 47px;
+    left: 0;
+    right: 0;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    @include onTablet {
+      position: relative;
+      width: 402px;
+      margin-inline: 16px;
+      top: 0;
+    }
+
+    @include onDesktop {
+      margin-inline: 24px;
+      width: 402px;
+    }
   }
 
   &__container {
-    background-color: var(--color-bg);
-    width: 88px;
-    height: 28px;
-    border: 1px solid;
-    border-radius: 4px;
+    background-color: var(--color-surface1);
+    border-block: 1px solid var(--color-icons);
+    height: 32px;
     display: flex;
     align-items: center;
-    padding: 4px 6px;
+    justify-content: center;
+    padding: 6px 16px;
 
     @include onTablet {
-      width: 256px;
-      height: 40px;
-    }
-
-    @include onDesktop {
-      width: 272px;
-      height: 40px;
-    }
-
-    @include onDesktop {
-      width: 272px;
-      height: 40px;
+      border-inline: 1px solid var(--color-icons);
     }
   }
 
   &__icon {
     margin-right: 8px;
+    width: 16px;
+    height: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-main-text);
+    color: $color-elements;
   }
 
   &__field {
     background-color: transparent;
-    color: var(--color-elements);
+    color: var(--color-main-text);
     text-justify: center;
     height: 100%;
+    width: 100%;
     font-size: 12px;
 
     @include onTablet {
-      font-size: 16px;
-    }
-
-    @include onDesktop {
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 
   &__results {
     position: absolute;
     z-index: 1;
-    top: 38px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid $color-elements;
-    border-right: 1px solid $color-elements;
-    border-bottom: 1px solid $color-elements;
     background-color: $color-black;
 
+    @include onTablet {
+      border-inline: 1px solid var(--color-icons);
+      top: 48px;
+    }
+
     @include onDesktop {
-      top: 52px;
+      top: 48px;
     }
   }
 
   &__results-item {
     box-sizing: border-box;
-    padding: 8px 0;
-    height: 80px;
-    width: 310px;
+    padding: 4px 8px;
+    width: 100%;
     color: var(--color-elements);
-    border: 1px solid $color-elements;
-    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-icons);
+    background-color: var(--color-surface1);
     display: flex;
     overflow: hidden;
     align-items: center;
+    gap: 8px;
     font-size: 12px;
-
-    @include onTablet {
-      width: 278px;
-    }
-
-    @include onTabletExtended {
-      width: 342px;
-    }
-
-    @include onDesktop {
-      width: 410px;
-    }
   }
 
   &__results-photo {
-    height: 100%;
+    height: 32px;
     background-color: $color-white;
-    margin: 8px;
+    margin: 4px;
+
+    @include onTablet {
+      height: 40px;
+    }
   }
 }
 

@@ -3,55 +3,76 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import './PicturesSlider.scss';
 import { ReactComponent as ArrowLeft } from '../../assets/icons/arrow-left.svg';
-import { ReactComponent as ArrowRigth } from 'assets/icons/arrow-right.svg';
-import banner1 from 'assets/images/pictures-slider/banner-1.png';
-import banner2 from 'assets/images/pictures-slider/banner-2.png';
-import banner3 from 'assets/images/pictures-slider/banner-3.png';
-import banner4 from 'assets/images/pictures-slider/banner-4.png';
+import { ReactComponent as ArrowRight } from 'assets/icons/arrow-right.svg';
+import { images } from './images';
 import { getCatalog } from 'shared/utils/getRoutes';
-
-const images = [banner1, banner2, banner3, banner4];
+import { useTranslation } from 'react-i18next';
 
 export const PicturesSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const { t } = useTranslation();
 
-  const handleArrowLeft = () => setActiveIndex((prevState) => prevState - 1);
-  const handleArrowRight = () => setActiveIndex((prevState) => prevState + 1);
+  const handleArrowLeft = () => {
+    return setActiveIndex((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1,
+    );
+  };
+  const handleArrowRight = () => {
+    return setActiveIndex((prev) =>
+      prev === images.length - 1 ? 0 : prev + 1,
+    );
+  };
   const handlePagination = (index: number) => setActiveIndex(index);
 
   useEffect(() => {
-    if (activeIndex > images.length - 1) {
-      setActiveIndex(0);
-    }
-
-    if (activeIndex < 0) {
-      setActiveIndex(images.length - 1);
-    }
-  }, [activeIndex, images]);
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setActiveIndex((prevState) => prevState + 1),
-      5000,
-    );
+    const interval = setInterval(() => handleArrowRight(), 5000);
 
     return () => clearInterval(interval);
-  }, [activeIndex]);
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touchX = e.touches[0].clientX;
+    const deltaX = touchX - touchStartX;
+
+    if (deltaX < 0) {
+      handleArrowRight();
+    } else if (deltaX > 0) {
+      handleArrowLeft();
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStartX(0);
+  };
 
   return (
     <div className="carousel">
-      <h1 className="carousel__title">Welcome to Nice Gadgets store!</h1>
-      <div className="carousel__box">
+      <h1 className="carousel__title">{t('title')}</h1>
+      <div
+        className="carousel__box"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="carousel__row">
           {images.map((image, index) => (
             <Link
-              key={index}
-              to={getCatalog('phones')}
-              className={cn('carousel__img', {
-                'carousel__img--active': activeIndex === index,
-              })}
+              key={image.src}
+              to={getCatalog(image.category)}
+              className="carousel__img-link"
             >
-              <img src={image} alt={image} key={image} />
+              <img
+                src={image.src}
+                alt={image.src}
+                className={cn('carousel__img', {
+                  'carousel__img--active': activeIndex === index,
+                })}
+              />
             </Link>
           ))}
         </div>
@@ -67,7 +88,7 @@ export const PicturesSlider: React.FC = () => {
           onClick={handleArrowRight}
           className="carousel__button carousel__button--next"
         >
-          <ArrowRigth className="carousel__icon" />
+          <ArrowRight className="carousel__icon" />
         </button>
       </div>
       <div className="carousel__pagination-box">
@@ -75,7 +96,7 @@ export const PicturesSlider: React.FC = () => {
           <button
             type="button"
             aria-label="pagination-item"
-            key={image}
+            key={image.src}
             className={cn('carousel__item-btn', {
               'carousel__item-btn--active': activeIndex === index,
             })}

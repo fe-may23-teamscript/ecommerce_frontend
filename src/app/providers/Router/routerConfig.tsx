@@ -5,14 +5,12 @@ import { FavouritesPage } from 'pages/FavouritesPage';
 import { CartPage } from 'pages/CartPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import {
-  getBurgerMenuPath,
   getCartPath,
   getCatalog,
   getFavouritesPath,
   getHomePath,
   getProfilePath,
 } from 'shared/utils/getRoutes';
-import { MenuPage } from 'pages/MenuPage';
 import { ProductDetailsPage } from 'pages/ProductDetailsPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import DevelopPage from '../../../pages/DevelopPage/DevelopPage';
@@ -46,26 +44,6 @@ export const routerConfig: RouteObject[] = [
   {
     path: getCartPath(),
     element: <CartPage />,
-  },
-  {
-    path: getBurgerMenuPath('/'),
-    element: <MenuPage />,
-  },
-  {
-    path: getBurgerMenuPath('catalog/:category'),
-    element: <MenuPage />,
-  },
-  {
-    path: getBurgerMenuPath('favourites'),
-    element: <MenuPage />,
-  },
-  {
-    path: getBurgerMenuPath('cart'),
-    element: <MenuPage />,
-  },
-  {
-    path: getBurgerMenuPath('/catalog/:category/:slug'),
-    element: <MenuPage />,
   },
   {
     path: getProfilePath(),
